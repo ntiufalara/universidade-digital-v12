@@ -1,2 +1,3 @@
-# universidade-digital-v12
+# Universidade Digital
+
 Migração de código para o Odoo v12
