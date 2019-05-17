@@ -76,7 +76,7 @@
                 <search string="Campus">
                     <field name="name"/>
                     <separator/>
-                    <group expand="0" string="Grupo por...">
+                    <group expand="0" string="Agrupar por...">
                         <filter name="name" string="Nome" context="{'group_by':'name'}"/>
                         <filter name="diretor" string="Diretor" context="{'group_by':'diretor'}"/>
                         <filter name="diretor_academico" string="Diretor Acadêmico"
