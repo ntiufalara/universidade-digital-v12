@@ -1,7 +1,7 @@
 # encoding: UTF-8
 import logging
 
-import utils
+from . import utils
 from odoo import models, fields
 
 _logger = logging.getLogger(__name__)

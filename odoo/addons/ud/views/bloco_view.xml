@@ -65,9 +65,9 @@
                     <field name="campus_id"/>
 
                     <group expand="0" string="Agrupar por...">
-                        <filter string="Polo" icon="terp-personal" domain="" name="polo"
+                        <filter string="Polo" domain="" name="polo"
                                 context="{'group_by':'polo_id'}"/>
-                        <filter string="Campus" icon="terp-personal" domain="" name="campus"
+                        <filter string="Campus" domain="" name="campus"
                                 context="{'group_by':'campus_id'}"/>
                     </group>
                 </search>

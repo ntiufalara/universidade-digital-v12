@@ -1,7 +1,7 @@
 # encoding: UTF-8
 from odoo import models, fields
 
-import utils
+from . import utils
 
 
 class Banco(models.Model):

@@ -45,7 +45,7 @@
             <field name="name">ud.campus.form.admin</field>
             <field name="model">ud.campus</field>
             <field name="inherit_id" ref="view_campus_form"/>
-            <field name="groups_id" eval="[(6, 0, [ref('base.admin_ud')])]"/>
+            <field name="groups_id" eval="[(6, 0, [ref('admin_ud')])]"/>
             <field name="arch" type="xml">
                 <field name="diretor" position="attributes">
                     <attribute name="options"/>
@@ -75,11 +75,11 @@
             <field name="arch" type="xml">
                 <search string="Campus">
                     <field name="name"/>
-                    <newline/>
+                    <separator/>
                     <group expand="0" string="Grupo por...">
-                        <filter string="Nome" icon="terp-personal" domain="[]" context="{'group_by':'name'}"/>
-                        <filter string="Diretor" icon="terp-personal" domain="[]" context="{'group_by':'diretor'}"/>
-                        <filter string="Diretor Acadêmico" icon="terp-personal" domain="[]"
+                        <filter name="name" string="Nome" context="{'group_by':'name'}"/>
+                        <filter name="diretor" string="Diretor" context="{'group_by':'diretor'}"/>
+                        <filter name="diretor_academico" string="Diretor Acadêmico"
                                 context="{'group_by':'diretor_academico'}"/>
                     </group>
                 </search>

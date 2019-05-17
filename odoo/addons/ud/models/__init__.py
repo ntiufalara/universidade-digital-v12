@@ -1,18 +1,3 @@
-import Banco
-import DadosBancarios
-import Campus
-import Espaco
-import Polo
-import Bloco
-import Setor
-import Curso
-import Disciplina
-import Pessoa
-import PerfilTipo
-import PerfilTipoDocente
-import Perfil
-import Bolsa
-import CursoModalidade
-import ServerOpenerp7
-import PessoaEndereco
-import PessoaContato
+from . import Banco, DadosBancarios, Campus, Espaco, Polo, \
+    Bloco, Setor, Curso, Disciplina, Pessoa, PerfilTipo, PerfilTipoDocente, Perfil, \
+    Bolsa, CursoModalidade, ServerOpenerp7, PessoaEndereco, PessoaContato

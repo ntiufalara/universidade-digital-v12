@@ -69,10 +69,10 @@
                     <field name="name"/>
                     <newline/>
                     <group expand="0" string="Filtrar por...">
-                        <filter string="Nome" icon="terp-personal" domain="[]" context="{'group_by':'name'}"/>
-                        <filter string="Polo" icon="terp-personal" domain="[]" context="{'group_by':'polo_id'}"/>
-                        <filter string="Sigla" icon="terp-personal" domain="[]" context="{'group_by':'sigla'}"/>
-                        <filter string="Ativo" icon="terp-personal" domain="[]" context="{'group_by':'is_active'}"/>
+                        <filter name="name" string="Nome" domain="[]" context="{'group_by':'name'}"/>
+                        <filter name="polo_id" string="Polo" domain="[]" context="{'group_by':'polo_id'}"/>
+                        <filter name="sigla" string="Sigla" domain="[]" context="{'group_by':'sigla'}"/>
+                        <filter name="is_active" string="Ativo" domain="[]" context="{'group_by':'is_active'}"/>
                     </group>
                 </search>
             </field>

@@ -1,9 +1,9 @@
 # encoding: UTF-8
-from psycopg2._psycopg import IntegrityError
+
+import logging
 
 from odoo import models, fields, api
-import utils
-import logging
+from . import utils
 
 _logger = logging.getLogger(__name__)
 # http://www.odoo.com/documentation/10.0/reference/mixins.html

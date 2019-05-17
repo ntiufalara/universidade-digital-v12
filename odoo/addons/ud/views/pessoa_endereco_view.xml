@@ -43,11 +43,11 @@
                     <field name="bairro" />
                     <field name="pessoa_id" />
                     <group expand="0" string="Agrupar por:">
-                        <filter string="Rua" icon="terp-personal" domain="[]" context="{'group_by':'rua'}"/>
-                        <filter string="Cidade" icon="terp-personal" domain="[]" context="{'group_by':'cidade'}"/>
-                        <filter string="Estado" icon="terp-personal" domain="[]" context="{'group_by':'estado'}"/>
-                        <filter string="Bairro" icon="terp-personal" domain="[]" context="{'group_by':'bairro'}"/>
-                        <filter string="Pessoa" icon="terp-personal" domain="[]" context="{'group_by':'pessoa_id'}"/>
+                        <filter name="rua" string="Rua" domain="[]" context="{'group_by':'rua'}"/>
+                        <filter name="cidade" string="Cidade" domain="[]" context="{'group_by':'cidade'}"/>
+                        <filter name="estado" string="Estado" domain="[]" context="{'group_by':'estado'}"/>
+                        <filter name="bairro" string="Bairro" domain="[]" context="{'group_by':'bairro'}"/>
+                        <filter name="pessoa_id" string="Pessoa" domain="[]" context="{'group_by':'pessoa_id'}"/>
                     </group>
                 </search>
             </field>

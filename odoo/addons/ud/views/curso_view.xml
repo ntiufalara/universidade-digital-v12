@@ -75,7 +75,7 @@
             <field name="name">ud.curso.form</field>
             <field name="model">ud.curso</field>
             <field name="inherit_id" ref="view_curso_form"/>
-            <field name="groups_id" eval="[(6, 0, [ref('base.admin_ud')])]"/>
+            <field name="groups_id" eval="[(6, 0, [ref('admin_ud')])]"/>
             <field name="arch" type="xml">
                 <field name="coordenador_id" position="attributes">
                     <attribute name="options"/>
@@ -107,10 +107,10 @@
                     <field name="name"/>
                     <newline/>
                     <group expand="0" string="Grupo por...">
-                        <filter string="Nome" icon="terp-personal" domain="[]" context="{'group_by':'name'}"/>
-                        <filter string="Coordenador" icon="terp-personal" domain="[]"
+                        <filter name="name" string="Nome" domain="[]" context="{'group_by':'name'}"/>
+                        <filter name="coordenador_id" string="Coordenador" domain="[]"
                                 context="{'group_by':'coordenador_id'}"/>
-                        <filter string="Ativo" icon="terp-personal" domain="[]" context="{'group_by':'is_active'}"/>
+                        <filter name="is_active" string="Ativo" domain="[]" context="{'group_by':'is_active'}"/>
                     </group>
                 </search>
             </field>

@@ -80,7 +80,7 @@
                     <field name="name"/>
                     <newline/>
                     <group expand="0" string="Grupo por...">
-                        <filter string="Nome" icon="terp-personal" domain="[]" context="{'group_by':'name'}"/>
+                        <filter name="name" string="Nome" domain="[]" context="{'group_by':'name'}"/>
                     </group>
                 </search>
             </field>
@@ -95,7 +95,7 @@
                     <field name="name"/>
                     <newline/>
                     <group expand="1" string="Grupo por...">
-                        <filter string="Nome" icon="terp-personal" domain="[]" context="{'group_by':'name'}"/>
+                        <filter name="name" string="Nome" domain="[]" context="{'group_by':'name'}"/>
                     </group>
                 </search>
             </field>

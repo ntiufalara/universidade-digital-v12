@@ -37,7 +37,7 @@
                     <field name="tipo"/>
                     <field name="contato"/>
                     <group expand="0" string="Agrupar por:">
-                        <filter string="Tipo" icon="terp-personal" domain="[]" context="{'group_by':'tipo'}"/>
+                        <filter name="tipo" string="Tipo" domain="[]" context="{'group_by':'tipo'}"/>
                     </group>
                 </search>
             </field>
