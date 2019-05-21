@@ -87,7 +87,7 @@ class Publicacao(models.Model):
             result = result[0][0]
         except IndexError:
             result = 0
-        return result
+        return result or 0
 
     @api.one
     def visualizacoes_plus(self):
