@@ -9,32 +9,16 @@
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <form string="Disciplina">
-                    <div class="form-horizontal sheet col-sm-12 col-xs-12">
-                        <div class="col-md-6 col-lg-6 form-group">
-                            <label class="col-md-4 col-sm-4 control-label" for="codigo"></label>
-                            <div class="col-md-7 col-sm-7">
-                                <field name="codigo"/>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-6 form-group">
-                            <label class="col-md-4 col-sm-4 control-label" for="name"></label>
-                            <div class="col-md-7 col-sm-7">
-                                <field name="name"/>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-6 form-group">
-                            <label class="col-md-4 col-sm-4 control-label" for="ch"></label>
-                            <div class="col-md-7 col-sm-7">
-                                <field name="ch"/>
-                            </div>
-                        </div>
-                        <div class="col-md-12 col-lg-12 form-group">
-                            <legend>Descrição</legend>
-                            <div class="col-md-12 col-sm-12">
-                                <field name="descricao"/>
-                            </div>
-                        </div>
-                    </div>
+                    <group>
+                        <group>
+                            <field name="codigo"/>
+                            <field name="name"/>
+                            <field name="ch"/>
+                        </group>
+                        <group>
+                            <field name="descricao"/>
+                        </group>
+                    </group>
                 </form>
             </field>
         </record>

@@ -17,56 +17,26 @@
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <form string="Espaço">
-                    <div class="form-horizontal sheet col-sm-12 col-xs-12">
-                        <div class="col-md-6 col-lg-6 form-group">
-                            <label class="col-md-4 col-sm-4 control-label" for="name"></label>
-                            <div class="col-md-7 col-sm-7">
+                    <sheet>
+                        <group>
+                            <group>
                                 <field name="name"/>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-6 form-group">
-                            <label class="col-md-4 col-sm-4 control-label" for="capacidade"></label>
-                            <div class="col-md-7 col-sm-7">
                                 <field name="capacidade"/>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-6 form-group">
-                            <label class="col-md-4 col-sm-4 control-label" for="permite_reserva"></label>
-                            <div class="col-md-7 col-sm-7">
                                 <field name="permite_reserva"/>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-6 form-group">
-                            <label class="col-md-4 col-sm-4 control-label" for="campus_id"></label>
-                            <div class="col-md-7 col-sm-7">
+                            </group>
+                            <group>
                                 <field name="campus_id"/>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-6 form-group">
-                            <label class="col-md-4 col-sm-4 control-label" for="polo_id"></label>
-                            <div class="col-md-7 col-sm-7">
                                 <field name="polo_id" domain="[('campus_id', '=', campus_id)]"/>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-6 form-group">
-                            <label class="col-md-4 col-sm-4 control-label" for="bloco_id"></label>
-                            <div class="col-md-7 col-sm-7">
                                 <field name="bloco_id" domain="[('polo_id', '=', polo_id)]"/>
-                            </div>
-                        </div>
-                        <div class="col-md-12 col-lg-12 form-group">
-                            <legend>Responsáveis</legend>
-                            <div class="col-md-12 col-sm-12">
-                                <field name="responsavel_ids"/>
-                            </div>
-                        </div>
-                        <div class="col-md-12 col-lg-12 form-group">
-                            <legend>Informações Adicionais</legend>
-                            <div class="col-md-12 col-sm-12">
-                                <field name="informacoes_adicionais"/>
-                            </div>
-                        </div>
-                    </div>
+                            </group>
+                        </group>
+                        <group string="Responsáveis">
+                            <field name="responsavel_ids" nolabel="1"/>
+                        </group>
+                        <group string="Informações adicionais">
+                            <field name="informacoes_adicionais" nolabel="1"/>
+                        </group>
+                    </sheet>
                 </form>
             </field>
         </record>
@@ -77,9 +47,9 @@
             <field name="type">tree</field>
             <field name="arch" type="xml">
                 <tree string="Espaço">
-                    <field name="name" />
-                    <field name="campus_id" />
-                    <field name="polo_id" />
+                    <field name="name"/>
+                    <field name="campus_id"/>
+                    <field name="polo_id"/>
                     <field name="permite_reserva"/>
                 </tree>
             </field>

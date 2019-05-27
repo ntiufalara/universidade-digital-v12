@@ -16,32 +16,18 @@
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <form string="Setor">
-                    <div class="form-horizontal sheet col-sm-12 col-xs-12">
-                        <div class="col-md-6 col-lg-6 form-group">
-                            <label class="col-md-4 col-sm-4 control-label" for="name"></label>
-                            <div class="col-md-7 col-sm-7">
+                    <sheet>
+                        <group>
+                            <group>
                                 <field name="name"/>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-6 form-group">
-                            <label class="col-md-4 col-sm-4 control-label" for="sigla"></label>
-                            <div class="col-md-7 col-sm-7">
                                 <field name="sigla"/>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-6 form-group">
-                            <label class="col-md-4 col-sm-4 control-label" for="polo_id"></label>
-                            <div class="col-md-7 col-sm-7">
+                            </group>
+                            <group>
                                 <field name="polo_id"/>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-6 form-group">
-                            <label class="col-md-4 col-sm-4 control-label" for="is_active"></label>
-                            <div class="col-md-7 col-sm-7">
                                 <field name="is_active"/>
-                            </div>
-                        </div>
-                    </div>
+                            </group>
+                        </group>
+                    </sheet>
                 </form>
             </field>
         </record>

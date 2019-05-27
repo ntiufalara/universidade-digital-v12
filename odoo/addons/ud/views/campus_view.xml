@@ -17,26 +17,17 @@
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <form string="Campus">
-                    <div class="form-horizontal sheet col-sm-12 col-xs-12">
-                        <div class="col-md-6 col-lg-6 form-group">
-                            <label class="col-md-4 col-sm-4 control-label" for="name"></label>
-                            <div class="col-md-7 col-sm-7">
+                    <sheet>
+                        <group>
+                            <group>
                                 <field name="name"/>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-6 form-group">
-                            <label class="col-md-4 col-sm-4 control-label" for="diretor"></label>
-                            <div class="col-md-7 col-sm-7">
                                 <field name="diretor" options="{'no_open': true}"/>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-6 form-group">
-                            <label class="col-md-4 col-sm-4 control-label" for="diretor_academico"></label>
-                            <div class="col-md-7 col-sm-7">
+                            </group>
+                            <group>
                                 <field name="diretor_academico" options="{'no_open': true}"/>
-                            </div>
-                        </div>
-                    </div>
+                            </group>
+                        </group>
+                    </sheet>
                 </form>
             </field>
         </record>
