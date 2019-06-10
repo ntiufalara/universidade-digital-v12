@@ -36,33 +36,20 @@
             <field name="model">ud.biblioteca.responsavel</field>
             <field name="arch" type="xml">
                 <form string="Responsável">
-                    <div class="form-horizontal sheet col-sm-12 col-xs-12">
-                        <div class="col-md-6 col-lg-6 form-group">
-                            <label class="col-md-4 col-sm-4 control-label" for="pessoa_id"></label>
-                            <div class="col-md-7 col-sm-7">
+                    <sheet>
+                        <group>
+                            <group>
                                 <field name="pessoa_id"/>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-6 form-group">
-                            <label class="col-md-4 col-sm-4 control-label" for="admin_campus"></label>
-                            <div class="col-md-7 col-sm-7">
-                                <field name="admin_campus"/>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-6 form-group">
-                            <label class="col-md-4 col-sm-4 control-label" for="campus_id"></label>
-                            <div class="col-md-7 col-sm-7">
+                                <field name="admin_campus" invisible="1"/>
+                            </group>
+                            <group>
                                 <field name="campus_id"/>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-6 form-group" attrs="{'invisible': [('admin_campus', '=', True)]}">
-                            <label class="col-md-4 col-sm-4 control-label" for="polo_id"></label>
-                            <div class="col-md-7 col-sm-7">
                                 <field name="polo_id" domain="[('campus_id', '=', campus_id)]"
                                        attrs="{'required': [('admin_campus', '=', False)]}"/>
-                            </div>
-                        </div>
-                    </div>
+                            </group>
+                        </group>
+                    </sheet>
+
                 </form>
             </field>
         </record>

@@ -45,20 +45,14 @@
             <field name="model">ud.biblioteca.orientador.titulacao</field>
             <field name="arch" type="xml">
                 <form string="Titulação">
-                    <div class="form-horizontal sheet col-sm-12 col-xs-12">
-                        <div class="col-md-6 col-lg-6 form-group">
-                            <label class="col-md-4 col-sm-4 control-label" for="name"></label>
-                            <div class="col-md-7 col-sm-7">
-                                <field name="name"/>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-6 form-group">
-                            <label class="col-md-4 col-sm-4 control-label" for="sigla"></label>
-                            <div class="col-md-7 col-sm-7">
-                                <field name="sigla"/>
-                            </div>
-                        </div>
-                    </div>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <group>
+                            <field name="sigla"/>
+                        </group>
+                    </group>
                 </form>
             </field>
         </record>

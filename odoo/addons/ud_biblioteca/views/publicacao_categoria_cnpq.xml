@@ -43,20 +43,17 @@
             <field name="model">ud.biblioteca.publicacao.categoria_cnpq</field>
             <field name="arch" type="xml">
                 <form string="Nova Categoria CNPQ">
-                    <div class="form-horizontal sheet col-sm-12 col-xs-12">
-                        <div class="col-md-6 col-lg-6 form-group">
-                            <label class="col-md-4 col-sm-4 control-label" for="name"></label>
-                            <div class="col-md-7 col-sm-7">
+                    <sheet>
+                        <group>
+                            <group>
                                 <field name="name"/>
-                            </div>
-                        </div>
-                        <div class="col-md-12 col-lg-12 form-group">
-                            <legend>Publicações</legend>
-                            <div class="col-md-12 col-sm-12">
+                            </group>
+                            <group>
                                 <field name="publicacao_ids" readonly="1"/>
-                            </div>
-                        </div>
-                    </div>
+                            </group>
+                        </group>
+                    </sheet>
+
                 </form>
             </field>
         </record>

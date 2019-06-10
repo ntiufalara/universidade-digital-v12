@@ -43,20 +43,16 @@
             <field name="model">ud.biblioteca.p_chave</field>
             <field name="arch" type="xml">
                 <form string="Palavra-chave">
-                    <div class="form-horizontal sheet col-sm-12 col-xs-12">
-                        <div class="col-md-6 col-lg-6 form-group">
-                            <label class="col-md-4 col-sm-4 control-label" for="name"></label>
-                            <div class="col-md-7 col-sm-7">
+                    <sheet>
+                        <group>
+                            <group>
                                 <field name="name"/>
-                            </div>
-                        </div>
-                        <div class="col-md-12 col-lg-12 form-group">
-                            <legend>Publicações</legend>
-                            <div class="col-md-12 col-sm-12">
-                                <field name="publicacao_id"/>
-                            </div>
-                        </div>
-                    </div>
+                            </group>
+                        </group>
+                        <group string="Publicações">
+                            <field name="publicacao_id" nolabel="1"/>
+                        </group>
+                    </sheet>
                 </form>
             </field>
         </record>
