@@ -55,80 +55,31 @@
             <field name="model">ud.almoxarifado.fornecedor</field>
             <field name="arch" type="xml">
                 <form string="Fornecedor">
-                    <div class="form-horizontal sheet col-sm-12 col-xs-12">
-                        <fieldset>
-                            <legend>Informações de contato</legend>
-                            <div class="col-md-6 col-lg-6 form-group">
-                                <label class="col-md-4 col-sm-4 control-label" for="name"></label>
-                                <div class="col-md-7 col-sm-7">
-                                    <field name="name"/>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-6 form-group">
-                                <label class="col-md-4 col-sm-4 control-label" for="cpf_cnpj"></label>
-                                <div class="col-md-7 col-sm-7">
-                                    <field name="cpf_cnpj"/>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-6 form-group">
-                                <label class="col-md-4 col-sm-4 control-label" for="telefone_fixo"></label>
-                                <div class="col-md-7 col-sm-7">
-                                    <field name="telefone_fixo"/>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-6 form-group">
-                                <label class="col-md-4 col-sm-4 control-label" for="celular"></label>
-                                <div class="col-md-7 col-sm-7">
-                                    <field name="celular"/>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-6 form-group">
-                                <label class="col-md-4 col-sm-4 control-label" for="email"></label>
-                                <div class="col-md-7 col-sm-7">
-                                    <field name="email"/>
-                                </div>
-                            </div>
-                        </fieldset>
-                        <fieldset>
-                            <legend>Endereço</legend>
-                            <div class="col-md-6 col-lg-6 form-group">
-                                <label class="col-md-4 col-sm-4 control-label" for="rua"></label>
-                                <div class="col-md-7 col-sm-7">
-                                    <field name="rua"/>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-6 form-group">
-                                <label class="col-md-4 col-sm-4 control-label" for="numero"></label>
-                                <div class="col-md-7 col-sm-7">
-                                    <field name="numero"/>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-6 form-group">
-                                <label class="col-md-4 col-sm-4 control-label" for="bairro"></label>
-                                <div class="col-md-7 col-sm-7">
-                                    <field name="bairro"/>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-6 form-group">
-                                <label class="col-md-4 col-sm-4 control-label" for="cep"></label>
-                                <div class="col-md-7 col-sm-7">
-                                    <field name="cep"/>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-6 form-group">
-                                <label class="col-md-4 col-sm-4 control-label" for="cidade"></label>
-                                <div class="col-md-7 col-sm-7">
-                                    <field name="cidade"/>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-6 form-group">
-                                <label class="col-md-4 col-sm-4 control-label" for="estado"></label>
-                                <div class="col-md-7 col-sm-7">
-                                    <field name="estado"/>
-                                </div>
-                            </div>
-                        </fieldset>
-                    </div>
+                    <sheet>
+                        <group string="Informações de contato">
+                            <group>
+                                <field name="name"/>
+                                <field name="cpf_cnpj"/>
+                                <field name="telefone_fixo"/>
+                            </group>
+                            <group>
+                                <field name="celular"/>
+                                <field name="email"/>
+                            </group>
+                        </group>
+                        <group string="Endereço">
+                            <group>
+                                <field name="rua"/>
+                                <field name="numero"/>
+                                <field name="bairro"/>
+                            </group>
+                            <group>
+                                <field name="cep"/>
+                                <field name="cidade"/>
+                                <field name="estado"/>
+                            </group>
+                        </group>
+                    </sheet>
                 </form>
             </field>
         </record>

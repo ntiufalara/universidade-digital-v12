@@ -23,7 +23,7 @@
             <field name="model">ud.almoxarifado.almoxarifado</field>
             <field name="arch" type="xml">
                 <tree string="Almoxarifados">
-                    <field name="name" />
+                    <field name="name"/>
                     <field name="campus_id"/>
                     <field name="polo_id"/>
                     <field name="setor_id"/>
@@ -41,9 +41,9 @@
                     <field name="polo_id" string="Polo"/>
                     <field name="setor_id" string="Setor"/>
                     <group expand="0" string="Agrupar por:">
-                        <filter name="campus" string="Campus" domain="[]" context="{'group_by':'campus_od'}"/>
-                        <filter name="polo" string="Polo" domain="[]" context="{'group_by':'polo_id'}"/>
-                        <filter name="setor" string="Setor" domain="[]" context="{'group_by':'setor_id'}"/>
+                        <filter name="campus_id" string="Campus" domain="[]" context="{'group_by':'campus_id'}"/>
+                        <filter name="polo_id" string="Polo" domain="[]" context="{'group_by':'polo_id'}"/>
+                        <filter name="setor_id" string="Setor" domain="[]" context="{'group_by':'setor_id'}"/>
                     </group>
                 </search>
             </field>
@@ -54,45 +54,21 @@
             <field name="model">ud.almoxarifado.almoxarifado</field>
             <field name="arch" type="xml">
                 <form string="Almoxarifado">
-                    <div class="form-horizontal sheet col-sm-12 col-xs-12">
-                        <fieldset>
-                            <div class="col-md-6 col-lg-6 form-group">
-                                <label class="col-md-4 col-sm-4 control-label" for="name"></label>
-                                <div class="col-md-7 col-sm-7">
-                                    <field name="name"/>
-                                </div>
-                            </div>
-                        </fieldset>
-                        <fieldset>
-                            <legend>Local</legend>
-                            <div class="col-md-6 col-lg-6 form-group">
-                                <label class="col-md-4 col-sm-4 control-label" for="campus_id"></label>
-                                <div class="col-md-7 col-sm-7">
-                                    <field name="campus_id"/>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-6 form-group">
-                                <label class="col-md-4 col-sm-4 control-label" for="polo_id"></label>
-                                <div class="col-md-7 col-sm-7">
-                                    <field name="polo_id"/>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-6 form-group">
-                                <label class="col-md-4 col-sm-4 control-label" for="setor_id"></label>
-                                <div class="col-md-7 col-sm-7">
-                                    <field name="setor_id"/>
-                                </div>
-                            </div>
-                        </fieldset>
-                        <fieldset>
-                            <div class="col-md-12 col-lg-12 form-group">
-                                <legend>Observações</legend>
-                                <div class="col-md-12 col-sm-12">
-                                    <field name="observacoes"/>
-                                </div>
-                            </div>
-                        </fieldset>
-                    </div>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="campus_id"/>
+                            </group>
+                            <group>
+                                <field name="polo_id"/>
+                                <field name="setor_id"/>
+                            </group>
+                        </group>
+                        <group string="Observações">
+                            <field name="observacoes"/>
+                        </group>
+                    </sheet>
                 </form>
             </field>
         </record>

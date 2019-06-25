@@ -25,8 +25,8 @@
                 <tree string="Saídas" create="0">
                     <field name="name"/>
                     <field name="estoque_id"/>
-                    <field name="quantidade" />
-                    <field name="data_saida" />
+                    <field name="quantidade"/>
+                    <field name="data_saida"/>
                     <field name="solicitacao_id"/>
                 </tree>
             </field>
@@ -40,13 +40,13 @@
                     <field name="name"/>
                     <field name="estoque_id" filter_domain="" string="Produto"/>
                     <field name="data_saida" filter_domain="" string="Data de saída"/>
-                    <field name="almoxarifado_id" />
-                    <field name="solicitacao_id" />
+                    <field name="almoxarifado_id"/>
+                    <field name="solicitacao_id"/>
                     <group expand="0" string="Agrupar por:">
-                        <filter string="Produto" icon="terp-personal" domain="[]" context="{'group_by':'estoque_id'}"/>
-                        <filter string="Data" icon="terp-personal" domain="[]"
+                        <filter string="Produto" name="produto" domain="[]" context="{'group_by':'estoque_id'}"/>
+                        <filter string="Data" name="data" domain="[]"
                                 context="{'group_by':'data_saida'}"/>
-                        <filter string="Almoxarifado" icon="terp-personal" domain="[]"
+                        <filter string="Almoxarifado" name="almoxarifado" domain="[]"
                                 context="{'group_by':'almoxarifado_id'}"/>
                     </group>
                 </search>
@@ -58,44 +58,22 @@
             <field name="model">ud.almoxarifado.saida</field>
             <field name="arch" type="xml">
                 <form string="Saída">
-                    <div class="form-horizontal sheet col-sm-12 col-xs-12">
-                        <div class="col-md-6 col-lg-6 form-group">
-                            <label class="col-md-4 col-sm-4 control-label" for="name"></label>
-                            <div class="col-md-7 col-sm-7">
+                    <sheet>
+                        <group>
+                            <group>
                                 <field name="name"/>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-6 form-group">
-                            <label class="col-md-4 col-sm-4 control-label" for="data_saida"></label>
-                            <div class="col-md-7 col-sm-7">
                                 <field name="data_saida"/>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-6 form-group">
-                            <label class="col-md-4 col-sm-4 control-label" for="almoxarifado_id"></label>
-                            <div class="col-md-7 col-sm-7">
                                 <field name="almoxarifado_id" attrs="{'readonly': [('almoxarifado_id', '!=', False)]}"/>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-6 form-group">
-                            <label class="col-md-4 col-sm-4 control-label" for="estoque_id"></label>
-                            <div class="col-md-7 col-sm-7">
+                            </group>
+                            <group>
                                 <field name="estoque_id" domain="[('almoxarifado_id', '=', almoxarifado_id)]"/>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-6 form-group">
-                            <label class="col-md-4 col-sm-4 control-label" for="quantidade"></label>
-                            <div class="col-md-7 col-sm-7">
                                 <field name="quantidade"/>
-                            </div>
-                        </div>
-                        <div class="col-md-12 col-lg-12 form-group">
-                            <legend>Observações</legend>
-                            <div class="col-md-12 col-sm-12">
-                                <field name="observacao"/>
-                            </div>
-                        </div>
-                    </div>
+                            </group>
+                        </group>
+                        <group string="Observações">
+                            <field name="observacao"/>
+                        </group>
+                    </sheet>
                 </form>
             </field>
         </record>

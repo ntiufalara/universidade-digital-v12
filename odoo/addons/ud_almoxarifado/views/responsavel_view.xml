@@ -16,8 +16,8 @@
             <field name="arch" type="xml">
                 <tree string="Responsáveis por almoxarifado">
                     <field name="name"/>
-                    <field name="campus_id" />
-                    <field name="polo_id" />
+                    <field name="campus_id"/>
+                    <field name="polo_id"/>
                 </tree>
             </field>
         </record>
@@ -28,13 +28,13 @@
             <field name="arch" type="xml">
                 <search string="Buscar">
                     <field name="name" string="Nome"/>
-                    <field name="pessoa_id" />
-                    <field name="campus_id" />
-                    <field name="polo_id" />
-                    <field name="almoxarifado_ids" />
+                    <field name="pessoa_id"/>
+                    <field name="campus_id"/>
+                    <field name="polo_id"/>
+                    <field name="almoxarifado_ids"/>
                     <group expand="0" string="Agrupar por:">
-                        <filter string="Campus" icon="terp-personal" domain="[]" context="{'group_by':'campus_id'}"/>
-                        <filter string="Polo" icon="terp-personal" domain="[]" context="{'group_by':'polo_id'}"/>
+                        <filter string="Campus" name="campus" domain="[]" context="{'group_by':'campus_id'}"/>
+                        <filter string="Polo" name="polo" domain="[]" context="{'group_by':'polo_id'}"/>
                     </group>
                 </search>
             </field>
@@ -45,32 +45,20 @@
             <field name="model">ud.almoxarifado.responsavel</field>
             <field name="arch" type="xml">
                 <form string="Responsável">
-                    <div class="form-horizontal sheet col-sm-12 col-xs-12">
-                        <div class="col-md-6 col-lg-6 form-group">
-                            <label class="col-md-4 col-sm-4 control-label" for="pessoa_id"></label>
-                            <div class="col-md-7 col-sm-7">
+                    <sheet>
+                        <group>
+                            <group>
                                 <field name="pessoa_id"/>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-6 form-group">
-                            <label class="col-md-4 col-sm-4 control-label" for="campus_id"></label>
-                            <div class="col-md-7 col-sm-7">
                                 <field name="campus_id"/>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-6 form-group">
-                            <label class="col-md-4 col-sm-4 control-label" for="polo_id"></label>
-                            <div class="col-md-7 col-sm-7">
+                            </group>
+                            <group>
                                 <field name="polo_id" domain="[('campus_id', '=', campus_id)]"/>
-                            </div>
-                        </div>
-                        <div class="col-md-12 col-lg-12 form-group">
-                            <legend>Almoxarifados</legend>
-                            <div class="col-md-12 col-sm-12">
-                                <field name="almoxarifado_ids"/>
-                            </div>
-                        </div>
-                    </div>
+                            </group>
+                        </group>
+                        <group string="Almoxarifados">
+                            <field name="almoxarifado_ids" nolabel="1"/>
+                        </group>
+                    </sheet>
                 </form>
             </field>
         </record>

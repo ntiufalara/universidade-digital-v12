@@ -16,7 +16,7 @@
             <field name="arch" type="xml">
                 <form string="Corrigir titulação">
                     <div class="form-horizontal sheet col-sm-12 col-xs-12">
-                        <div class="alert alert-info">
+                        <div class="alert alert-info" role="alert">
                             Para cadastrar ou alterar o cadastro de titulações, acesse <strong>Gerenciar titulações</strong>
                         </div>
                         <div class="col-md-6 col-lg-6 form-group">

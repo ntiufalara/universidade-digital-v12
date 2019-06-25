@@ -46,14 +46,14 @@
                     <field name="almoxarifado_id"/>
                     <field name="solicitacao_id"/>
                     <group expand="0" string="Agrupar por:">
-                        <filter string="Produto" icon="terp-personal" domain="[]" context="{'group_by':'estoque_id'}"/>
-                        <filter string="Fornecedor" icon="terp-personal" domain="[]"
+                        <filter string="Produto" name="produtos" domain="[]" context="{'group_by':'estoque_id'}"/>
+                        <filter string="Fornecedor" name="fornecedor" domain="[]"
                                 context="{'group_by':'fornecedor_id'}"/>
-                        <filter string="Data" icon="terp-personal" domain="[]"
+                        <filter string="Data" name="data" domain="[]"
                                 context="{'group_by':'data_entrada'}"/>
-                        <filter string="Tipo" icon="terp-personal" domain="[]"
+                        <filter string="Tipo" name="tipo" domain="[]"
                                 context="{'group_by':'tipo'}"/>
-                        <filter string="Almoxarifado" icon="terp-personal" domain="[]"
+                        <filter string="Almoxarifado" name="almoxarifado" domain="[]"
                                 context="{'group_by':'almoxarifado_id'}"/>
                     </group>
                 </search>
@@ -65,59 +65,23 @@
             <field name="model">ud.almoxarifado.entrada</field>
             <field name="arch" type="xml">
                 <form string="Entada">
-                    <div class="form-horizontal sheet col-sm-12 col-xs-12">
-                        <div class="col-md-6 col-lg-6 form-group">
-                            <label class="col-md-4 col-sm-4 control-label" for="data_entrada"></label>
-                            <div class="col-md-7 col-sm-7">
+                    <sheet>
+                        <group>
+                            <group>
                                 <field name="data_entrada"/>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-6 form-group">
-                            <label class="col-md-4 col-sm-4 control-label" for="almoxarifado_id"></label>
-                            <div class="col-md-7 col-sm-7">
                                 <field name="almoxarifado_id"/>
-                            </div>
-                        </div>
-                        <!--
-                        <div class="col-md-6 col-lg-6 form-group">
-                            <label class="col-md-4 col-sm-4 control-label" for="estoque_id"></label>
-                            <div class="col-md-7 col-sm-7">
-                                <field name="estoque_id" domain="[('almoxarifado_id', '=', almoxarifado_id)]"/>
-                            </div>
-                        </div>
-                        -->
-                        <div class="col-md-6 col-lg-6 form-group">
-                            <label class="col-md-4 col-sm-4 control-label" for="produto_id"></label>
-                            <div class="col-md-7 col-sm-7">
                                 <field name="produto_id"/>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-6 form-group">
-                            <label class="col-md-4 col-sm-4 control-label" for="quantidade"></label>
-                            <div class="col-md-7 col-sm-7">
+                            </group>
+                            <group>
                                 <field name="quantidade"/>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-6 form-group">
-                            <label class="col-md-4 col-sm-4 control-label" for="tipo"></label>
-                            <div class="col-md-7 col-sm-7">
                                 <field name="tipo"/>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-6 form-group"
-                             attrs="{'invisible': [('tipo', '!=', 'fornecedor')]}">
-                            <label class="col-md-4 col-sm-4 control-label" for="fornecedor_id"></label>
-                            <div class="col-md-7 col-sm-7">
                                 <field name="fornecedor_id" attrs="{'required': [('tipo', '=', 'fornecedor')]}"/>
-                            </div>
-                        </div>
-                        <div class="col-md-12 col-lg-12 form-group">
-                            <legend>Observações</legend>
-                            <div class="col-md-12 col-sm-12">
-                                <field name="observacao"/>
-                            </div>
-                        </div>
-                    </div>
+                            </group>
+                        </group>
+                        <group string="Observações">
+                            <field name="observacao" nolabel="1"/>
+                        </group>
+                    </sheet>
                 </form>
             </field>
         </record>

@@ -41,8 +41,9 @@
                     <field name="almoxarifado_ids" filter_domain="" string="Almoxarifado"/>
                     <field name="fornecedor_ids" filter_domain="" string="Fornecedores"/>
                     <group expand="0" string="Agrupar por:">
-                        <filter string="Categoria" name="categoria" icon="terp-personal" domain="[]" context="{'group_by':'categoria_id'}"/>
-                        <filter string="Fabricante" name="fabricante" icon="terp-personal" domain="[]" context="{'group_by':'fabricante_id'}"/>
+                        <filter string="Categoria" name="categoria" domain="[]" context="{'group_by':'categoria_id'}"/>
+                        <filter string="Fabricante" name="fabricante" domain="[]"
+                                context="{'group_by':'fabricante_id'}"/>
                     </group>
                 </search>
             </field>
@@ -53,46 +54,23 @@
             <field name="model">ud.almoxarifado.produto</field>
             <field name="arch" type="xml">
                 <form string="Produto">
-                    <div class="form-horizontal sheet col-sm-12 col-xs-12">
-                        <div class="col-md-6 col-lg-6 form-group">
-                            <label class="col-md-4 col-sm-4 control-label" for="name"></label>
-                            <div class="col-md-7 col-sm-7">
+                    <sheet>
+                        <group>
+                            <group>
                                 <field name="name"/>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-6 form-group">
-                            <label class="col-md-4 col-sm-4 control-label" for="categoria_id"></label>
-                            <div class="col-md-7 col-sm-7">
                                 <field name="categoria_id"/>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-6 form-group">
-                            <label class="col-md-4 col-sm-4 control-label" for="fabricante_id"></label>
-                            <div class="col-md-7 col-sm-7">
+                            </group>
+                            <group>
                                 <field name="fabricante_id"/>
-                            </div>
-                        </div>
-                        <!--
-                        <div class="col-md-12 col-lg-12 form-group">
-                            <legend>Almoxarifados</legend>
-                            <div class="col-md-12 col-sm-12">
-                                <field name="almoxarifado_ids"/>
-                            </div>
-                        </div>
-                        -->
-                        <div class="col-md-12 col-lg-12 form-group">
-                            <legend>Fornecedores</legend>
-                            <div class="col-md-12 col-sm-12">
-                                <field name="fornecedor_ids"/>
-                            </div>
-                        </div>
-                        <div class="col-md-12 col-lg-12 form-group">
-                            <legend>Observações</legend>
-                            <div class="col-md-12 col-sm-12">
-                                <field name="observacao"/>
-                            </div>
-                        </div>
-                    </div>
+                            </group>
+                        </group>
+                        <group string="Fornecedores">
+                            <field name="fornecedor_ids" nolabel="1"/>
+                        </group>
+                        <group string="Observações">
+                            <field name="observacao" nolabel="1"/>
+                        </group>
+                    </sheet>
                 </form>
             </field>
         </record>

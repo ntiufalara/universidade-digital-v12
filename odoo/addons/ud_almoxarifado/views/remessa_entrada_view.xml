@@ -43,9 +43,9 @@
                     <field name="polo_id"/>
                     <field name="almoxarifado_id"/>
                     <group expand="0" string="Agrupar por:">
-                        <filter string="Campus" icon="terp-personal" domain="[]" context="{'group_by':'campus_id'}"/>
-                        <filter string="Polo" icon="terp-personal" domain="[]" context="{'group_by':'polo_id'}"/>
-                        <filter string="Almoxarifado" icon="terp-personal" domain="[]"
+                        <filter string="Campus" name="campus" domain="[]" context="{'group_by':'campus_id'}"/>
+                        <filter string="Polo" name="polo" domain="[]" context="{'group_by':'polo_id'}"/>
+                        <filter string="Almoxarifado" name="almoxarifado" domain="[]"
                                 context="{'group_by':'almoxarifado_id'}"/>
                     </group>
                 </search>
@@ -57,59 +57,37 @@
             <field name="model">ud.almoxarifado.remessa_entrada</field>
             <field name="arch" type="xml">
                 <form string="Entrada de remessa">
-                    <div class="form-horizontal sheet col-sm-12 col-xs-12">
-                        <fieldset>
-                            <div class="col-md-6 col-lg-6 form-group">
-                                <label class="col-md-4 col-sm-4 control-label" for="name"></label>
-                                <div class="col-md-7 col-sm-7">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                            <group>
+                                <field name="data_hora"/>
+                            </group>
+                        </group>
+                        <group string="Local">
+                            <group>
+                                <field name="campus_id"/>
+                                <field name="polo_id"/>
+                            </group>
+                            <group>
+                                <field name="almoxarifado_id"/>
+                            </group>
+                        </group>
+                        <group string="Produtos" attrs="{'invisible': [('almoxarifado_id', '=', False)]}">
+                            <field name="entrada_ids" context="{'almoxarifado_id': almoxarifado_id}" nolabel="1">
+                                <tree>
                                     <field name="name"/>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-6 form-group">
-                                <label class="col-md-4 col-sm-4 control-label" for="data_hora"></label>
-                                <div class="col-md-7 col-sm-7">
-                                    <field name="data_hora"/>
-                                </div>
-                            </div>
-                        </fieldset>
-                        <fieldset>
-                            <legend>Local</legend>
-                            <div class="col-md-6 col-lg-6 form-group">
-                                <label class="col-md-4 col-sm-4 control-label" for="campus_id"></label>
-                                <div class="col-md-7 col-sm-7">
-                                    <field name="campus_id"/>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-6 form-group">
-                                <label class="col-md-4 col-sm-4 control-label" for="polo_id"></label>
-                                <div class="col-md-7 col-sm-7">
-                                    <field name="polo_id"/>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-6 form-group">
-                                <label class="col-md-4 col-sm-4 control-label" for="almoxarifado_id"></label>
-                                <div class="col-md-7 col-sm-7">
-                                    <field name="almoxarifado_id"/>
-                                </div>
-                            </div>
-                        </fieldset>
-                        <div class="col-md-12 col-lg-12 form-group"
-                             attrs="{'invisible': [('almoxarifado_id', '=', False)]}">
-                            <legend>Produtos</legend>
-                            <div class="col-md-12 col-sm-12">
-                                <field name="entrada_ids" context="{'almoxarifado_id': almoxarifado_id}">
-                                    <tree>
-                                        <field name="name"/>
-                                        <field name="estoque_id"/>
-                                        <field name="quantidade"/>
-                                        <field name="data_entrada"/>
-                                        <field name="tipo"/>
-                                        <field name="fornecedor_id"/>
-                                    </tree>
-                                </field>
-                            </div>
-                        </div>
-                    </div>
+                                    <field name="estoque_id"/>
+                                    <field name="quantidade"/>
+                                    <field name="data_entrada"/>
+                                    <field name="tipo"/>
+                                    <field name="fornecedor_id"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </sheet>
                 </form>
             </field>
         </record>

@@ -70,7 +70,7 @@ class Pessoa(models.Model):
         if vals.get('email') or vals.get('cpf'):
             vals['login'] = vals['cpf'] if 'cpf' in vals else vals['email']
         obj_set = super(models.Model, self).create(vals)
-        usuario_ud_group = self.env.ref('base.usuario_ud')
+        usuario_ud_group = self.env.ref('ud.usuario_ud')
         obj_set.groups_id |= usuario_ud_group
         return obj_set
 

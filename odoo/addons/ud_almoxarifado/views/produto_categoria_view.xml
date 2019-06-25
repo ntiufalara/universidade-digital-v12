@@ -34,9 +34,6 @@
             <field name="arch" type="xml">
                 <search string="Buscar">
                     <field name="name" filter_domain="" string="Nome"/>
-                    <group expand="0" string="Agrupar por:">
-                        <filter string="" icon="terp-personal" domain="[]" context="{'group_by':''}"/>
-                    </group>
                 </search>
             </field>
         </record>
@@ -46,14 +43,13 @@
             <field name="model">ud.almoxarifado.produto.categoria</field>
             <field name="arch" type="xml">
                 <form string="Categoria de produto">
-                    <div class="form-horizontal sheet col-sm-12 col-xs-12">
-                        <div class="col-md-6 col-lg-6 form-group">
-                            <label class="col-md-4 col-sm-4 control-label" for="name"></label>
-                            <div class="col-md-7 col-sm-7">
+                    <sheet>
+                        <group>
+                            <group>
                                 <field name="name"/>
-                            </div>
-                        </div>
-                    </div>
+                            </group>
+                        </group>
+                    </sheet>
                 </form>
             </field>
         </record>
