@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data>
+
+        <record id="ud_disciplina_form" model="ir.ui.view">
+            <field name="name">ud.disciplina.form</field>
+            <field name="model">ud.disciplina</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Disciplina">
+                    <group>
+                        <group>
+                            <field name="codigo"/>
+                            <field name="name"/>
+                            <field name="ch"/>
+                        </group>
+                        <group>
+                            <field name="descricao"/>
+                        </group>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="ud_disciplina_tree" model="ir.ui.view">
+            <field name="name">ud.disciplina.tree</field>
+            <field name="model">ud.disciplina</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Disciplina">
+                    <field name="codigo"/>
+                    <field name="name"/>
+                    <field name="ch"/>
+                    <field name="descricao"/>
+                </tree>
+            </field>
+        </record>
+
+    </data>
+</odoo>

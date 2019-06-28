@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <template id="ud_biblioteca_website.home_repositorio">
+
+        <t t-call="ud_biblioteca_website.layout_repositorio">
+            <section id="content">
+                <!-- CABEÇALHO -->
+                <div id="topo" class="d-flex justify-content-center align-items-center flex-column flex-sm-row mx-auto">
+                    <img class="ribca-logo" src="/ud_biblioteca_website/static/src/img/logo-bca.svg"/>
+                    <h3 class="ml-3 text-white text-sm-left mt-3 mt-sm-0 text-center text-sm-left">
+                        Repositório Institucional
+                        <br/>
+                        Biblioteca Campus Arapiraca
+                    </h3>
+                </div>
+
+                <!-- CONTADORES -->
+                <div id="contadores" class="row my-5 mx-auto">
+                    <div class="col-md-3 text-center">
+                        <h1 class="contador">
+                            <strong t-esc="unidades_count"></strong>
+                        </h1>
+                        <p class="contador-label">Unidades</p>
+                    </div>
+                    <div class="col-md-3 text-center">
+                        <h1 class="contador">
+                            <strong t-esc="publicacoes_count"></strong>
+                        </h1>
+                        <p class="contador-label">Publicações cadastradas</p>
+                    </div>
+                    <div class="col-md-3 text-center">
+                        <h1 class="contador">
+                            <strong t-esc="assuntos_count"></strong>
+                        </h1>
+                        <p class="contador-label">Assuntos disponíveis</p>
+                    </div>
+                    <div class="col-md-3 text-center">
+                        <h1 class="contador">
+                            <strong t-esc="visualizacoes_count"></strong>
+                        </h1>
+                        <p class="contador-label">Visualizações em publicações</p>
+                    </div>
+                </div>
+
+                <!-- Campos de busca -->
+                <div class="bg-tema py-4">
+                    <div class="buscar text-center text-white">
+                        <h3 class="section-title pt-3 font-weight-bold">Encontre no repositório</h3>
+                        <p class="font-weight-bold">Realizar uma busca nas <t t-esc="publicacoes_count"></t> publicações
+                            leva apenas alguns segundos
+                        </p>
+                        <div class="d-flex justify-content-center">
+                            <form class="form-inline" action="/repositorio/publicacoes/">
+                                <div class="buscar-input">
+                                    <label class="sr-only" for="q">Name</label>
+                                    <input type="text" class="form-control mb-2 mr-0 buscar-sombra " id="q" name="q"
+                                           placeholder="DIGITE SUA BUSCA"/>
+                                    <input type="hidden" value="on" name="q_name"/>
+                                    <input type="hidden" value="on" name="q_autor_ids__name"/>
+                                    <input type="hidden" value="on" name="q_tipo_id__name"/>
+                                    <input type="hidden" value="on" name="q_palavras_chave_ids__name"/>
+                                    <input type="hidden" value="on" name="q_orientador_ids__name"/>
+                                    <input type="hidden" value="on" name="q_coorientador_ids__name"/>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary btn-tema mb-2 buscar-sombra">BUSCAR
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TODAS AS PUBLICAÇÕES -->
+                <div class="container py-4">
+                    <div class="py-3 d-flex justify-content-center align-items-center flex-column flex-sm-row mx-auto">
+                        <div>
+                            <object class="acesse-vector mx-4"
+                                    data="/ud_biblioteca_website/static/src/img/biblioteca-vector.svg"
+                                    type="image/svg+xml"></object>
+                        </div>
+                        <div class="text-center text-sm-left">
+                            <h3>Veja todas as publicações</h3>
+                            <p>Consulte e faça o download dos TCC's, artigos e outras publicações disponíveis na BCA -
+                                Biblioteca
+                                Campus de Arapiraca da Universidade Federal de Alagoas
+                            </p>
+                            <a href="/repositorio/publicacoes/">
+                                <button class="btn btn-primary btn-tema mb-2">Acessar publicações</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DEPARTAMENTOS -->
+                <div class="bg-tema py-4">
+                    <div class="buscar text-center text-white container">
+                        <h3 class="section-title pt-3 font-weight-bold">Opções de pesquisa</h3>
+                        <p class="font-weight-bold">Encontre publicações selecionando uma opção de pesquisa abaixo</p>
+
+                        <div class="text-dark text-left">
+
+                            <div class="row mb-2">
+                                <div class="col-md-4 card-wrapper"
+                                     t-foreach="cursos" t-as="curso">
+                                    <a t-attf-href="/repositorio/publicacoes/?curso_id__id={{ curso.id }}">
+                                        <div class="card card-curso">
+                                            <div class="card-body d-flex">
+                                                <p class="mb-0 font-weight-bold my-auto text-dark"
+                                                   t-field="curso.name"></p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- ÚLTIMAS PUBLICAÇÕES-->
+                <div class="container py-4">
+                    <h3 class="section-title py-3 font-weight-bold text-center">Últimas publicações</h3>
+
+                    <div class="row">
+
+                        <div class="col-md-4 card-wrapper" t-foreach="ultimas_publicacoes" t-as="pub">
+                            <div class="card">
+                                <a t-attf-href="/repositorio/publicacoes/{{ pub.id }}">
+                                    <div class="card-header" t-field="pub.name"></div>
+                                </a>
+
+                                <div class="card-body">
+                                    <div class="publicacao-detalhes">
+                                        <strong>Tipo:</strong>
+                                        <t t-esc="pub.tipo_id.name"></t>
+                                    </div>
+                                    <div class="publicacao-detalhes">
+                                        <strong>Curso/Outros:</strong>
+                                        <t t-esc="pub.curso_id.name"></t>
+                                    </div>
+                                    <div class="publicacao-detalhes">
+                                        <strong>Autor(es):</strong>
+                                        <t t-foreach="pub.autor_ids" t-as="autor">
+                                            <span t-esc="autor.display_name"></span><t t-if="len(pub.autor_ids) > 1 and autor != pub.autor_ids[-1]">;<br/></t>
+                                        </t>
+                                    </div>
+                                    <div class="publicacao-detalhes">
+                                        <strong>Local:</strong>
+                                        <t t-esc="pub.campus_id.name"></t>,
+                                        <t t-esc="pub.polo_id.name"></t>
+                                    </div>
+                                    <div class="publicacao-detalhes">
+                                        <strong>Data de inclusão:</strong>
+                                        <span t-field="pub.create_date" t-options="{'format': 'dd/MM/yyyy'}"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+        </t>
+
+    </template>
+</odoo>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data>
+
+        <record id="ud_biblioteca_orientador_action" model="ir.actions.act_window">
+            <field name="name">Gerenciar orientadores</field>
+            <field name="res_model">ud.biblioteca.publicacao.orientador</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_ativo': True}</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Clque para cadastrar um orientador
+                </p>
+                <p>
+
+                </p>
+            </field>
+        </record>
+
+        <record id="ud_biblioteca_orientador_tree" model="ir.ui.view">
+            <field name="name">Orientadores</field>
+            <field name="model">ud.biblioteca.publicacao.orientador</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Orientadores">
+                    <field name="display_name"/>
+                    <field name="ativo"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ud_biblioteca_orientador_search">
+            <field name="name">Busca</field>
+            <field name="model">ud.biblioteca.publicacao.orientador</field>
+            <field name="arch" type="xml">
+                <search string="Buscar orientador">
+                    <field name="name" string="Nome"/>
+                    <field name="ultimo_nome" string="Último nome"/>
+                    <field name="ativo"/>
+                </search>
+            </field>
+        </record>
+
+        <!-- Usado no formulário de gerenciamento de orientadores - PRIORIDADE MAIOR -->
+        <record id="ud_biblioteca_orientador_form" model="ir.ui.view">
+            <field name="name">Orientador</field>
+            <field name="model">ud.biblioteca.publicacao.orientador</field>
+            <field name="priority" eval="1"/>
+            <field name="arch" type="xml">
+                <form string="Orientador">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="ultimo_nome"/>
+                                <field name="titulacao_id" attrs="{'readonly': [('titulacao_id', '!=', False)]}"/>
+                            </group>
+                            <group>
+                                <field name="contato"/>
+                                <field name="ativo" readonly="1"/>
+                            </group>
+                        </group>
+                        <group string="Orientador em">
+                            <field name="publicacao_orientador_ids" readonly="1" nolabel="1"/>
+                        </group>
+                        <group string="Coorientador em">
+                            <field name="publicacao_coorientador_ids" readonly="1" nolabel="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Prioridade menor, usado para adicionar rapidamente orientador -->
+        <record id="ud_biblioteca_orientador_form2" model="ir.ui.view">
+            <field name="name">Orientador</field>
+            <field name="model">ud.biblioteca.publicacao.orientador</field>
+            <field name="arch" type="xml">
+                <form string="Orientador">
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="ultimo_nome"/>
+                        </group>
+                        <group>
+                            <field name="titulacao_id" attrs="{'readonly': [('titulacao_id', '!=', False)]}"/>
+                        </group>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

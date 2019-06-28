@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data>
+
+        <record model="ir.actions.act_window" id="pessoa_endereco_action">
+            <field name="name">Endereço</field>
+            <field name="res_model">ud.pessoa.endereco</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Clque para adicionar um novo Endereço
+                </p>
+                <p>
+
+                </p>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="pessoa_endereco_tree">
+            <field name="name">Endereços</field>
+            <field name="model">ud.pessoa.endereco</field>
+            <field name="arch" type="xml">
+                <tree string="Endereços">
+                    <field name="rua"/>
+                    <field name="cidade"/>
+                    <field name="estado"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="pessoa_endereco_search">
+            <field name="name">Busca</field>
+            <field name="model">ud.pessoa.endereco</field>
+            <field name="arch" type="xml">
+                <search string="Buscar">
+                    <field name="rua"/>
+                    <field name="cep"/>
+                    <field name="cidade"/>
+                    <field name="estado"/>
+                    <field name="complemento"/>
+                    <field name="bairro"/>
+                    <field name="pessoa_id"/>
+                    <group expand="0" string="Agrupar por:">
+                        <filter name="rua" string="Rua" domain="[]" context="{'group_by':'rua'}"/>
+                        <filter name="cidade" string="Cidade" domain="[]" context="{'group_by':'cidade'}"/>
+                        <filter name="estado" string="Estado" domain="[]" context="{'group_by':'estado'}"/>
+                        <filter name="bairro" string="Bairro" domain="[]" context="{'group_by':'bairro'}"/>
+                        <filter name="pessoa_id" string="Pessoa" domain="[]" context="{'group_by':'pessoa_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="pessoa_endereco_form">
+            <field name="name">Endereço</field>
+            <field name="model">ud.pessoa.endereco</field>
+            <field name="arch" type="xml">
+                <form string="Endereço">
+                    <group>
+                        <group>
+                            <field name="cep"/>
+                            <field name="rua"/>
+                            <field name="complemento"/>
+                            <field name="numero"/>
+                        </group>
+                        <group>
+                            <field name="bairro"/>
+                            <field name="cidade"/>
+                            <field name="estado"/>
+                            <field name="pais"/>
+                        </group>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

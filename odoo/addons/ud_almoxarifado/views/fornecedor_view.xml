@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data>
+
+        <record model="ir.actions.act_window" id="ud_almoxarifado_fornecedor_action">
+            <field name="name">Fornecedor</field>
+            <field name="res_model">ud.almoxarifado.fornecedor</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Clque para adicionar um novo Fornecedor
+                </p>
+                <p>
+
+                </p>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ud_almoxarifado_fornecedor_tree">
+            <field name="name">Fornecedores</field>
+            <field name="model">ud.almoxarifado.fornecedor</field>
+            <field name="arch" type="xml">
+                <tree string="Fornecedores">
+                    <field name="name"/>
+                    <field name="cpf_cnpj"/>
+                    <field name="email"/>
+                    <field name="telefone_fixo"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ud_almoxarifado_fornecedor_search">
+            <field name="name">Buscar</field>
+            <field name="model">ud.almoxarifado.fornecedor</field>
+            <field name="arch" type="xml">
+                <search string="Buscar">
+                    <field name="name" filter_domain="" string="Nome"/>
+                    <field name="cpf_cnpj" filter_domain="" string="CPF/CNPJ"/>
+                    <field name="telefone_fixo" filter_domain="" string="Telefone fixo"/>
+                    <field name="celular" filter_domain="" string="Celular"/>
+                    <field name="email" filter_domain="" string="E-mail"/>
+                    <field name="estado" filter_domain="" string="Estado"/>
+                    <field name="cidade" filter_domain="" string="Cidade"/>
+                    <field name="bairro" filter_domain="" string="Bairro"/>
+                    <field name="numero" filter_domain="" string="Numero"/>
+                    <field name="cep" filter_domain="" string="CEP"/>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ud_almoxarifado_fornecedor_form">
+            <field name="name">Fornecedor</field>
+            <field name="model">ud.almoxarifado.fornecedor</field>
+            <field name="arch" type="xml">
+                <form string="Fornecedor">
+                    <sheet>
+                        <group string="Informações de contato">
+                            <group>
+                                <field name="name"/>
+                                <field name="cpf_cnpj"/>
+                                <field name="telefone_fixo"/>
+                            </group>
+                            <group>
+                                <field name="celular"/>
+                                <field name="email"/>
+                            </group>
+                        </group>
+                        <group string="Endereço">
+                            <group>
+                                <field name="rua"/>
+                                <field name="numero"/>
+                                <field name="bairro"/>
+                            </group>
+                            <group>
+                                <field name="cep"/>
+                                <field name="cidade"/>
+                                <field name="estado"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  db:
+    image: postgres:9.4
+    network_mode: "host"
+    environment:
+      - POSTGRES_PASSWORD=odoo
+      - POSTGRES_USER=odoo
+      - POSTGRES_DB=odoo
+    volumes:
+      - "../db_data_odoo10/:/var/lib/postgresql/data"
+      - "../db_backup_odoo10/:/db_backup/"
+  web:
+    build: .
+    volumes:
+      - ".:/src"
+      - "./storage:/root/.local/share/Odoo"
+    network_mode: "host"
+    depends_on:
+      - db

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data>
+
+        <act_window id="ud_biblioteca_atualizar_titulacao_orientador_action"
+            name="Atualizar titulação"
+            src_model="ud.biblioteca.publicacao.orientador"
+            res_model="ud.biblioteca.atualizar_titulacao.orientador.wizard"
+            view_type="form" view_mode="form"
+            key2="client_action_multi" target="new"/>
+
+        <record model="ir.ui.view" id="ud_biblioteca_atualizar_titulacao_orientador_form">
+            <field name="name">Atualizar titulação</field>
+            <field name="model">ud.biblioteca.atualizar_titulacao.orientador.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Titulação">
+                    <div class="form-horizontal sheet col-sm-12 col-xs-12">
+                        <div class="col-md-6 col-lg-6 form-group">
+                            <label class="col-md-4 col-sm-4 control-label" for="titulacao_id"></label>
+                            <div class="col-md-7 col-sm-7">
+                                <field name="titulacao_id"/>
+                            </div>
+                        </div>
+                    </div>
+                    <footer>
+                        <button name="atualizar_titulacao" string="Atualizar" type="object" class="oe_highlight"/>
+                        ou
+                        <button string="Cancelar" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

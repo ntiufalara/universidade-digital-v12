@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data>
+
+        <record model="ir.actions.act_window" id="ud_almoxarifado_estoque_action">
+            <field name="name">Estoque</field>
+            <field name="res_model">ud.almoxarifado.estoque</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_agrupar_almoxarifado': 1}</field>
+        </record>
+
+        <record model="ir.ui.view" id="ud_almoxarifado_estoque_tree">
+            <field name="name">Estoques</field>
+            <field name="model">ud.almoxarifado.estoque</field>
+            <field name="arch" type="xml">
+                <tree string="Estoques">
+                    <field name="name"/>
+                    <field name="quantidade"/>
+                    <field name="estoque_min"/>
+                    <field name="almoxarifado_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ud_almoxarifado_estoque_search">
+            <field name="name">Busca</field>
+            <field name="model">ud.almoxarifado.estoque</field>
+            <field name="arch" type="xml">
+                <search string="Buscar">
+                    <field name="name" string="Nome"/>
+                    <field name="quantidade" string="Quantidade"/>
+                    <field name="estoque_min" string="Estoque mínimo"/>
+                    <field name="almoxarifado_id"/>
+                    <group expand="0" string="Agrupar por:">
+                        <filter string="Almoxarifado" domain="[]" context="{'group_by':'almoxarifado_id'}"
+                                name="agrupar_almoxarifado"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ud_almoxarifado_estoque_form">
+            <field name="name">Estoque</field>
+            <field name="model">ud.almoxarifado.estoque</field>
+            <field name="arch" type="xml">
+                <form string="Estoque">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="produto_id" readonly="1"/>
+                                <field name="categoria_id"/>
+                            </group>
+                            <group>
+                                <field name="quantidade"/>
+                                <field name="estoque_min"/>
+                            </group>
+                        </group>
+                        <group string="Entradas">
+                            <field name="entrada_ids" nolabel="1">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="data_entrada"/>
+                                    <field name="solicitacao_id"/>
+                                    <field name="observacao"/>
+                                    <field name="fornecedor_id"/>
+                                    <field name="quantidade"/>
+                                    <field name="tipo"/>
+                                </tree>
+                                <form string="Entrada">
+                                    <field name="name" readonly="1"/>
+                                    <field name="data_entrada"/>
+                                    <field name="quantidade"/>
+                                    <field name="tipo"/>
+                                    <field name="fornecedor_id"
+                                           attrs="{'invisible': [('tipo', '!=', 'fornecedor')], 'required': [('tipo', '=', 'fornecedor')]}"/>
+                                    <field name="solicitacao_id"
+                                           attrs="{'invisible': [('solicitacao_id', '=', False)]}"/>
+                                    <field name="observacao"/>
+                                </form>
+                            </field>
+                        </group>
+                        <group string="Saídas">
+                            <field name="saida_ids" nolabel="1">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="data_saida"/>
+                                    <field name="solicitacao_id"/>
+                                    <field name="observacao"/>
+                                    <field name="quantidade"/>
+                                </tree>
+                                <form string="Saída">
+                                    <field name="name" readonly="1"/>
+                                    <field name="data_saida"/>
+                                    <field name="quantidade"/>
+                                    <field name="solicitacao_id"
+                                           attrs="{'invisible': [('solicitacao_id', '=', False)]}"/>
+                                    <field name="observacao"/>
+                                </form>
+                            </field>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

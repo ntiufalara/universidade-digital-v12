@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data>
+
+        <record model="ir.actions.act_window" id="ud_almoxarifado_responsavel_action">
+            <field name="name">Responsável</field>
+            <field name="res_model">ud.almoxarifado.responsavel</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record model="ir.ui.view" id="ud_almoxarifado_responsavel_tree">
+            <field name="name">Responsáveis por almoxarifado</field>
+            <field name="model">ud.almoxarifado.responsavel</field>
+            <field name="arch" type="xml">
+                <tree string="Responsáveis por almoxarifado">
+                    <field name="name"/>
+                    <field name="campus_id"/>
+                    <field name="polo_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ud_almoxarifado_responsavel_search">
+            <field name="name">Busca</field>
+            <field name="model">ud.almoxarifado.responsavel</field>
+            <field name="arch" type="xml">
+                <search string="Buscar">
+                    <field name="name" string="Nome"/>
+                    <field name="pessoa_id"/>
+                    <field name="campus_id"/>
+                    <field name="polo_id"/>
+                    <field name="almoxarifado_ids"/>
+                    <group expand="0" string="Agrupar por:">
+                        <filter string="Campus" name="campus" domain="[]" context="{'group_by':'campus_id'}"/>
+                        <filter string="Polo" name="polo" domain="[]" context="{'group_by':'polo_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ud_almoxarifado_responsavel_form">
+            <field name="name">Responsável</field>
+            <field name="model">ud.almoxarifado.responsavel</field>
+            <field name="arch" type="xml">
+                <form string="Responsável">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="pessoa_id"/>
+                                <field name="campus_id"/>
+                            </group>
+                            <group>
+                                <field name="polo_id" domain="[('campus_id', '=', campus_id)]"/>
+                            </group>
+                        </group>
+                        <group string="Almoxarifados">
+                            <field name="almoxarifado_ids" nolabel="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

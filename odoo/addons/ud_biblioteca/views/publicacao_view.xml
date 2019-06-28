@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data>
+
+        <record id="ud_biblioteca_publicacao_action" model="ir.actions.act_window">
+            <field name="name">Publicações</field>
+            <field name="res_model">ud.biblioteca.publicacao</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_agrupar_curso': 1}</field>
+        </record>
+
+        <record id="ud_biblioteca_publicacao_form" model="ir.ui.view">
+            <field name="name">Nova publicação</field>
+            <field name="model">ud.biblioteca.publicacao</field>
+            <field name="type">form</field>
+            <field name="priority" eval="1"/>
+            <field name="arch" type="xml">
+                <form string="publicacao">
+                    <sheet>
+                        <div class="form-horizontal sheet col-sm-12 col-xs-12">
+                            <group string="Local">
+                                <group>
+                                    <field name="campus_id" readonly="1"/>
+                                </group>
+                                <group>
+                                    <field name="polo_id" domain="[('campus_id','=', campus_id)]"
+                                           attrs="{'readonly': [('polo_id', '!=', False)]}"/>
+                                </group>
+                            </group>
+                            <group string="Informações da publicação">
+                                <group>
+                                    <field name="name" autofocus="true"/>
+                                    <field name="ano_pub" class="campo_ano"/>
+                                    <field name="autor_ids" widget="many2many_tags"/>
+                                    <field name="tipo_id"/>
+                                    <field name="autorizar_publicacao"/>
+                                    <field name="visualizacoes" readonly="1"/>
+                                    <field name="curso_id" domain="[('polo_id','=',polo_id)]"/>
+                                </group>
+                                <group>
+                                    <field name="area_ids" widget="many2many_tags"/>
+                                    <field name="categoria_cnpq_id" widget="many2many_tags"/>
+                                    <field name="orientador_ids"
+                                           widget="many2many_tags" options="{'no_quick_create': True}"/>
+                                    <field name="coorientador_ids"
+                                           widget="many2many_tags" options="{'no_quick_create': True}"/>
+                                    <field name="palavras_chave_ids" widget="many2many_tags"
+                                           placeholder="biotecnologia,microbiologia,irrigação"/>
+                                    <field name="bibliotecario_responsavel"/>
+                                    <field name="create_date" readonly="1"/>
+                                </group>
+                            </group>
+                            <group string="Resumo">
+                                <field name="resumo" nolabel="1"/>
+                            </group>
+                            <group string="Abstract">
+                                <group>
+                                    <field name="titulo_abstract"/>
+                                </group>
+                                <field name="abstract" nolabel="1"/>
+                            </group>
+                            <group string="Anexo">
+                                <field name="anexo_ids" nolabel="1"/>
+                            </group>
+                            <group string="Observações">
+                                <field name="observacoes" nolabel="1"/>
+                            </group>
+                        </div>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="ud_biblioteca_publicacao_filter" model="ir.ui.view">
+            <field name="name">Busca</field>
+            <field name="model">ud.biblioteca.publicacao</field>
+            <field name="arch" type="xml">
+                <search string="Buscar publicação">
+                    <field name="name"/>
+                    <field name="orientador_ids"/>
+                    <field name="autor_ids"/>
+                    <field name="coorientador_ids"/>
+                    <field name="ano_pub"/>
+                    <field name="polo_id"/>
+                    <field name="curso_id"/>
+                    <field name="palavras_chave_ids"/>
+                    <field name="tipo_id"/>
+                    <field name="categoria_cnpq_id"/>
+                    <field name="area_ids"/>
+                    <group expand="0" string="Agrupar Por...">
+                        <filter name="autor_id" string="Autor" context="{'group_by' : 'autor_ids'}"/>
+                        <filter name="tipo_id" string="Tipo" context="{'group_by' : 'tipo_id'}"/>
+                        <filter name="ano_pub" string="Ano de publicação" context="{'group_by' : 'ano_pub'}"/>
+                        <filter name="polo_id" string="Polo" context="{'group_by' : 'polo_id'}"/>
+                        <filter string="Curso" name="agrupar_curso" context="{'group_by' : 'curso_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="ud_biblioteca_publicacao_tree" model="ir.ui.view">
+            <field name="name">Publicações</field>
+            <field name="model">ud.biblioteca.publicacao</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Publicações">
+                    <field name="name"/>
+                    <field name="autor_ids"/>
+                    <field name="orientador_ids"/>
+                    <field name="curso_id"/>
+                    <field name="ano_pub"/>
+                    <field name="visualizacoes" sum="Total de visualizações"/>
+                </tree>
+            </field>
+        </record>
+
+    </data>
+</odoo>

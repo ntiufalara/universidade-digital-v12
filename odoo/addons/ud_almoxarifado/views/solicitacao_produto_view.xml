@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data>
+
+        <record model="ir.actions.act_window" id="ud_almoxarifado_solicitacao_produto_action">
+            <field name="name">Solicitação de produto</field>
+            <field name="res_model">ud.almoxarifado.solicitacao</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Clque para adicionar uma nova Solicitação de produto
+                </p>
+                <p>
+
+                </p>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ud_almoxarifado_solicitacao_produto_tree">
+            <field name="name">Solicitações de produto</field>
+            <field name="model">ud.almoxarifado.solicitacao</field>
+            <field name="arch" type="xml">
+                <tree string="Solicitações de produto">
+                    <field name="solicitante_id"/>
+                    <field name="setor_id"/>
+                    <field name="data_hora"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ud_almoxarifado_solicitacao_produto_search">
+            <field name="name">Busca</field>
+            <field name="model">ud.almoxarifado.solicitacao</field>
+            <field name="arch" type="xml">
+                <search string="Buscar">
+                    <field name="solicitante_id" filter_domain="" string="Solicitante"/>
+                    <field name="setor_id" string="Setor"/>
+                    <field name="state" string="Status"/>
+                    <group expand="0" string="Agrupar por:">
+                        <filter string="Setor" name="setor" domain="[]" context="{'group_by':'setor_id'}"/>
+                        <filter string="Solicitante" name="solicitante" domain="[]"
+                                context="{'group_by':'solicitante_id'}"/>
+                        <filter string="Status" name="status" domain="[]" context="{'group_by':'state'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ud_almoxarifado_solicitacao_produto_form">
+            <field name="name">Solicitação de produto</field>
+            <field name="model">ud.almoxarifado.solicitacao</field>
+            <field name="arch" type="xml">
+                <form string="Solicitação de produto">
+                    <field name="name" invisible="1"/>
+                    <header>
+                        <button name="botao_entregue" states="aguardando" string="Entregue" type="object"
+                                class="oe_highlight" groups="ud_almoxarifado.group_ud_almoxarifado_gerente"/>
+                        <button name="botao_cancelar" states="aguardando" string="Cancelar" type="object"
+                                groups="ud_almoxarifado.group_ud_almoxarifado_gerente"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" readonly="1"/>
+                                <field name="solicitante_id"/>
+                            </group>
+                            <group>
+                                <field name="data_hora" readonly="1"/>
+                                <field name="setor_id"/>
+                            </group>
+                        </group>
+                        <group string="Produtos">
+                            <field name="produto_ids" attrs="{'readonly': [('name', '!=', False)]}"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>
