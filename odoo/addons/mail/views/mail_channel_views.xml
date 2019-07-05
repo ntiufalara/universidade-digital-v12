@@ -209,7 +209,7 @@
         name="Discuss"
         action="action_discuss"
         web_icon="mail,static/description/icon.png"
-        groups="base.group_user"
+        groups="base.user_root"
         sequence="1"/>
 
     <!--

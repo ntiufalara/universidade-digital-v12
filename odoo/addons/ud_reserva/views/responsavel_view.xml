@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data>
+
+        <record model="ir.actions.act_window" id="ud_reserva_responsavel_action">
+            <field name="name">Responsável</field>
+            <field name="res_model">ud.reserva.responsavel</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Clque para adicionar um novo Responsável
+                </p>
+                <p>
+
+                </p>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ud_reserva_responsavel_tree">
+            <field name="name">Responsáveis</field>
+            <field name="model">ud.reserva.responsavel</field>
+            <field name="arch" type="xml">
+                <tree string="Responsáveis">
+                    <field name="name"/>
+                    <field name="campus_id"/>
+                    <field name="polo_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ud_reserva_responsavel_search">
+            <field name="name">Busca</field>
+            <field name="model">ud.reserva.responsavel</field>
+            <field name="arch" type="xml">
+                <search string="Buscar">
+                    <field name="name" filter_domain="" string="Nome"/>
+                    <field name="campus_id" filter_domain="" string="Campus"/>
+                    <field name="polo_id" filter_domain="" string="Polo"/>
+                    <field name="espaco_ids" filter_domain="" string="Espaço"/>
+                    <group expand="0" string="Agrupar por:">
+                        <filter string="Campus" name="campus" context="{'group_by':'campus_id'}"/>
+                        <filter string="Polo" name="polo" context="{'group_by':'polo_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ud_reserva_responsavel_form">
+            <field name="name">Responsável</field>
+            <field name="model">ud.reserva.responsavel</field>
+            <field name="arch" type="xml">
+                <form string="Responsável">
+                    <group>
+                        <group>
+                            <field name="pessoa_id"/>
+                            <field name="campus_id"/>
+                        </group>
+                        <group>
+                            <field name="polo_id" domain="[('campus_id', '=', campus_id)]"/>
+                        </group>
+                    </group>
+                    <group string="Espaço">
+                        <field name="espaco_ids" domain="[('polo_id', '=', polo_id), ('permite_reserva', '=', True)]"
+                               nolabel="1"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

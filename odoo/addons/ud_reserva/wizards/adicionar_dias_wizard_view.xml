@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data>
+
+        <record model="ir.actions.act_window" id="adicionar_dias_wizard_action">
+            <field name="name">Dias</field>
+            <field name="res_model">ud.reserva.adicionar_dias_wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <record model="ir.ui.view" id="adicionar_dias_wizard_form">
+            <field name="name">Dias</field>
+            <field name="model">ud.reserva.adicionar_dias_wizard</field>
+            <field name="arch" type="xml">
+                <form string="Dias">
+                    <sheet>
+                        <div class="alert alert-info" role="alert">
+                            Use o formulário abaixo para adicionar 2 ou mais dias à reserva. Caso queira adicionar
+                            apenas um dia, use a lista no formulário anterior.
+                        </div>
+                        <group string="Período">
+                            <group>
+                                <field name="data_inicio"/>
+                                <field name="data_fim"/>
+                            </group>
+                            <group>
+                                <field name="hora_inicio" widget="mask" data-inputmask-mask="99:99"/>
+                                <field name="hora_fim" widget="mask" data-inputmask-mask="99:99"/>
+                            </group>
+                        </group>
+                        <group string="Espaço">
+                            <field name="espaco_ids" domain="[('permite_reserva', '=', True)]"
+                                   widget="many2many_tags" nolabel="1"/>
+                        </group>
+                        <group string="Dias da semana">
+                            <group attrs="{'invisible': ['|', ('todos', '=', True), ('dias_uteis', '=', True)]}">
+                                <field name="domingo"/>
+                                <field name="segunda"/>
+                                <field name="terca"/>
+                                <field name="quarta"/>
+                                <field name="quinta"/>
+                                <field name="sexta"/>
+                                <field name="sabado"/>
+                            </group>
+                            <group>
+                                <field name="todos" attrs="{'invisible': [('dias_uteis', '=', True)]}"/>
+                                <field name="dias_uteis" attrs="{'invisible': [('todos', '=', True)]}"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button name="adicionar" string="Adicionar" type="object" class="oe_highlight"/>
+                        ou
+                        <button string="Cancelar" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

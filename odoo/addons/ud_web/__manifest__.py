@@ -8,12 +8,12 @@
     "version": "12.0.0.1",
     "category": "Theme/Backend",
     "website": "http://www.openworx.nl",
-	"description": """
+    "description": """
 		Openworx Material Backend theme for Odoo 12.0 community edition.
     """,
-	'images':[
+    'images': [
         'images/screen.png'
-	],
+    ],
     "author": "Openworx",
     "license": "LGPL-3",
     "installable": True,
@@ -24,12 +24,11 @@
     ],
     "data": [
         'views/assets.xml',
-		'views/res_company_view.xml',
-		'views/users.xml',
+        'views/res_company_view.xml',
+        'views/users.xml',
         'views/sidebar.xml',
-		#'views/web.xml',
+        # 'views/web.xml',
     ],
     'live_test_url': 'https://youtu.be/JX-ntw2ORl8'
 
 }
-
