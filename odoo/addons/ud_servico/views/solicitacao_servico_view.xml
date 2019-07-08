@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data>
+
+        <!-- Exibe todas as solicitações para consulta -->
+        <record id="ud_servico_todas_solicitacoes_tree" model="ir.ui.view">
+            <field name="name">Todas as solicitações</field>
+            <field name="model">ud.servico.solicitacao</field>
+            <field name="arch" type="xml">
+                <tree string="Todas as solicitações" create="false">
+                    <field name="name"/>
+                    <field name="descricao"/>
+                    <field name="solicitante_id"/>
+                    <field name="tipo_manutencao_id"/>
+                    <field name="state"/>
+                    <field name="data"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="ud_servico_solicitacao_action">
+            <field name="name">Solicitação de serviço</field>
+            <field name="res_model">ud.servico.solicitacao</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="ud_servico_todas_solicitacoes_tree"/>
+            <field name="context">{'search_default_campus': 1, 'search_default_status': 1}</field>
+        </record>
+
+        <!-- Exibe somente solicitações do usuário -->
+        <record id="ud_servico_minha_solicitacao_action" model="ir.actions.act_window">
+            <field name="name">Minhas solicitações de serviço</field>
+            <field name="res_model">ud.servico.solicitacao</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('solicitante_id', '=', uid)]</field>
+            <field name="context">{'search_default_status': 1}</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Clque para criar uma Solicitação de serviço
+                </p>
+                <p>
+
+                </p>
+            </field>
+        </record>
+
+        <record id="ud_servico_gerenciar_solicitacao_gerente_action" model="ir.actions.act_window">
+            <field name="name">Gerenciar solicitações</field>
+            <field name="res_model">ud.servico.solicitacao</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_status': 1}</field>
+        </record>
+
+        <record id="ud_servico_gerenciar_solicitacao_responsavel_action" model="ir.actions.act_window">
+            <field name="name">Gerenciar solicitações</field>
+            <field name="res_model">ud.servico.solicitacao</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">['|', ('responsavel_analise_id.responsavel_id', '=', uid),
+                ('responsavel_execucao_id.responsavel_id', '=', uid)]
+            </field>
+            <field name="context">{'search_default_status': 1}</field>
+        </record>
+
+        <record model="ir.ui.view" id="ud_servico_solicitacao_tree">
+            <field name="name">Solicitações de serviço</field>
+            <field name="model">ud.servico.solicitacao</field>
+            <field name="arch" type="xml">
+                <tree string="Solicitações de serviço">
+                    <field name="name"/>
+                    <field name="descricao"/>
+                    <field name="solicitante_id"/>
+                    <field name="tipo_manutencao_id"/>
+                    <field name="state"/>
+                    <field name="data"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ud_servico_solicitacao_search">
+            <field name="name">Busca</field>
+            <field name="model">ud.servico.solicitacao</field>
+            <field name="arch" type="xml">
+                <search string="Buscar">
+                    <field name="name" filter_domain="" string="Nome"/>
+                    <field name="solicitante_id"/>
+                    <field name="matricula"/>
+                    <field name="setor_id"/>
+                    <field name="email"/>
+                    <field name="telefone"/>
+                    <field name="data"/>
+                    <field name="state"/>
+                    <field name="descricao"/>
+                    <field name="responsavel_analise_id"/>
+                    <field name="data_execucao"/>
+                    <field name="tipo_manutencao_id"/>
+                    <field name="campus_id"/>
+                    <field name="polo_id"/>
+                    <field name="espaco_id"/>
+
+                    <group expand="0" string="Agrupar por:">
+                        <filter string="Campus" icon="terp-personal" name="campus" domain="[]"
+                                context="{'group_by':'campus_id'}"/>
+                        <filter string="Polo" name="polo" context="{'group_by':'polo_id'}"/>
+                        <filter string="Espaço" name="espaco" context="{'group_by':'espaco_id'}"/>
+                        <filter string="Solicitante" name="solicitante"
+                                context="{'group_by':'solicitante_id'}"/>
+                        <filter string="Setor solicitante" name="setor"
+                                context="{'group_by':'setor_id'}"/>
+                        <filter string="Data" name="data" context="{'group_by':'data'}"/>
+                        <filter string="Status" name="status"
+                                context="{'group_by':'state'}"/>
+                        <filter string="Data de cancelamento" name="data_cancelamento"
+                                context="{'group_by':'data_cancelamento'}"/>
+                        <filter string="Responsável" name="responsavel_analise"
+                                context="{'group_by':'responsavel_analise_id'}"/>
+                        <filter string="Previsão de execução" name="previsao"
+                                context="{'group_by':'previsao'}"/>
+                        <filter string="Data de execução" name="data_execucao"
+                                context="{'group_by':'data_execucao'}"/>
+                        <filter string="Tipo de manutenção" name="tipo_manutencao"
+                                context="{'group_by':'tipo_manutencao_id'}"/>
+                        <filter string="Tipo de equipamento" name="tipo_equipamento"
+                                context="{'group_by':'tipo_equipamento_id'}"/>
+                        <filter string="Tipo de equipamento elétrico" name="tipo_equipamento_eletrico"
+                                context="{'group_by':'tipo_equipamento_eletrico_id'}"/>
+                        <filter string="Tipo de refrigerador" name="tipo_refrigerador"
+                                context="{'group_by':'tipo_refrigerador_id'}"/>
+                        <filter string="Tipo de ar condicionado" name="tipo_ar"
+                                context="{'group_by':'tipo_ar_condicionado_id'}"/>
+                        <filter string="Tipo de manutenção predial" name="tipo_predial"
+                                context="{'group_by':'tipo_predial_id'}"/>
+                        <filter string="Tipo de instalação predial" name="tipo_instalacoes"
+                                context="{'group_by':'tipo_instalacoes_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ud_servico_solicitacao_form">
+            <field name="name">Solicitação de serviço</field>
+            <field name="model">ud.servico.solicitacao</field>
+            <field name="arch" type="xml">
+                <form string="Solicitação de serviço">
+                    <header>
+                        <button string="Para Análise" states="nova" type="action"
+                                name="ud_servico.atribuir_responsavel_action"
+                                groups="base.gerente_os"/>
+                        <button string="Encaminhar para execução" states="analise" type="action"
+                                name="ud_servico.atribuir_previsao_action"
+                                groups="base.gerente_os,base.responsavel_os"/>
+                        <button string="Executar Solicitação" states="aprovada" type="action"
+                                name="ud_servico.atribuir_execucao_action"
+                                groups="base.gerente_os,base.responsavel_os"/>
+                        <button string="Finalizar Solicitação" states="execucao" type="action"
+                                name="ud_servico.finalizar_servico_action"
+                                groups="base.gerente_os,base.responsavel_os"/>
+                        <button string="Cancelar Solicitação" states="nova" type="action"
+                                name="ud_servico.cancelar_servico_action"/>
+                        <button string="Cancelar Solicitação" states="analise,aprovada,execucao" type="action"
+                                name="ud_servico.cancelar_servico_action"
+                                groups="base.gerente_os,base.responsavel_os"/>
+                        <field name="state" widget="statusbar"
+                               statusbar_visible="nova,analise,aprovada,execucao,finalizada,cancelada" readonly="1"/>
+                    </header>
+                    <sheet>
+                        <group string="Dados do solicitante">
+                            <group>
+                                <field name="name" attrs="{'invisible': [('name', '=', False)]}"/>
+                                <field name="solicitante_id" attrs="{'readonly': [('solicitante_id', '!=', False)]}"/>
+                                <field name="matricula" attrs="{'invisible': [('matricula', '=', False)]}"/>
+                                <field name="setor_id" attrs="{'invisible': [('setor_id', '=', False)]}"/>
+                            </group>
+                            <group>
+                                <field name="email" readonly="1"/>
+                                <field name="telefone"/>
+                                <field name="data"/>
+                            </group>
+                        </group>
+                        <group string="Local">
+                            <group>
+                                <field name="campus_id"/>
+                                <field name="polo_id"/>
+                                <field name="espaco_id"/>
+                            </group>
+                            <group>
+                                <field name="bloco_id" attrs="{'invisible': [('bloco_id', '=', False)]}" readonly="1"/>
+                                <field name="detalhes_espaco"/>
+                            </group>
+                        </group>
+                        <group string="Serviço">
+                            <group>
+                                <field name="tipo_manutencao_id"/>
+                                <field name="tipo_equipamento_id"
+                                       attrs="{'required': [('tipo_manutencao_id', '=', %(manutencao_equipamento)d)], 'invisible': [('tipo_manutencao_id', '!=', %(manutencao_equipamento)d)]}"/>
+                                <field name="tipo_equipamento_eletrico_id"
+                                       attrs="{'required': [('tipo_equipamento_id', '=', %(equipamento_eletrico)d)], 'invisible': [('tipo_equipamento_id', '!=', %(equipamento_eletrico)d)]}"/>
+                                <field name="tipo_refrigerador_id"
+                                       attrs="{'required': [('tipo_equipamento_eletrico_id', '=', %(equip_eletrico_refrigerador)d)], 'invisible': [('tipo_equipamento_eletrico_id', '!=', %(equip_eletrico_refrigerador)d)]}"/>
+                                <field name="tipo_ar_condicionado_id"
+                                       attrs="{'required': [('tipo_refrigerador_id', '=', %(refrigerador_ar_condicionado)d)], 'invisible': [('tipo_refrigerador_id', '!=', %(refrigerador_ar_condicionado)d)]}"/>
+                                <field name="tipo_predial_id"
+                                       attrs="{'required': [('tipo_manutencao_id', '=', %(manutencao_predial)d)], 'invisible': [('tipo_manutencao_id', '!=', %(manutencao_predial)d)]}"/>
+                            </group>
+                            <group>
+                                <field name="tipo_instalacoes_id"
+                                       attrs="{'required': [('tipo_predial_id', '=', %(tipo_predial_instalacoes)d)], 'invisible': [('tipo_predial_id', '!=', %(tipo_predial_instalacoes)d)]}"/>
+                                <field name="denominacao"
+                                       attrs="{'invisible': [('tipo_manutencao_id', '!=', %(movimentacao_de_materiais)d), ('tipo_equipamento_eletrico_id', '!=', %(equip_eletrico_outro)d)]}"/>
+                                <field name="numero_patrimonio"
+                                       attrs="{'invisible': [('tipo_manutencao_id', '!=', %(manutencao_equipamento)d)]}"/>
+                                <field name="marca_equipamento"
+                                       attrs="{'required': [('tipo_equipamento_id', '=', %(equipamento_eletrico)d)], 'invisible': [('tipo_equipamento_id', '!=', %(equipamento_eletrico)d)]}"/>
+                                <field name="modelo_equipamento"
+                                       attrs="{'invisible': [('tipo_equipamento_id', '!=', %(equipamento_eletrico)d)]}"/>
+                            </group>
+                        </group>
+                        <group string="Dados da Execução" attrs="{'invisible': [('state', '=', 'nova')]}">
+                            <group>
+                                <field name="nome_gerente" attrs="{'invisible': [('nome_gerente', '=', False)]}"/>
+                                <field name="responsavel_analise_id"
+                                       attrs="{'invisible': [('responsavel_analise_id', '=', False)]}"/>
+                                <field name="previsao" attrs="{'invisible': [('previsao', '=', False)]}"/>
+                                <field name="responsavel_execucao_id"
+                                       attrs="{'invisible': [('responsavel_execucao_id', '=', False)]}"/>
+                                <field name="risco_de_operacao"
+                                       attrs="{'invisible': [('risco_de_operacao', '=', False)]}"/>
+                                <field name="medidas_preventivas"
+                                       attrs="{'invisible': [('medidas_preventivas', '=', False)]}"/>
+                            </group>
+                            <group>
+                                <field name="epi_ids" widget="many2many_tags"
+                                       attrs="{'invisible': [('epi_ids', '=', False)]}"/>
+                                <field name="data_execucao" attrs="{'invisible': [('data_execucao', '=', False)]}"/>
+                                <field name="execucao" attrs="{'invisible': [('execucao', '=', False)]}"/>
+                                <field name="finalizar" attrs="{'invisible': [('finalizar', '=', False)]}"/>
+                                <field name="motivo_cancelamento"
+                                       attrs="{'invisible': [('motivo_cancelamento', '=', False)]}"/>
+                            </group>
+                        </group>
+                        <group string="Destino da movimentação"
+                               attrs="{'invisible': [('tipo_manutencao_id', '!=', %(movimentacao_de_materiais)d)]}">
+                            <group>
+                                <field name="campus_destino_id"
+                                       attrs="{'required': [('tipo_manutencao_id', '=', %(movimentacao_de_materiais)d)]}"/>
+                                <field name="polo_destino_id"
+                                       attrs="{'required': [('tipo_manutencao_id', '=', %(movimentacao_de_materiais)d)]}"/>
+                                <field name="espaco_destino_id"
+                                       attrs="{'required': [('tipo_manutencao_id', '=', %(movimentacao_de_materiais)d)]}"/>
+                            </group>
+                            <group>
+                                <field name="bloco_destino_id" readonly="1"
+                                       attrs="{'invisible': [('bloco_destino_id', '=', False)]}"/>
+                                <field name="detalhes_espaco_destino"/>
+                            </group>
+                        </group>
+                        <group string="Descrição">
+                            <field name="descricao" nolabel="1"/>
+                        </group>
+                        <div class="oe_chatter">
+                            <field name="message_follower_ids" widget="mail_followers"/>
+                            <field name="message_ids" widget="mail_thread"/>
+                        </div>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

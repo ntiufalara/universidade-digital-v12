@@ -121,7 +121,7 @@
                         </group>
                         <group string="Espaços aprovados"
                                attrs="{'invisible': [('state', '!=', 'aguardando_aprovacao')]}">
-                            <div class="alert alert-info">
+                            <div class="alert alert-info" role="alert">
                                 Os responsáveis por cada um dos espaços solicitados devem aprovar esta solicitação
                             </div>
                             <field name="espaco_aprovado_ids"/>

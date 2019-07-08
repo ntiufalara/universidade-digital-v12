@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data>
+
+        <record model="ir.actions.act_window" id="ud_servico_gerente_action">
+            <field name="name">Gerente</field>
+            <field name="res_model">ud.servico.gerente</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_campus': 1}</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Clque para adicionar um novo Gerente
+                </p>
+                <p>
+
+                </p>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="ud_servico_gerente_popup_action">
+            <field name="name">Gerente de serviço</field>
+            <field name="res_model">ud.servico.gerente</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <record model="ir.ui.view" id="ud_servico_gerente_tree">
+            <field name="name">Gerentes</field>
+            <field name="model">ud.servico.gerente</field>
+            <field name="arch" type="xml">
+                <tree string="Gerentes">
+                    <field name="pessoa_id"/>
+                    <field name="campus_id"/>
+                    <field name="polo_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ud_servico_gerente_search">
+            <field name="name">Busca</field>
+            <field name="model">ud.servico.gerente</field>
+            <field name="arch" type="xml">
+                <search string="Buscar">
+                    <field name="pessoa_id"/>
+                    <field name="campus_id"/>
+                    <field name="polo_id"/>
+                    <group expand="0" string="Agrupar por:">
+                        <filter string="Campus" name="campus" domain="[]" context="{'group_by':'campus_id'}"/>
+                        <filter string="Polo" name="polo" domain="[]" context="{'group_by':'polo_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ud_servico_gerente_form">
+            <field name="name">Gerente</field>
+            <field name="model">ud.servico.gerente</field>
+            <field name="arch" type="xml">
+                <form string="Gerente">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="pessoa_id"/>
+                                <field name="campus_id"/>
+                            </group>
+                            <group>
+                                <field name="polo_id"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

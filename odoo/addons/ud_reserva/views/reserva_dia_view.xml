@@ -46,7 +46,7 @@
             <field name="arch" type="xml">
                 <form string="Dia">
                     <sheet>
-                        <div class="alert alert-warning" invisible="context.get('hide_reserva', False)">
+                        <div class="alert alert-warning" role="alert" invisible="context.get('hide_reserva', False)">
                             Para criar uma nova solicitação de reserva use o menu
                             <strong>"Solicitações de reserva"</strong>
                         </div>
