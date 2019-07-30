@@ -2,7 +2,7 @@ FROM ubuntu:16.04
 
 RUN \
   apt-get update && \
-  apt-get install -y python3-pip python3-dev libxml2-dev libxslt1-dev libevent1-dev libsasl2-dev libldap2-dev nano
+  apt-get install -y python3-pip python3-dev libxml2-dev libxslt1-dev libevent1-dev libsasl2-dev libldap2-dev nano wkhtmltopdf
 
 RUN apt-get install npm wget -y && npm install -g less n && n lts
 
