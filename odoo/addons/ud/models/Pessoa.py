@@ -15,36 +15,37 @@ class Pessoa(models.Model):
     """
     _name = 'res.users'
     _inherit = 'res.users'
+    _order = 'name asc'
 
-    name = fields.Char(u'Nome completo', required=True)
-    cpf = fields.Char(u'CPF', help=u"Entre o CPF no formato: XXX.XXX.XXX-XX")
-    rg = fields.Char(u'RG', size=20)
-    data_nascimento = fields.Date(u'Data de nascimento')
+    name = fields.Char('Nome completo', required=True)
+    cpf = fields.Char('CPF', help=u"Entre o CPF no formato: XXX.XXX.XXX-XX")
+    rg = fields.Char('RG', size=20)
+    data_nascimento = fields.Date('Data de nascimento')
     genero = fields.Selection(
-        [('masculino', u'Masculino'),
-         ('feminino', u'Feminino')], u'Gênero'
+        [('masculino', 'Masculino'),
+         ('feminino', 'Feminino')], 'Gênero'
     )
     estado_civil = fields.Selection(
-        [('solteiro', u'Solteiro'), ('casado', u'Casado'), ('viuvo', u'Viúvo'), ('divorciado', u'Divorciado')],
-        u'Estado Civil', default='solteiro'
+        [('solteiro', 'Solteiro'), ('casado', 'Casado'), ('viuvo', 'Viúvo'), ('divorciado', 'Divorciado')],
+        'Estado Civil', default='solteiro'
     )
-    telefone_fixo = fields.Char(u'Outro telefone')
-    celular = fields.Char(u'Telefone principal')
-    email = fields.Char(u'E-mail')
-    orgaoexpedidor = fields.Char(u'Orgão Expedidor', size=10, help=u"Sigla: Ex. SSP/SP")
+    telefone_fixo = fields.Char('Outro telefone')
+    celular = fields.Char('Telefone principal')
+    email = fields.Char('E-mail')
+    orgaoexpedidor = fields.Char('Orgão Expedidor', size=10, help=u"Sigla: Ex. SSP/SP")
 
-    dados = fields.One2many('ud.dados.bancarios', 'pessoa_id', u'Dados Bancários')
-    nacionalidade = fields.Selection(utils.NACIONALIDADES, u'Nacionalidade', default='br')
-    curriculo_lattes_link = fields.Char(u'Link do Currículo Lattes')
-    perfil_ids = fields.One2many('ud.perfil', 'pessoa_id', u'Perfil')
-    perfil_principal = fields.Char(u'Perfil', compute="get_perfil")
+    dados = fields.One2many('ud.dados.bancarios', 'pessoa_id', 'Dados Bancários')
+    nacionalidade = fields.Selection(utils.NACIONALIDADES, 'Nacionalidade', default='br')
+    curriculo_lattes_link = fields.Char('Link do Currículo Lattes')
+    perfil_ids = fields.One2many('ud.perfil', 'pessoa_id', 'Perfil')
+    perfil_principal = fields.Char('Perfil', compute="get_perfil")
 
-    endereco_ids = fields.One2many('ud.pessoa.endereco', 'pessoa_id', u'Endereços')
-    contato_ids = fields.One2many('ud.pessoa.contato', 'pessoa_id', u'Contatos')
+    endereco_ids = fields.One2many('ud.pessoa.endereco', 'pessoa_id', 'Endereços')
+    contato_ids = fields.One2many('ud.pessoa.contato', 'pessoa_id', 'Contatos')
 
     _sql_constraints = [
-        ("ud_cpf_uniq", "unique(cpf)", u'Já existe CPF com esse número cadastrado.'),
-        ("ud_rg_uniq", "unique(rg)", u'Já existe RG com esse número cadastrado.'),
+        ("ud_cpf_uniq", "unique(cpf)", 'Já existe CPF com esse número cadastrado.'),
+        ("ud_rg_uniq", "unique(rg)", 'Já existe RG com esse número cadastrado.'),
     ]
 
     @api.one
@@ -68,7 +69,9 @@ class Pessoa(models.Model):
         :return:
         """
         if vals.get('email') or vals.get('cpf'):
-            vals['login'] = vals['cpf'] if 'cpf' in vals else vals['email']
+            print(vals)
+            vals['login'] = vals['cpf'] if vals.get('cpf') else vals['email']
+            print(vals)
         obj_set = super(models.Model, self).create(vals)
         usuario_ud_group = self.env.ref('ud.usuario_ud')
         obj_set.groups_id |= usuario_ud_group

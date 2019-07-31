@@ -8,5 +8,6 @@ class Pessoa(models.Model):
     """
     _name = 'res.users'
     _inherit = 'res.users'
+    _order = 'name asc'
 
     biblioteca_responsavel_ids = fields.One2many('ud.biblioteca.responsavel', 'pessoa_id', u'Responsável por biblioteca')
