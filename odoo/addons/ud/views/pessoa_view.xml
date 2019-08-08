@@ -75,7 +75,7 @@
             <field name="model">res.users</field>
             <field name="type">tree</field>
             <field name="arch" type="xml">
-                <tree string="Pessoas" default_order="name asc">
+                <tree string="Pessoas">
                     <field name="cpf"/>
                     <field name="name" string="Nome"/>
                     <field name="perfil_principal"/>

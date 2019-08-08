@@ -3,6 +3,7 @@ version: "3"
 services:
   db:
     image: postgres:11
+    restart: always
     network_mode: "host"
     environment:
       - POSTGRES_PASSWORD=odoo
@@ -13,6 +14,7 @@ services:
       - "../db_backup_odoo12/:/db_backup/"
   web:
     build: .
+    restart: always
     volumes:
       - ".:/src"
       - "./storage:/root/.local/share/Odoo"

@@ -15,7 +15,7 @@ class Pessoa(models.Model):
     """
     _name = 'res.users'
     _inherit = 'res.users'
-    _order = 'name asc'
+    _order = 'login asc'
 
     name = fields.Char('Nome completo', required=True)
     cpf = fields.Char('CPF', help=u"Entre o CPF no formato: XXX.XXX.XXX-XX")

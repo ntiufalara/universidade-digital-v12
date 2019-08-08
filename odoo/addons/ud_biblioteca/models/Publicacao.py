@@ -108,8 +108,8 @@ class Publicacao(models.Model):
         mail = self.env['mail.mail']
 
         template_html = '''
-        <img height="37px" width="140px" style="display:block" alt="Logo UD" title="Logo UD" 
-        src="https://i.ibb.co/8DBzkj9/logo-ud-svg.png"/>
+        <img height="111px" width="452px" style="display:block" alt="Logo UD" title="Logo UD" 
+        src="https://i.ibb.co/GcCkdkj/unnamed.png"/>
         <p>Olá,<br/><br/>
         Você foi adicionado como {tipo} em uma publicação cadastrada no Repositório da Biblioteca Campus 
         Arapiraca<br/><br/>
