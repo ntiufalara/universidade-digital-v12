@@ -5,7 +5,7 @@ if ! [ -x "$(command -v docker-compose)" ]; then
   exit 1
 fi
 
-domains=(ud10.arapiraca.ufal.br ud10.ara)
+domains=(ud10.arapiraca.ufal.br)
 rsa_key_size=4096
 data_path="./nginx/certbot"
 email="marcos.neto@nti.ufal.br" # Adding a valid address is strongly recommended
