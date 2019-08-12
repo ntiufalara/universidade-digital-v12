@@ -21,3 +21,12 @@ services:
       - ODOO_ENV=dev
     depends_on:
       - db
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    network_mode: "host"
+    environment:
+      - PGADMIN_LISTEN_PORT=8000
+      - PGADMIN_DEFAULT_EMAIL=admin@admin.com
+      - PGADMIN_DEFAULT_PASSWORD=admin
+    depends_on:
+      - db
