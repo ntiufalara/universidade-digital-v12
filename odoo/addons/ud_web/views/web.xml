@@ -1,24 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <template id="menu" inherit_id="web_responsive.apps">
-    <!--    <xpath expr="//div[hasclass('panel-heading')]"
-            position="replace" /> -->
-        
-        <xpath expr="//div[hasclass('dropdown-menu')]" position="after">
-                <div class="panel-footer" id="appDrawerAppPanelFooter">
-                    <div class="oe_logo">
-                        <img src="/web/binary/company_logo" />
-                    </div>
-                </div>
-        </xpath>
-    </template>
+  <!--  <template id="menu" inherit_id="web_responsive.apps">-->
+  <!--    &lt;!&ndash;    <xpath expr="//div[hasclass('panel-heading')]"-->
+  <!--            position="replace" /> &ndash;&gt;-->
 
-    <!-- <template id="webclient_bootstrap"
-        inherit_id="web_responsive.webclient_bootstrap">
-        <xpath expr="//i[hasclass('fa-th')]" position="after">
-            <i class="fa fa-lg fa-chevron-left app-drawer-icon-close"
-                t-translation="off" aria-hidden="true" />
-        </xpath>
-    </template> -->
+  <!--    <xpath expr="//div[hasclass('dropdown-menu')]" position="after">-->
+  <!--      <div class="panel-footer" id="appDrawerAppPanelFooter">-->
+  <!--        <div class="oe_logo">-->
+  <!--          <img src="/web/binary/company_logo"/>-->
+  <!--        </div>-->
+  <!--      </div>-->
+  <!--    </xpath>-->
+  <!--  </template>-->
+
+  <template id="login" inherit_id="web.login_layout">
+    <xpath expr="//div" position="replace">
+      <t t-call="web.layout">
+        <div class="container mb-5 pb-5">
+          <div t-attf-class="card border-0 mx-auto mt-5 bg-100 {{login_card_classes}} o_database_list"
+               style="max-width: 300px;">
+            <div class="card-body">
+              <div t-attf-class="text-center pb-3 border-bottom {{'mb-3' if form_small else 'mb-4'}}">
+                <img t-attf-src="/web/binary/company_logo{{ '?dbname='+db if db else '' }}" alt="Logo"
+                     style="max-height:120px; max-width: 100%; width:auto"/>
+              </div>
+              <t t-raw="0"/>
+            </div>
+          </div>
+        </div>
+      </t>
+    </xpath>
+  </template>
+
+  <!-- <template id="webclient_bootstrap"
+      inherit_id="web_responsive.webclient_bootstrap">
+      <xpath expr="//i[hasclass('fa-th')]" position="after">
+          <i class="fa fa-lg fa-chevron-left app-drawer-icon-close"
+              t-translation="off" aria-hidden="true" />
+      </xpath>
+  </template> -->
 
 </odoo>

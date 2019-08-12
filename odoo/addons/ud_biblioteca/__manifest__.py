@@ -30,6 +30,7 @@
         "views/menus.xml",
         # Dados
         "data/ud_biblioteca_publicacao_tipo_data.xml",
+        "data/mail_templates.xml",
         # 'data/load_publicacao_openerp7_cron.xml',
     ],
     "installable": True,

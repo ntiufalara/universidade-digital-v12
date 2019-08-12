@@ -48,9 +48,9 @@ class Publicacao(models.Model):
                                 string=u'Áreas do conhecimento/Localização')
     bibliotecario_responsavel = fields.Many2one('ud.biblioteca.responsavel', u'Bibliotecário', required=False,
                                                 default=lambda self: self.get_bibliotecario())
-    resumo = fields.Html(u'Resumo')
+    resumo = fields.Html(u'Resumo', required=False, sanitize=False)
     titulo_abstract = fields.Char(u'Título', default="Abstract")
-    abstract = fields.Html(u'Abstract', required=False)
+    abstract = fields.Html(u'Abstract', required=False, sanitize=False)
     create_date = fields.Datetime(u'Data de inclusão')
     pessoas_notificadas = fields.Boolean(u'Notificações enviadas?')
 
@@ -105,59 +105,48 @@ class Publicacao(models.Model):
         :param obj:
         :return:
         """
-        mail = self.env['mail.mail']
+        if not obj.pessoas_notificadas:
+            mail = self.env['mail.mail']
 
-        template_html = '''
-        <img height="111px" width="452px" style="display:block" alt="Logo UD" title="Logo UD" 
-        src="https://i.ibb.co/GcCkdkj/unnamed.png"/>
-        <p>Olá,<br/><br/>
-        Você foi adicionado como {tipo} em uma publicação cadastrada no Repositório da Biblioteca Campus 
-        Arapiraca<br/><br/>
-        Para ver a publicação, acesse o link: <a href="{link}">{link}</a>
-        
-        <!--
-        Logo RI
-        <img src="https://i.ibb.co/KxDKTfp/logo-bca-svg.png" alt="logo-bca-svg" border="0"></a>
-        Logo BCA
-        <a href="https://imgbb.com/"><img src="https://i.ibb.co/47W45RD/logo-biblioteca-ufal-svg.png" alt="logo-biblioteca-ufal-svg" border="0"></a>
-        -->
-        '''
+            template_qweb = self.env.ref('ud_biblioteca.notificacao_publicacao', raise_if_not_found=True).with_context(
+                lang='pt-br'
+            )
 
-        template_data = {
-            'subject': 'Nova publicação cadastrada.',
-            'email_from': 'universidade.digital.notify@gmail.com',
-            'auto_delete': True,
-        }
+            template_data = {
+                'subject': 'Nova publicação cadastrada.',
+                'email_from': 'universidade.digital.notify@gmail.com',
+                'auto_delete': True,
+            }
 
-        emails = [autor.contato for autor in obj.autor_ids if autor.contato]
-        template_data['body_html'] = template_html.format(**{
-            'tipo': 'autor',
-            'link': 'https://ud10.arapiraca.ufal.br/repositorio/publicacoes/' + str(obj.id),
-        })
-        template_data['email_to'] = ', '.join(emails)
-        m = mail.create(template_data)
-        m.send()
+            emails = [autor.contato for autor in obj.autor_ids if autor.contato]
+            context = {
+                'link': 'https://ud10.arapiraca.ufal.br/repositorio/publicacoes/' + str(obj.id),
+            }
+            template_data['body_html'] = template_qweb.render(context, engine='ir.qweb', minimal_qcontext=True)
+            template_data['email_to'] = ', '.join(emails)
+            m = mail.create(template_data)
+            m.send()
 
-        emails = [orientador.contato for orientador in obj.orientador_ids if orientador.contato]
-        template_data['body_html'] = template_html.format(**{
-            'tipo': 'orientador',
-            'link': 'https://ud10.arapiraca.ufal.br/repositorio/publicacoes/' + str(obj.id),
-        })
-        template_data['email_to'] = ', '.join(emails)
-        m = mail.create(template_data)
-        m.send()
+            emails = [orientador.contato for orientador in obj.orientador_ids if orientador.contato]
+            context = {
+                'link': 'https://ud10.arapiraca.ufal.br/repositorio/publicacoes/' + str(obj.id),
+            }
+            template_data['body_html'] = template_qweb.render(context, engine='ir.qweb', minimal_qcontext=True)
+            template_data['email_to'] = ', '.join(emails)
+            m = mail.create(template_data)
+            m.send()
 
-        emails = [coorientador.contato for coorientador in obj.coorientador_ids if coorientador.contato]
-        template_data['body_html'] = template_html.format(**{
-            'tipo': 'coorientador',
-            'link': 'https://ud10.arapiraca.ufal.br/repositorio/publicacoes/' + str(obj.id),
-        })
-        template_data['email_to'] = ', '.join(emails)
-        m = mail.create(template_data)
-        m.send()
+            emails = [coorientador.contato for coorientador in obj.coorientador_ids if coorientador.contato]
+            context = {
+                'link': 'https://ud10.arapiraca.ufal.br/repositorio/publicacoes/' + str(obj.id),
+            }
+            template_data['body_html'] = template_qweb.render(context, engine='ir.qweb', minimal_qcontext=True)
+            template_data['email_to'] = ', '.join(emails)
+            m = mail.create(template_data)
+            m.send()
 
-        # Marca como notificado
-        obj.pessoas_notificadas = True
+            # Marca como notificado
+            obj.pessoas_notificadas = True
 
     @api.onchange('polo_id')
     def onchange_polo_id(self):

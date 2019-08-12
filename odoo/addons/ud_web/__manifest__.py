@@ -27,7 +27,7 @@
         'views/res_company_view.xml',
         'views/users.xml',
         'views/sidebar.xml',
-        # 'views/web.xml',
+        'views/web.xml',
     ],
     'live_test_url': 'https://youtu.be/JX-ntw2ORl8'
 
