@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-ODOO_ENV=${ODOO_ENV:='dev'}
+ODOO_ENV=${ODOO_ENV:='prod'}
 
 pip3 install -r requirements.txt
 
