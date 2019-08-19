@@ -69,6 +69,7 @@ class SolicitacaoProduto(models.Model):
                 return perfil.setor_id.id
         return False
 
+
     @api.model
     def create(self, vals):
         """
