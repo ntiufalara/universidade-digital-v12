@@ -1,12 +1,10 @@
-# encoding: UTF-8
-
 from odoo import models, fields
 
 
 class AtualizaTitulacaoOrientador(models.TransientModel):
     _name = 'ud.biblioteca.atualizar_titulacao.orientador.wizard'
 
-    titulacao_id = fields.Many2one('ud.biblioteca.orientador.titulacao', u'Titulação', required=True)
+    titulacao_id = fields.Many2one('ud.biblioteca.orientador.titulacao', 'Titulação', required=True)
 
     def atualizar_titulacao(self):
         """
@@ -19,7 +17,7 @@ class AtualizaTitulacaoOrientador(models.TransientModel):
 
         for orientador in orientadores:
             if not orientador.ativo:
-                raise models.ValidationError(u'Desculpe, um ou mais orietadores selecionados não estão ativos')
+                raise models.ValidationError('Desculpe, um ou mais orietadores selecionados não estão ativos')
             orientador.ativo = False
             orientador.copy({
                 'titulacao_id': self.titulacao_id.id,

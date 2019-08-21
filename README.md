@@ -43,5 +43,15 @@ Execute o script para levantar o servidor de desenvolvimento na porta 8069:
 ./odoo-bin
 ```
 
+### Docker e Docker Compose
 
+Para executar os comandos abaixo, considera-se que o ambiente de execução com docker, containerd e docker-compose 
+já estejam devidamente configurados. Para maiores informações, consulte a documentação oficial do Docker.
 
+#### Ambiente de desenvolvimento
+
+Para executar o ambiente de desenvolvimento
+
+```shell script
+
+```

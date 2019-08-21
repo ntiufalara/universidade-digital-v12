@@ -1,5 +1,6 @@
 db_data_odoo12/
 db_backup_odoo12/
+storage/
 .idea/
 venv/
 

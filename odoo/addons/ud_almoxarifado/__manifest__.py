@@ -1,10 +1,10 @@
 # encoding: UTF-8
 
 {
-    "name": u"Almoxarifado UD",
+    "name": "Almoxarifado UD",
     "version": "2.0",
-    "category": u"Universidade Digital",
-    "description": u"""Repositório institucional controlado pela biblioteca do campus.""",
+    "category": "Universidade Digital",
+    "description": """Repositório institucional controlado pela biblioteca do campus.""",
     "author": "NTI UFAL Arapiraca",
     "depends": ["ud"],
     "data": [

@@ -1,11 +1,10 @@
-# encoding: UTF-8
 from odoo import models, fields
 
 
 class CorrigirTitulacaoOrientador(models.TransientModel):
     _name = 'ud.biblioteca.corrigir_titulacao.orientador.wizard'
 
-    titulacao_id = fields.Many2one('ud.biblioteca.orientador.titulacao', u'Titulação', required=True)
+    titulacao_id = fields.Many2one('ud.biblioteca.orientador.titulacao', 'Titulação', required=True)
 
     def substituir_titulacao(self):
         """

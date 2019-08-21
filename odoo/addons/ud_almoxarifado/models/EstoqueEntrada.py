@@ -1,4 +1,3 @@
-# encoding: UTF-8
 import logging
 from odoo import models, fields, api
 from odoo.exceptions import ValidationError
@@ -14,22 +13,22 @@ class EstoqueEntrada(models.Model):
 
     _order = 'id desc'
 
-    name = fields.Char(u'Código', compute='get_name', readonly=True)
-    data_entrada = fields.Datetime(u'Data', default=fields.datetime.now(), readonly=True)
-    quantidade = fields.Integer(u'Quantidade', required=True)
+    name = fields.Char('Código', compute='get_name', readonly=True)
+    data_entrada = fields.Datetime('Data', default=fields.datetime.now(), readonly=True)
+    quantidade = fields.Integer('Quantidade', required=True)
     tipo = fields.Selection([
         ("fornecedor", u"Fornecedor"),
         ("estorno", u"Estorno"),
         ("devolucao", u"Devolução")
     ], u"Tipo", default='fornecedor', required=True)
-    almoxarifado_id = fields.Many2one('ud.almoxarifado.almoxarifado', u'Almoxarifado',
+    almoxarifado_id = fields.Many2one('ud.almoxarifado.almoxarifado', 'Almoxarifado',
                                       default=lambda self: self.get_almoxarifado())
-    estoque_id = fields.Many2one('ud.almoxarifado.estoque', u'Item do estoque', ondelete='cascade')
-    produto_id = fields.Many2one('ud.almoxarifado.produto', u'Produto', ondelete='set null', required=True)
-    fornecedor_id = fields.Many2one('ud.almoxarifado.fornecedor', u'Fornecedor')
-    solicitacao_id = fields.Many2one('ud.almoxarifado.solicitacao', u'Solicitação')
-    observacao = fields.Text(u'Observações')
-    remessa_id = fields.Many2one('ud.almoxarifado.remessa_entrada', u'Remessa')
+    estoque_id = fields.Many2one('ud.almoxarifado.estoque', 'Item do estoque', ondelete='cascade')
+    produto_id = fields.Many2one('ud.almoxarifado.produto', 'Produto', ondelete='set null', required=True)
+    fornecedor_id = fields.Many2one('ud.almoxarifado.fornecedor', 'Fornecedor')
+    solicitacao_id = fields.Many2one('ud.almoxarifado.solicitacao', 'Solicitação')
+    observacao = fields.Text('Observações')
+    remessa_id = fields.Many2one('ud.almoxarifado.remessa_entrada', 'Remessa')
 
     def process_domain(self):
         """

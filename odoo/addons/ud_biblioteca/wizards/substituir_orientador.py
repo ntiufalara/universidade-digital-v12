@@ -1,14 +1,12 @@
-# encoding: UTF-8
-
 from odoo import models, fields, api
 
 
 class SubstituirOrientador(models.TransientModel):
     _name = 'ud.biblioteca.substituir_orientador.wizard'
 
-    novo_orientador = fields.Char(u'Nome', required=True)
-    ultimo_nome = fields.Char(u'Último nome', required=True)
-    titulacao_id = fields.Many2one('ud.biblioteca.orientador.titulacao', u'Titulação', required=True)
+    novo_orientador = fields.Char('Nome', required=True)
+    ultimo_nome = fields.Char('Último nome', required=True)
+    titulacao_id = fields.Many2one('ud.biblioteca.orientador.titulacao', 'Titulação', required=True)
 
     def substituir_orientador(self):
         """
