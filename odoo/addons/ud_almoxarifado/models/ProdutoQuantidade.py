@@ -31,6 +31,7 @@ class ProdutoQuantidade(models.Model):
     def get_name(self):
         self.name = self.estoque_id.name
 
+    @api.one
     @api.constrains('quantidade')
     def valida_quantidade(self):
         """
