@@ -19,6 +19,9 @@ class EstoqueSaida(models.Model):
     solicitacao_id = fields.Many2one('ud.almoxarifado.solicitacao', u'Solicitação')
     remessa_id = fields.Many2one('ud.almoxarifado.remessa_saida', u'Remessa')
 
+    solicitante = fields.Char(u'Solicitante', compute='get_solicitante', readonly=True, store=True)
+    setor = fields.Char(u'Setor', compute='get_setor', readonly=True, store=True)
+
     def process_domain(self):
         """
         Usado para filtrar as listas apenas com itens aos quais o responsável tem acesso.
@@ -54,3 +57,11 @@ class EstoqueSaida(models.Model):
 
     def get_almoxarifado(self):
         return self.env.context.get('almoxarifado_id')
+
+    @api.one
+    def get_solicitante(self):
+        self.solicitante = self.solicitacao_id.solicitante_id.name#self.env.context.get('solicitacao_id')
+
+    @api.one
+    def get_setor(self):
+        self.setor = self.solicitacao_id.setor_id.name

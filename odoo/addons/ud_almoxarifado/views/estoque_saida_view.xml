@@ -24,6 +24,8 @@
             <field name="arch" type="xml">
                 <tree string="Saídas" create="0">
                     <field name="name"/>
+                    <field name="solicitante"/>
+                    <field name="setor"/>
                     <field name="estoque_id"/>
                     <field name="quantidade"/>
                     <field name="data_saida"/>
