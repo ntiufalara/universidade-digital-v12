@@ -107,8 +107,8 @@
             <field name="arch" type="xml">
                 <tree string="Publicações">
                     <field name="name"/>
-                    <field name="autor_ids"/>
-                    <field name="orientador_ids"/>
+                    <field name="autor_ids"  widget="many2many_tags"/>
+                    <field name="orientador_ids"  widget="many2many_tags"/>
                     <field name="curso_id"/>
                     <field name="ano_pub"/>
                     <field name="visualizacoes" sum="Total de visualizações"/>
