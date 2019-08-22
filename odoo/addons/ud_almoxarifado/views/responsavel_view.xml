@@ -18,6 +18,7 @@
                     <field name="name"/>
                     <field name="campus_id"/>
                     <field name="polo_id"/>
+                    <field name="almoxarifado_ids" widget="many2many_tags"/>
                 </tree>
             </field>
         </record>
