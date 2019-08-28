@@ -17,7 +17,7 @@ class Autor(models.Model):
 
     display_name = fields.Char(u'Nome', compute='get_name', stored=True)
     name = fields.Char(u'Nome', required=True)
-    ultimo_nome = fields.Char(u'Último nome', required=True)
+    ultimo_nome = fields.Char(u'Sobrenome', required=True)
     contato = fields.Char(u'E-mail')
 
     @api.multi
