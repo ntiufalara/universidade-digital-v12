@@ -33,6 +33,7 @@
                                 <group>
                                     <field name="name" autofocus="true"/>
                                     <field name="ano_pub" class="campo_ano"/>
+                                    <field name="data_defesa"/>
                                     <field name="autor_ids" widget="many2many_tags"/>
                                     <field name="tipo_id"/>
                                     <field name="autorizar_publicacao"/>
@@ -51,6 +52,7 @@
                                     <field name="bibliotecario_responsavel"/>
                                     <field name="create_date" readonly="1"/>
                                 </group>
+
                             </group>
                             <group string="Resumo">
                                 <field name="resumo" nolabel="1"/>

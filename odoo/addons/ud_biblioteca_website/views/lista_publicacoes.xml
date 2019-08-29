@@ -214,6 +214,10 @@
                                             <span t-field="pub.create_date" t-options="{'format': 'dd/MM/yyyy'}"></span>
                                         </div>
                                         <div class="publicacao-detalhes">
+                                            <strong>Data da defesa:</strong>
+                                            <span t-field="pub.data_defesa" t-options="{'format': 'dd/MM/yyyy'}"></span>
+                                        </div>
+                                        <div class="publicacao-detalhes">
                                             <strong>Orientador(es):</strong>
                                             <t t-foreach="pub.orientador_ids" t-as="orientador">
                                                 <span t-esc="orientador.display_name"></span><t t-if="len(pub.orientador_ids) > 1 and orientador != pub.orientador_ids[-1]">;<br/></t>
