@@ -49,6 +49,12 @@
                     </div>
                     <div class="list-group-item">
                         <div class="row">
+                            <strong class="col-sm-4 text-sm-right">Data da defesa</strong>
+                            <div class="col-sm-8" t-esc="pub.data_defesa"></div>
+                        </div>
+                    </div>
+                    <div class="list-group-item">
+                        <div class="row">
                             <strong class="col-sm-4 text-sm-right">Curso/Outros</strong>
                             <div class="col-sm-8" t-esc="pub.curso_id.name"></div>
                         </div>
