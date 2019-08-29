@@ -58,6 +58,7 @@
                                 <field name="titulacao_id" attrs="{'readonly': [('titulacao_id', '!=', False)]}"/>
                             </group>
                             <group>
+                                <field name="lattes"/>
                                 <field name="contato"/>
                                 <field name="ativo" readonly="1"/>
                             </group>
@@ -67,6 +68,9 @@
                         </group>
                         <group string="Coorientador em">
                             <field name="publicacao_coorientador_ids" readonly="1" nolabel="1"/>
+                        </group>
+                        <group string="Membro da banca em">
+                            <field name="publicacao_membro_banca_ids" readonly="1" nolabel="1"/>
                         </group>
                     </sheet>
                 </form>
@@ -86,6 +90,7 @@
                         </group>
                         <group>
                             <field name="titulacao_id" attrs="{'readonly': [('titulacao_id', '!=', False)]}"/>
+                            <field name="lattes"/>
                         </group>
                     </group>
                 </form>

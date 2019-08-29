@@ -106,6 +106,17 @@
                             </div>
                         </div>
                     </div>
+                    <div t-if="pub.membro_banca_ids" class="list-group-item">
+                        <div class="row">
+                            <strong class="col-sm-4 text-sm-right">Membros da Banca</strong>
+                            <div class="col-sm-8">
+                                <t t-foreach="pub.membro_banca_ids" t-as="membro_banca">
+                                    <span t-esc="membro_banca.display_name"></span>.
+                                    <br/>
+                                </t>
+                            </div>
+                        </div>
+                    </div>
                     <div class="list-group-item">
                         <div class="row">
                             <strong class="col-sm-4 text-sm-right">Palavras-chave</strong>

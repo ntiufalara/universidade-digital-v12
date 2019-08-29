@@ -47,6 +47,8 @@
                                            widget="many2many_tags" options="{'no_quick_create': True}"/>
                                     <field name="coorientador_ids"
                                            widget="many2many_tags" options="{'no_quick_create': True}"/>
+                                    <field name="membro_banca_ids"
+                                           widget="many2many_tags" options="{'no_quick_create': True}"/>
                                     <field name="palavras_chave_ids" widget="many2many_tags"
                                            placeholder="biotecnologia,microbiologia,irrigação"/>
                                     <field name="bibliotecario_responsavel"/>

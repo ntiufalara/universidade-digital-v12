@@ -17,16 +17,19 @@ class Orientador(models.Model):
 
     # Nome preenchido pelo usuário
     name = fields.Char(u'Nome', required=True)
-    ultimo_nome = fields.Char(u'Ultimo nome', required=True)
+    ultimo_nome = fields.Char(u'Sobrenome', required=True)
     ativo = fields.Boolean(u'Ativo', default=True)
     # Nome de exibição
     display_name = fields.Char(u'Nome', compute='get_name')
+    lattes = fields.Char(u'Lattes')
     contato = fields.Char(u'E-mail')
     titulacao_id = fields.Many2one('ud.biblioteca.orientador.titulacao', u'Titulação')
     publicacao_orientador_ids = fields.Many2many('ud.biblioteca.publicacao', 'publicacao_orientador_rel',
                                                  string=u'Orientador em')
     publicacao_coorientador_ids = fields.Many2many('ud.biblioteca.publicacao', 'publicacao_coorientador_rel',
                                                    string=u'Coorientador em')
+    publicacao_membro_banca_ids = fields.Many2many('ud.biblioteca.publicacao', 'publicacao_membro_banca_rel',
+                                                   string=u'Membro da banca em')
 
     @api.multi
     def name_get(self):

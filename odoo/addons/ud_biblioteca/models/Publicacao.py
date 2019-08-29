@@ -39,6 +39,8 @@ class Publicacao(models.Model):
     coorientador_ids = fields.Many2many('ud.biblioteca.publicacao.orientador', 'publicacao_coorientador_rel',
                                         string='Coorientadores')
     coorientadores_txt = fields.Char(u'Coorientadores')
+    membro_banca_ids = fields.Many2many('ud.biblioteca.publicacao.orientador', 'publicacao_membro_banca_rel',
+                                        string='Membros da Banca')
     anexo_ids = fields.One2many('ud.biblioteca.anexo', 'publicacao_id', u'Anexos em PDF')
     categoria_cnpq_id = fields.Many2many('ud.biblioteca.publicacao.categoria_cnpq', 'categoria_cnpq_ids',
                                          string=u'Categoria CNPQ')
