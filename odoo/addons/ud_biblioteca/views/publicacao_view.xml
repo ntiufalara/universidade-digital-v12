@@ -39,7 +39,8 @@
                                 </group>
 
                                 <group>
-<!--                                     <field name="name2"/>-->
+<!--                                    utilizado para modificar o tipo de char para html-->
+<!--                                    <field name="name2"/>-->
 <!--                                    <field name="name" autofocus="true"/>-->
                                     <field name="ano_pub" class="campo_ano"/>
                                     <field name="data_defesa"/>
@@ -122,7 +123,6 @@
             <field name="arch" type="xml">
                 <tree string="Publicações">
                     <field name="name"/>
-                    <field name="name2"/>
                     <field name="autor_ids"  widget="many2many_tags"/>
                     <field name="orientador_ids"  widget="many2many_tags"/>
                     <field name="curso_id"/>
