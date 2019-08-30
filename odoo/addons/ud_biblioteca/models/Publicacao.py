@@ -15,7 +15,7 @@ class Publicacao(models.Model):
 
     _order = "ano_pub desc"
 
-    name = fields.Char(u'Título', required=True, sanitize=False)
+    name = fields.Html(u'Título', required=True, sanitize=False)
     name2 = fields.Html(u'Título', required=True, sanitize=False)
 
     # autor_id = fields.Many2one('ud.biblioteca.publicacao.autor', u'Autor', required=False)
@@ -29,7 +29,7 @@ class Publicacao(models.Model):
     curso_indefinido = fields.Boolean(u"Outro curso")
     curso_indefinido_detalhes = fields.Char(u"Curso")
 
-    observacoes = fields.Char(u'Observações', sanitize=False)
+    observacoes = fields.Html(u'Observações', sanitize=False)
     observacoes2 = fields.Html(u'Observações', sanitize=False)
 
     palavras_chave_ids = fields.Many2many('ud.biblioteca.p_chave', 'publicacao_p_chave_rel', string=u'Palavras-chave',
