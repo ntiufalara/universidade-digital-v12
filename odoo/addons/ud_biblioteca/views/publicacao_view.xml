@@ -29,9 +29,18 @@
                                            attrs="{'readonly': [('polo_id', '!=', False)]}"/>
                                 </group>
                             </group>
+
                             <group string="Informações da publicação">
+
                                 <group>
-                                    <field name="name" autofocus="true"/>
+                                    <field name="name"/>
+                                </group>
+                                <group>
+                                </group>
+
+                                <group>
+<!--                                     <field name="name2"/>-->
+<!--                                    <field name="name" autofocus="true"/>-->
                                     <field name="ano_pub" class="campo_ano"/>
                                     <field name="data_defesa"/>
                                     <field name="autor_ids" widget="many2many_tags"/>
@@ -55,6 +64,7 @@
                                     <field name="create_date" readonly="1"/>
                                 </group>
 
+
                             </group>
                             <group string="Resumo">
                                 <field name="resumo" nolabel="1"/>
@@ -70,6 +80,7 @@
                             </group>
                             <group string="Observações">
                                 <field name="observacoes" nolabel="1"/>
+<!--                                 <field name="observacoes2" nolabel="1"/>-->
                             </group>
                         </div>
                     </sheet>
@@ -111,6 +122,7 @@
             <field name="arch" type="xml">
                 <tree string="Publicações">
                     <field name="name"/>
+                    <field name="name2"/>
                     <field name="autor_ids"  widget="many2many_tags"/>
                     <field name="orientador_ids"  widget="many2many_tags"/>
                     <field name="curso_id"/>

@@ -15,7 +15,9 @@ class Publicacao(models.Model):
 
     _order = "ano_pub desc"
 
-    name = fields.Char(u'Título', required=True)
+    name = fields.Char(u'Título', required=True, sanitize=False)
+    name2 = fields.Html(u'Título', required=True, sanitize=False)
+
     # autor_id = fields.Many2one('ud.biblioteca.publicacao.autor', u'Autor', required=False)
     autor_ids = fields.Many2many('ud.biblioteca.publicacao.autor', 'ud_biblioteca_publicacao_autores', 'pub_id',
                                  'autor_id', u'Autores')
@@ -26,7 +28,10 @@ class Publicacao(models.Model):
     curso_id = fields.Many2one('ud.curso', u'Curso', ondelete='set null')
     curso_indefinido = fields.Boolean(u"Outro curso")
     curso_indefinido_detalhes = fields.Char(u"Curso")
-    observacoes = fields.Text(u'Observações')
+
+    observacoes = fields.Char(u'Observações', sanitize=False)
+    observacoes2 = fields.Html(u'Observações', sanitize=False)
+
     palavras_chave_ids = fields.Many2many('ud.biblioteca.p_chave', 'publicacao_p_chave_rel', string=u'Palavras-chave',
                                           required=True)
     polo_id = fields.Many2one('ud.polo', u'Polo', required=True, default=lambda self: self.busca_polo())
@@ -343,3 +348,21 @@ class Publicacao(models.Model):
                     obj.palavras_chave_ids |= p_chave
                     obj.autor_ids |= autor
         _logger.warning(cont)
+
+#para mudança do tipo do campo name e observacoes de char para html
+# Algoritmo
+# criar novo campo nome2
+# copia texto para esse novo campo (chamar mudanca_tipo_campos1)
+# muda o tipo do nome 1 char para html
+# copia texto de nome2 para nome1 (chamar mudanca_tipo_campos2)
+# remove nome2
+def mudanca_tipo_campos1(publicacoes):
+    for pub in publicacoes:
+       pub.name2 = pub.name
+       pub.observacoes2 = pub.observacoes
+
+
+def mudanca_tipo_campos2(publicacoes):
+    for pub in publicacoes:
+       pub.name = pub.name2
+       pub.observacoes = pub.observacoes2
