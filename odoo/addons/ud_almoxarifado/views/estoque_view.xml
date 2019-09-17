@@ -15,7 +15,7 @@
             <field name="name">Estoques</field>
             <field name="model">ud.almoxarifado.estoque</field>
             <field name="arch" type="xml">
-                <tree string="Estoques">
+                <tree string="Estoques" decoration-danger="estoque_min>quantidade">
                     <!--<field name="name"/>-->
                     <field name="produto_id"/>
                     <field name="quantidade"/>
