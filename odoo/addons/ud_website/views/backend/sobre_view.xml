@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+  <data>
+
+    <record id="ud_website_sobre_action" model="ir.actions.act_window">
+      <field name="name">Sobre</field>
+      <field name="res_model">ud_website.sobre</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="view_sobre_form" model="ir.ui.view">
+      <field name="name">Sobre</field>
+      <field name="model">ud_website.sobre</field>
+      <field name="type">form</field>
+      <field name="arch" type="xml">
+        <form string="Sobre">
+          <sheet>
+            <group string="Texto">
+              <field name="texto" nolabel="1" />
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="view_sobre_tree" model="ir.ui.view">
+      <field name="name">Sobre</field>
+      <field name="model">ud_website.sobre</field>
+      <field name="type">tree</field>
+      <field name="arch" type="xml">
+        <tree string="Sobre">
+          <field name="id"/>
+        </tree>
+      </field>
+    </record>
+
+  </data>
+</odoo>

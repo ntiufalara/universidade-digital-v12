@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+  <data>
+
+    <template id="ud_website.menu_colaboradores" inherit_id="ud_website.layout">
+      <xpath expr="//li[@id='menu_inicio']" position="after">
+        <li class="nav-item">
+          <a href="/colaboradores/" class="nav-link">Sobre</a>
+        </li>
+      </xpath>
+    </template>
+
+    <template id="ud_website.colaboradores">
+      <t t-call="ud_website.layout">
+
+        <div class="container">
+          <div class="page-title py-4">
+            <h1>Sobre o projeto</h1>
+          </div>
+
+          <t t-raw="sobre.texto"></t>
+
+          <div class="py-4">
+            <h2>Colaboradores</h2>
+          </div>
+
+          <div class="row">
+            <div class="col-md-3" t-foreach="colaboradores" t-as="colaborador">
+
+              <div class="card">
+                <div class="card-body">
+                  <strong t-field="colaborador.name"></strong>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </t>
+    </template>
+
+  </data>
+</odoo>

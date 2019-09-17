@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_ud_website_colaborador,access_ud_website_colaborador,ud_website.model_ud_website_colaborador,base.group_erp_manager,1,1,1,1
+access_ud_website_colaborador_admin_ud,access_ud_website_colaborador_admin_ud,ud_website.model_ud_website_colaborador,ud.admin_ud,1,1,1,1
+access_ud_website_sobre_admin_ud,access_ud_website_sobre_admin_ud,ud_website.model_ud_website_sobre,ud.admin_ud,1,1,1,1

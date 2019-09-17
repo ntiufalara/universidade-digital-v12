@@ -4,7 +4,7 @@
     <data>
 
         <!-- MENUS -->
-        <menuitem id="ud_root" name="Núcleo" sequence="0" icon="terp-partner"
+        <menuitem id="ud_root" name="Núcleo" sequence="0"
                   web_icon="ud,static/description/icon.png" groups="usuario_ud"/>
         <menuitem id="menu_estrutura" name="Estrutura" parent="ud_root" sequence="0" />
         <menuitem id="menu_campus" parent="menu_estrutura" action="ud_campus_action" sequence="2"/>

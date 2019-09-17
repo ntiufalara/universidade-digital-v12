@@ -14,8 +14,15 @@
     "installable": True,
     "depends": ['web', 'ud'],
     "data": [
-        # 'views/assets.xml',
+        # Views Frontend
         'views/website.xml',
-        # 'views/ud_layout.xml',
+        'views/colaboradores.xml',
+        # Views Backend
+        'views/backend/colaborador_view.xml',
+        'views/backend/sobre_view.xml',
+        'views/backend/menus.xml',
+
+        # Security
+        'security/ir.model.access.csv',
     ],
 }

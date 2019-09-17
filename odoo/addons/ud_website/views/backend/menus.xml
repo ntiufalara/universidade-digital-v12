@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+  <data>
+    <menuitem id="ud_website_menu_root" name="Site" groups="base.group_erp_manager" parent="base.menu_administration" />
+    <menuitem
+      id="ud_website_colaborador_menu"
+      name="Colaboradores"
+      groups="base.group_erp_manager,ud.admin_ud"
+      action="ud_website_colaborador_action"
+      sequence="600"
+      parent="ud_website_menu_root"/>
+    <menuitem
+      id="ud_website_sobre_menu"
+      name="Texto Sobre"
+      groups="base.group_erp_manager,ud.admin_ud"
+      action="ud_website_sobre_action"
+      sequence="600"
+      parent="ud_website_menu_root"/>
+  </data>
+</odoo>

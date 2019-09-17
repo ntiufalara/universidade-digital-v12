@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+  <data>
+
+    <record id="ud_website_colaborador_action" model="ir.actions.act_window">
+      <field name="name">Colaboradores</field>
+      <field name="res_model">ud_website.colaborador</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="view_colaborador_form" model="ir.ui.view">
+      <field name="name">Colaborador</field>
+      <field name="model">ud_website.colaborador</field>
+      <field name="type">form</field>
+      <field name="arch" type="xml">
+        <form string="Colaborador">
+          <sheet>
+            <group>
+              <group>
+                <field name="name"/>
+              </group>
+            </group>
+            <group string="Descrição">
+              <field name="descricao" nolabel="1" />
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="view_colaborador_tree" model="ir.ui.view">
+      <field name="name">Colaborador</field>
+      <field name="model">ud_website.colaborador</field>
+      <field name="type">tree</field>
+      <field name="arch" type="xml">
+        <tree string="Colaborador">
+          <field name="name"/>
+        </tree>
+      </field>
+    </record>
+
+  </data>
+</odoo>
