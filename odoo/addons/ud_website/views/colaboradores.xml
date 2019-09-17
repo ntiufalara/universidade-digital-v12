@@ -31,6 +31,7 @@
               <div class="card">
                 <div class="card-body">
                   <strong t-field="colaborador.name"></strong>
+                  <small t-raw="colaborador.descricao"></small>
                 </div>
               </div>
 
