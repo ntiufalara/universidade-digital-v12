@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data>
+
+        <menuitem id="restaurante_root" name="Restaurante" web_icon="ud_almoxarifado,static/description/icon.png"/>
+
+
+        <menuitem id="ru_gru" name="GRU" parent="restaurante_root"
+                  action="ud_ru_gru_action" sequence="0"/>
+        <menuitem id="ru_refeicao" name="Refeições" parent="restaurante_root"
+                  action="ud_ru_refeicao_action" sequence="1"/>
+
+        <menuitem id="ru_movimentacao" name="Movimentações" parent="restaurante_root"
+                  action="ud_ru_movimentacao_action" sequence="3"/>
+
+        <menuitem id="ru_restaurante_top" name="Gerenciar" parent="restaurante_root" sequence="4"/>
+
+        <menuitem id="ru_pessoa" name="Pessoa" parent="ru_restaurante_top"
+                  action="ud_ru_pessoa_action" sequence="2"/>
+        <menuitem id="ru_refeicoes_tipo" name="Opções" parent="ru_restaurante_top"
+                  action="ud_ru_refeicao_tipo_action" />
+        <menuitem id="ru_responsavel" name="Responsáveis" parent="ru_restaurante_top"
+                  action="ud_ru_responsavel_action" />
+        <menuitem id="ru_restaurante" name="Restaurantes" parent="ru_restaurante_top"
+                  action="ud_ru_restaurante_action" />
+
+
+        <menuitem id="ru_relatorio" name="Relatório" parent="restaurante_root"
+                  action="ud_ru_movimentacao_graph_action" sequence="5"/>
+
+        <record model="ir.actions.act_url" id="action_google_url">
+            <field name="name">Almoçar</field>
+            <field name="url">/ud_ru/almocar/</field>
+            <field name="target">new</field>
+        </record>
+        <menuitem id="menu_google_url" name="Google" parent="restaurante_root" action="action_google_url"
+                  sequence="6" />
+
+<!--        <menuitem id="restaurante_gerenciar" name="Gerenciar" parent="restaurante_root"/>-->
+<!--        <menuitem id="restaurante_responsavel" name="Responsável" parent="restaurante_gerenciar"-->
+<!--                  action="ud_restaurante_responsavel_action" sequence="0"-->
+<!--                  groups="group_ud_restaurante_administrador"/>-->
+
+<!--        <menuitem id="restaurante_restaurante" name="Gerenciar restaurantes" parent="restaurante_gerenciar"-->
+<!--                  action="ud_restaurante_restaurante_action" sequence="1"-->
+<!--                  groups="group_ud_restaurante_administrador"/>-->
+
+<!--        <menuitem id="restaurante_relatorios" name="Relatórios" parent="restaurante_gerenciar"-->
+<!--                  groups="group_ud_restaurante_administrador,group_ud_restaurante_gerente"/>-->
+
+<!--        <menuitem id="restaurante_relatorio_entrada" name="Entradas" parent="restaurante_relatorios"-->
+<!--                  action="ud_restaurante_estoque_entrada_graph_action"/>-->
+
+<!--        <menuitem id="restaurante_relatorio_saida" name="Saídas" parent="restaurante_relatorios"-->
+<!--                  action="ud_restaurante_estoque_saida_graph_action"/>-->
+
+<!--        <record id="action_academy_teachers" model="ir.actions.act_window">-->
+<!--            <field name="name">Gru teste</field>-->
+<!--            <field name="res_model">ud.ur.gru</field>-->
+<!--        </record>-->
+
+<!--          <record id="academy_teacher_form" model="ir.ui.view">-->
+<!--            <field name="name">GRU: form</field>-->
+<!--            <field name="model">ud.ru.gru</field>-->
+<!--            <field name="arch" type="xml">-->
+<!--              <form>-->
+<!--                <sheet>-->
+<!--                  <label for="name"/> <field name="name"/>-->
+<!--                  <label for="valor"/>-->
+<!--                  <field name="valor"/>-->
+<!--                </sheet>-->
+<!--              </form>-->
+<!--            </field>-->
+<!--          </record>-->
+
+
+<!--          <menuitem sequence="0" id="menu_academy" name="Academy"/>-->
+<!--          <menuitem id="menu_academy_content" parent="menu_academy"-->
+<!--                    name="Academy Content"/>-->
+<!--          <menuitem id="menu_academy_content_teachers"-->
+<!--                    parent="menu_academy_content"-->
+<!--                    action="action_academy_teachers"/>-->
+    </data>
+</odoo>

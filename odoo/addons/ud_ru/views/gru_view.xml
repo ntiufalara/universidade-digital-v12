@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data>
+
+        <record model="ir.actions.act_window" id="ud_ru_gru_action">
+            <field name="name">GRU</field>
+            <field name="res_model">ud.ru.gru</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Clique para adicionar uma nova GRU
+                </p>
+                <p>
+
+                </p>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ud_ru_gru_tree">
+            <field name="name">GRU</field>
+            <field name="model">ud.ru.gru</field>
+            <field name="arch" type="xml">
+                <tree string="GRU">
+                    <field name="name"/>
+                    <field name="valor"/>
+                    <field name="data_pagamento"/>
+                    <field name="pessoa_id"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="ud_ru_gru_form">
+            <field name="name">GRU</field>
+            <field name="model">ud.ru.gru</field>
+            <field name="arch" type="xml">
+                <form string="GRU">
+                    <header>
+                        <button name="botao_aprovar" states="aguardando" string="Aprovar" type="object" class="oe_highlight" />
+<!--                                groups="ud_ru.group_ud_ru_gerente"/>-->
+                        <button name="botao_rejeitar" states="aguardando" string="Rejeitar" type="object" />
+<!--                                groups="ud_ru.group_ud_ru_gerente"/>-->
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="valor"/>
+                            </group>
+                            <group>
+                                <field name="data_pagamento"/>
+                            </group>
+                        </group>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data>
+
+        <record model="ir.actions.act_window" id="ud_ru_movimentacao_action">
+            <field name="name">Movimentação</field>
+            <field name="res_model">ud.ru.movimentacao</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Clique para adicionar uma nova Movimentação
+                </p>
+                <p>
+
+                </p>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="ud_ru_movimentacao_tree">
+            <field name="name">Movimentação</field>
+            <field name="model">ud.ru.movimentacao</field>
+            <field name="arch" type="xml">
+                <tree string="Movimentação">
+                    <field name="tipo"/>
+                    <field name="valor"/>
+                    <field name="pessoa_id"/>
+                    <field name="data_hora"/>
+                    <field name="codigo"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ud_ru_movimentacao_search">
+            <field name="name">Busca</field>
+            <field name="model">ud.ru.movimentacao</field>
+            <field name="arch" type="xml">
+                <search string="Buscar">
+                    <field name="pessoa_id" filter_domain="" string="Usuário"/>
+                    <field name="data_hora" filter_domain="" string="Data"/>
+                    <field name="tipo"/>
+                    <group expand="0" string="Agrupar por:">
+                        <filter string="Pessoa" name="pessoa" domain="[]" context="{'group_by':'pessoa_id'}"/>
+                        <filter string="Data" name="data" domain="[]"
+                                context="{'group_by':'data_hora'}"/>
+                        <filter string="Tipo" name="tipo" domain="[]"
+                                context="{'group_by':'tipo'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ud_ru_movimentacao_form">
+            <field name="name">Movimentação</field>
+            <field name="model">ud.ru.movimentacao</field>
+            <field name="arch" type="xml">
+                <form string="Movimentação">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="codigo"/>
+                                <field name="valor"/>
+                            </group>
+                            <group>
+                                <field name="data_hora"/>
+                            </group>
+                        </group>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

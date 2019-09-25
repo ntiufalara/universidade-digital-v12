@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data>
+
+        <record model="ir.actions.act_window" id="ud_ru_pessoa_action">
+            <field name="name">Pessoa</field>
+            <field name="res_model">res.users</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Clique para adicionar uma nova Pessoa
+                </p>
+                <p>
+
+                </p>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ud_ru_pessoa_tree">
+            <field name="name">Pessoa</field>
+            <field name="model">res.users</field>
+            <field name="arch" type="xml">
+                <tree string="Pessoa">
+                    <field name="name"/>
+                    <field name="cpf"/>
+                    <field name="saldo"/>
+<!--                    <field name="data_pagamento"/>-->
+                </tree>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="ud_ru_pessoa_form">
+            <field name="name">Pessoa</field>
+            <field name="model">res.users</field>
+            <field name="arch" type="xml">
+                <form string="Pessoa">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="saldo"/>
+                            </group>
+<!--                            <group>-->
+<!--                                <field name="data_pagamento"/>-->
+<!--                            </group>-->
+                        </group>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

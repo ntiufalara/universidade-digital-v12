@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data>
+
+        <record model="ir.actions.act_window" id="ud_ru_responsavel_action">
+            <field name="name">Responsável</field>
+            <field name="res_model">ud.ru.responsavel</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Clique para adicionar um novo Responsável
+                </p>
+                <p>
+
+                </p>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ud_ru_responsavel_tree">
+            <field name="name">Responsaveis</field>
+            <field name="model">ud.ru.restaurante</field>
+            <field name="arch" type="xml">
+                <tree string="Responsaveis">
+                    <field name="name"/>
+<!--                    <field name="polo_id"/>-->
+<!--                    <field name="campus_id"/>-->
+<!--                    <field name="ru_ids" widget="many2many_tags"/>-->
+                </tree>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="ud_ru_responsavel_form">
+            <field name="name">Responsável</field>
+            <field name="model">ud.ru.responsavel</field>
+            <field name="arch" type="xml">
+                <form string="Responsável">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="pessoa_id"/>
+                            </group>
+                            <group>
+                                <field name="campus_id"/>
+                                <field name="polo_id"/>
+                            </group>
+                        </group>
+                        <group string="Restaurantes">
+                            <field name="ru_ids"/>
+                        </group>
+<!--                        <group string="Observações">-->
+<!--                            <field name="observacoes"/>-->
+<!--                        </group>-->
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data>
+
+        <record model="ir.actions.act_window" id="ud_ru_movimentacao_graph_action">
+            <field name="name">Relatório</field>
+            <field name="res_model">ud.ru.movimentacao</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">graph,tree</field>
+<!--            <field name="context">{'search_default_tipo': 'valor'}</field>-->
+        </record>
+
+        <record model="ir.ui.view" id="ud_ru_movimentacao_graph">
+            <field name="name">Movimentaçãos</field>
+            <field name="model">ud.ru.movimentacao</field>
+            <field name="arch" type="xml">
+                <graph type="bar" string="Movimentaçãos por período">
+                    <field name="valor"/>
+<!--                    <field name="tipo" type="measure"/>-->
+                    <field name="data_hora"/>
+                </graph>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

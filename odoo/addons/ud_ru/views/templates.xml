@@ -1,0 +1,144 @@
+
+
+<odoo>
+
+<!--    <template id="ud_ru.menu_almocar" inherit_id="ud_ru.layout">-->
+<!--      <xpath expr="//li[@id='ru_relatorio']" position="after">-->
+<!--        <li class="nav-item">-->
+<!--          <a href="/ud_ru/almocar/" class="nav-link">Sobre</a>-->
+<!--        </li>-->
+<!--      </xpath>-->
+<!--    </template>-->
+
+        <template id="index">
+            <t t-call="ud_website.layout">
+                <t t-set="title">Almoço</t>
+
+
+
+                <!-- Campos de busca -->
+                <div class="bg-tema py-4">
+                    <div class="buscar text-center ">
+
+                        <h2 class="section-title pt-3 font-weight-bold">Almoço</h2>
+
+                        <object class="acesse-vector mx-4 " width="400" height="100"
+                                    data="/ud_ru/static/src/img/prato-almoco.svg"
+                                    type="image/svg+xml"></object>
+
+                        <div class="d-flex justify-content-center text-white">
+                            <form class="form-inline" action="/ud_ru/almocar/">
+                                <div class="buscar-input">
+                                    <label class="sr-only" for="cpf">CPF</label>
+                                    <input type="text" class="form-control mb-2 mr-0 buscar-sombra " id="cpf" name="cpf"
+                                           placeholder="Digite o CPF"/>
+
+                                </div>
+
+                                <button type="submit" class="btn btn-primary btn-tema mb-2 buscar-sombra">Registar
+                                </button>
+                            </form>
+                        </div>
+
+                        <t t-if="msg_ok">
+                            <div class="container">
+                              <div class="alert alert-info mt16" role="alert">
+                                <strong><t t-esc="msg_ok"/></strong>
+                              </div>
+                            </div>
+                        </t>
+
+                        <t t-if="msg_alerta">
+                            <div class="container">
+                              <div class="alert alert-danger mt16" role="alert">
+                                <strong><t t-esc="msg_alerta"/></strong>
+                              </div>
+                            </div>
+                        </t>
+
+                    </div>
+                </div>
+            </t>
+        </template>
+
+
+
+    <template id="cadastro">
+            <t t-call="ud_website.layout">
+                <t t-set="title">Cadastro</t>
+                <div class="container">
+                    <div class=" text-center ">
+                        <h3 class="section-title  font-weight-bold">Página de cadastro</h3>
+                        <div class="d-flex justify-content-center text-white">
+                            <form class="form-inline" action="/cadastrar/">
+                                <div >
+
+                                    <label  for="name">Nome Completo</label>
+                                    <input type="text" class="form-control" id="name" name="name"
+                                           placeholder="Digite seu nome completo" />
+
+                                    <label  for="cpf">CPF</label>
+                                    <input type="text" class="form-control mb-2 mr-0 buscar-sombra " id="cpf" name="cpf"
+                                           placeholder="Digite seu CPF" />
+
+                                    <label  for="cpf">RG</label>
+                                    <input type="text" class="form-control mb-2 mr-0 buscar-sombra " id="rg" name="rg"
+                                           placeholder="Digite seu RG" />
+
+                                    <label for="email">E-mail</label>
+                                    <input type="text" class="form-control" id="email" name="email"
+                                           placeholder="Digite seu e-mail" />
+
+<!--                                    #########################-->
+                                    <label for="campus">Campus</label>
+                                    <input type="text" class="form-control" id="campus" name="campus"
+                                           placeholder="Digite sua matrícula" />
+
+                                    <label for="polo">Polo</label>
+                                    <input type="text" class="form-control" id="polo" name="polo"
+                                           placeholder="Digite sua matrícula" />
+
+                                    <label for="curso">Curso</label>
+                                    <input type="text" class="form-control" id="curso" name="curso"
+                                           placeholder="Digite sua matrícula" />
+<!--                                    ######################### -->
+                                    <label for="matricula">Matrícula</label>
+                                    <input type="text" class="form-control" id="matricula" name="matricula"
+                                           placeholder="Digite sua matrícula" />
+
+
+
+                                    <label for="senha">Senha</label>
+                                    <input type="password" class="form-control" id="senha" name="senha"
+                                           placeholder="Senha" />
+
+                                    <label for="senha">Confirmar senha</label>
+                                    <input type="password" class="form-control" id="confirmar_senha" name="confirmar_senha"
+                                           placeholder="Digite novamente a senha" />
+
+                                    <br></br><br></br>
+
+                                    <button type="submit" class="btn btn-primary btn-tema mb-2 buscar-sombra">REGISTRAR
+                                    </button>
+                                </div>
+
+
+
+
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+
+<!--    <template id="almocar">-->
+<!--            <t t-call="website.layout">-->
+<!--                <t t-set="title">Almocar</t>-->
+
+<!--                <p><h3>Teste</h3></p>-->
+
+<!--    </template>-->
+</odoo>

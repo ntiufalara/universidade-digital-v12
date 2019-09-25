@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data>
+
+        <record model="ir.actions.act_window" id="ud_ru_restaurante_action">
+            <field name="name">Restaurante</field>
+            <field name="res_model">ud.ru.restaurante</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Clique para adicionar um novo Restaurante
+                </p>
+                <p>
+
+                </p>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ud_ru_restaurante_tree">
+            <field name="name">Restaurantes</field>
+            <field name="model">ud.ru.restaurante</field>
+            <field name="arch" type="xml">
+                <tree string="Restaurantes">
+                    <field name="name"/>
+                    <field name="polo_id"/>
+                    <field name="campus_id"/>
+<!--                    <field name="responsaveis_id" widget="many2many_tags"/>-->
+                </tree>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="ud_ru_restaurante_form">
+            <field name="name">Restaurante</field>
+            <field name="model">ud.ru.restaurante</field>
+            <field name="arch" type="xml">
+                <form string="Restaurante">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="campus_id"/>
+                            </group>
+                            <group>
+                                <field name="polo_id"/>
+                            </group>
+                        </group>
+<!--                        <group string="Responsáveis">-->
+<!--                            <field name="responsaveis_id"/>-->
+<!--                        </group>-->
+                        <group string="Observações">
+                            <field name="observacoes"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

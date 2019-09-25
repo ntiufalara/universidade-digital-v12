@@ -1,0 +1,12 @@
+<odoo>
+
+<!--        <template id="cadastro">-->
+<!--            <title>Almoçar</title>-->
+<!--            <t t-foreach="teachers" t-as="teacher">-->
+<!--              <p><t t-esc="teacher"/></p>-->
+<!--            </t>-->
+<!--        </template>-->
+        <!-- <template id="object"> -->
+        <!--   <h1><t t-esc="object.display_name"/></h1> -->
+        <!--   <dl> -->
+</odoo>

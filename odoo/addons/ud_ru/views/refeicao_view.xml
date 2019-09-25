@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data>
+
+        <record model="ir.actions.act_window" id="ud_ru_refeicao_action">
+            <field name="name">Refeição</field>
+            <field name="res_model">ud.ru.refeicao</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Clique para adicionar uma nova Refeição
+                </p>
+                <p>
+
+                </p>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ud_ru_refeicao_tree">
+            <field name="name">Refeição</field>
+            <field name="model">ud.ru.refeicao</field>
+            <field name="arch" type="xml">
+                <tree string="Refeição">
+                    <field name="name"/>
+                    <field name="tipo_refeicao_id"/>
+                    <field name="data_hora"/>
+                    <field name="pessoa_id"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="ud_ru_refeicao_form">
+            <field name="name">Refeição</field>
+            <field name="model">ud.ru.refeicao</field>
+            <field name="arch" type="xml">
+                <form string="Refeição">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="tipo_refeicao_id"/>
+                            </group>
+                            <group>
+                                <field name="data_hora"/>
+                            </group>
+                        </group>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

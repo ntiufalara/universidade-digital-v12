@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data>
+
+        <record model="ir.actions.act_window" id="ud_ru_transferencia_action">
+            <field name="name">Transferência</field>
+            <field name="res_model">ud.ru.transferencia</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Clique para adicionar uma nova Transferência
+                </p>
+                <p>
+
+                </p>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ud_ru_transferencia_tree">
+            <field name="name">Transferência</field>
+            <field name="model">ud.ru.transferencia</field>
+            <field name="arch" type="xml">
+                <tree string="Transferência">
+
+                    <field name="valor"/>
+                    <field name="data_transferencia"/>
+                    <field name="pessoa_id"/>
+                    <field name="destinatario_id"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="ud_ru_transferencia_form">
+            <field name="name">Transferência</field>
+            <field name="model">ud.ru.transferencia</field>
+            <field name="arch" type="xml">
+                <form string="Transferência">
+                    
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="valor"/>
+                            </group>
+                            
+                        </group>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>
