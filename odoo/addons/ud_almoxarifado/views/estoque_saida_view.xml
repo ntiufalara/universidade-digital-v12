@@ -46,10 +46,12 @@
                     <field name="solicitacao_id"/>
                     <group expand="0" string="Agrupar por:">
                         <filter string="Produto" name="produto" domain="[]" context="{'group_by':'estoque_id'}"/>
+                        <filter string="Setor" name="setor" domain="[]" context="{'group_by':'setor'}"/>
                         <filter string="Data" name="data" domain="[]"
                                 context="{'group_by':'data_saida'}"/>
                         <filter string="Almoxarifado" name="almoxarifado" domain="[]"
                                 context="{'group_by':'almoxarifado_id'}"/>
+
                     </group>
                 </search>
             </field>
