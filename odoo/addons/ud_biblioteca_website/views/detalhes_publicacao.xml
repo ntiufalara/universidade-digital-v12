@@ -50,7 +50,7 @@
                     <div class="list-group-item" t-if="pub.data_defesa">
                         <div class="row">
                             <strong class="col-sm-4 text-sm-right">Data da defesa</strong>
-                            <div class="col-sm-8" t-esc="pub.data_defesa.strftime('%d/%m/%Y')"></div>
+                            <div class="col-sm-8" t-field="pub.data_defesa" t-options="{'format': 'dd/MM/yyyy'}"></div>
                         </div>
                     </div>
                     <div class="list-group-item">
