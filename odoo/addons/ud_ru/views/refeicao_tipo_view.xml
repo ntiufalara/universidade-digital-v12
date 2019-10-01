@@ -24,12 +24,10 @@
             <field name="arch" type="xml">
                 <tree string="Opções">
                     <field name="name"/>
-                    <field name="valor_estagiario"/>
-                    <field name="valor_bolsista"/>
+                    <field name="valor_aluno_isencao"/>
                     <field name="valor_aluno"/>
                     <field name="valor_aluno_pos"/>
-                    <field name="valor_tecnico"/>
-                    <field name="valor_docente"/>
+                    <field name="valor_servidor"/>
                     <field name="valor_visitante"/>
                     <field name="ativo"/>
                 </tree>
@@ -54,13 +52,12 @@
                         <group>
                             <group string="Valores">
                                 <group>
-                                    <field name="valor_estagiario"/>
-                                    <field name="valor_bolsista"/>
+                                     <field name="valor_aluno_isencao"/>
                                     <field name="valor_aluno"/>
+                                    <field name="valor_aluno_pos"/>
                                 </group>
                                 <group>
-                                    <field name="valor_tecnico"/>
-                                    <field name="valor_docente"/>
+                                     <field name="valor_servidor"/>
                                     <field name="valor_visitante"/>
                                 </group>
                             </group>

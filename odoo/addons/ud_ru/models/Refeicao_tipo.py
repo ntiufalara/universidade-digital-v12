@@ -15,12 +15,10 @@ class Refeicao_tipo(models.Model):
 
     name = fields.Char('Nome')
     # codigo = fields.Char('Código')
-    valor_estagiario = fields.Float('Estagiário(R$)')
-    valor_bolsista = fields.Float('Bolsista(R$)')
+    valor_aluno_isencao = fields.Float('Aluno com insenção(R$)')
     valor_aluno = fields.Float('Aluno(R$)')
     valor_aluno_pos = fields.Float('Aluno Pós-Graduação(R$)')
-    valor_tecnico = fields.Float('Técnico(R$)')
-    valor_docente = fields.Float('Docente(R$)')
+    valor_servidor = fields.Float('Servidor(R$)')
     valor_visitante = fields.Float('Visitante(R$)')
     ativo = fields.Boolean(default=True)
 

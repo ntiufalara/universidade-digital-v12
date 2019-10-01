@@ -7,4 +7,5 @@ from . import Refeicao
 from . import Refeicao_tipo
 from . import Responsavel
 from . import Restaurante
+from . import Transferencia
 

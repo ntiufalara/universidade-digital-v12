@@ -57,6 +57,7 @@ class GRU(models.Model):
             'valor': self.valor,
             'tipo': "gru",
             'pessoa_id': self.pessoa_id.id,
+            'funcionario_id': self.env.uid,
         })
         self.state = 'aprovada'
 

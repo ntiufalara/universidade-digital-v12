@@ -1,12 +1,94 @@
 <odoo>
+<template id="ud_ru.cadastro">
 
-<!--        <template id="cadastro">-->
-<!--            <title>Almoçar</title>-->
-<!--            <t t-foreach="teachers" t-as="teacher">-->
-<!--              <p><t t-esc="teacher"/></p>-->
-<!--            </t>-->
-<!--        </template>-->
-        <!-- <template id="object"> -->
-        <!--   <h1><t t-esc="object.display_name"/></h1> -->
-        <!--   <dl> -->
+    <t t-call="ud_website.layout">
+      <t t-set="title" t-value="'Cadastro'"></t>
+
+      <div class="container">
+        <div class="py-4 page-title">
+          <h1>Cadastro</h1>
+        </div>
+
+        <p>
+          Preencha o formulário de cadastro.
+        </p>
+
+        <form class="row" action="/ud_ru/cadastrar/" method="post">
+          <div class="col-sm-8">
+            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+            <div class="form-group col-sm-8">
+              <label for="nome">Nome Completo</label>
+              <input type="text" class="form-control" id="name" name="name" required=""/>
+            </div>
+            <div class="form-group col-sm-8">
+              <label for="email">E-mail</label>
+              <input type="email" class="form-control" id="email" name="email" required=""/>
+            </div>
+            <div class="form-group col-sm-8">
+              <label for="telefone">Telefone</label>
+              <input type="text" class="form-control telefone" id="telefone" name="telefone" required=""/>
+            </div>
+            <div class="form-group col-sm-8">
+              <label for="cpf">CPF</label>
+              <input type="text" class="form-control cpf" id="cpf" name="cpf" required=""/>
+            </div>
+            <div class="form-group col-sm-8">
+              <label for="rg">RG</label>
+              <input type="text" class="form-control rg" id="rg" name="rg" required=""/>
+            </div>
+            <div class="form-group col-sm-8">
+              <label for="orgaoexpedidor">Orgão Expedidor</label>
+              <input type="text" class="form-control orgaoexpedidor" id="orgaoexpedidor" name="orgaoexpedidor" required=""/>
+            </div>
+
+
+             <div class="form-group col-sm-8">
+              <label for="rg">Matrícula</label>
+              <input type="text" class="form-control matricula" id="matricula" name="matricula" required=""/>
+            </div>
+            <div class="form-group col-sm-8">
+              <label for="rg">Curso</label>
+              <input type="text" class="form-control rg" id="rg" name="rg" required=""/>
+            </div>
+
+<!--            <div class="form-group col-sm-8">-->
+<!--              <label for="mensagem">Sua mensagem</label>-->
+<!--              <textarea class="form-control" id="mensagem" name="mensagem" rows="5" required=""></textarea>-->
+<!--            </div>-->
+            <div t-if="error" class="alert alert-warning col-sm-8">
+              <t t-esc="error"></t>
+            </div>
+            <div class="form-group col-sm-8">
+              <button type="submit" class="btn btn-block btn-primary">Enviar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- Modal -->
+      <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel"
+           aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="successModalLabel">Obrigado!</h5>
+              <button type="button" class="close not-load" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&#x274C;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              Recebemos os seus dados e entraremos em contato o mais breve possível.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script t-if="success">
+        $('#successModal').modal();
+      </script>
+
+    </t>
+
+  </template>
+
 </odoo>

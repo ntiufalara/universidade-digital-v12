@@ -29,12 +29,12 @@
         <menuitem id="ru_relatorio" name="Relatório" parent="restaurante_root"
                   action="ud_ru_movimentacao_graph_action" sequence="5"/>
 
-        <record model="ir.actions.act_url" id="action_google_url">
+        <record model="ir.actions.act_url" id="action_almocar_url">
             <field name="name">Almoçar</field>
             <field name="url">/ud_ru/almocar/</field>
             <field name="target">new</field>
         </record>
-        <menuitem id="menu_google_url" name="Google" parent="restaurante_root" action="action_google_url"
+        <menuitem id="menu_google_url" name="Almoçar" parent="restaurante_root" action="action_almocar_url"
                   sequence="6" />
 
 <!--        <menuitem id="restaurante_gerenciar" name="Gerenciar" parent="restaurante_root"/>-->

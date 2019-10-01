@@ -1,11 +1,15 @@
 <odoo>
     <data>
 
-        <!--  -->
-        <!--   <record id="object0" model="ud_ru.ud_ru"> -->
-        <!--     <field name="name">Object 0</field> -->
-        <!--     <field name="value">0</field> -->
-        <!--   </record> -->
+
+           <record id="almoco" model="ud_ru.ud_ru">
+             <field name="name">Almoço</field>
+             <field name="valor_aluno_isencao">0.00</field>
+             <field name="valor_aluno">3.00</field>
+             <field name="valor_aluno_pos">5.00</field>
+             <field name="valor_servidor">8.00</field>
+             <field name="valor_visitante">8.00</field>
+           </record>
         <!--  -->
         <!--   <record id="object1" model="ud_ru.ud_ru"> -->
         <!--     <field name="name">Object 1</field> -->

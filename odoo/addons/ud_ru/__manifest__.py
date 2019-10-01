@@ -20,10 +20,13 @@
 
     # always loaded
     'data': [
+        #Demo
+        'demo/demo.xml'
         # Segurança
         'security/ud_ru_security.xml',
         'security/ir.model.access.csv',
         # Views
+        'views/cadastro.xml',
         'views/templates.xml',
         'views/gru_view.xml',
         'views/movimentacao_view.xml',

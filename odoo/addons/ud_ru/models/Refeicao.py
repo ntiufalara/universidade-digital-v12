@@ -13,13 +13,13 @@ class Refeicao(models.Model):
 
     _order = 'id desc'
 
-    name = fields.Char('Código',  readonly=True)#compute='get_name',
+    name = fields.Char('Código',  readonly=True, compute='get_name')
     valor = fields.Integer('Valor')
-    tipo_refeicao_id = fields.Many2one('ud.ru.tipo_refeicao', 'Tipo da refeição', required=True)#TODO VER O TIPO DE DADOS DE tipo_refeicao_id
+    tipo_refeicao_id = fields.Char('Tipo', readonly=True)#fields.Many2one('ud.ru.tipo_refeicao', 'Tipo da refeição', required=True)#TODO VER O TIPO DE DADOS DE tipo_refeicao_id
     data_hora = fields.Datetime('Data e hora', default=fields.datetime.now())
 
     pessoa_id = fields.Many2one('res.users', 'Usuário do restaurante')
 
-    # @api.one
-    # def get_name(self):
-    #     self.name = "R_{}".format(self.id)
+    @api.one
+    def get_name(self):
+        self.name = "R_{}".format(self.id)

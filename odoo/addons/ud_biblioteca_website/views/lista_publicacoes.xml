@@ -213,7 +213,7 @@
                                             <strong>Data de inclusão:</strong>
                                             <span t-field="pub.create_date" t-options="{'format': 'dd/MM/yyyy'}"></span>
                                         </div>
-                                        <div class="publicacao-detalhes">
+                                        <div class="publicacao-detalhes" >
                                             <strong>Data da defesa:</strong>
                                             <span t-field="pub.data_defesa" t-options="{'format': 'dd/MM/yyyy'}"></span>
                                         </div>

@@ -2,14 +2,6 @@
 
 <odoo>
 
-<!--    <template id="ud_ru.menu_almocar" inherit_id="ud_ru.layout">-->
-<!--      <xpath expr="//li[@id='ru_relatorio']" position="after">-->
-<!--        <li class="nav-item">-->
-<!--          <a href="/ud_ru/almocar/" class="nav-link">Sobre</a>-->
-<!--        </li>-->
-<!--      </xpath>-->
-<!--    </template>-->
-
         <template id="index">
             <t t-call="ud_website.layout">
                 <t t-set="title">Almoço</t>
@@ -61,6 +53,57 @@
             </t>
         </template>
 
+            <template id="transferencia">
+            <t t-call="ud_website.layout">
+                <t t-set="title">Transferência</t>
+
+                <div class="bg-tema py-4">
+                    <div class="buscar text-center ">
+
+                        <h2 class="section-title pt-3 font-weight-bold">Transferência</h2>
+
+
+                        <div class="d-flex justify-content-center text-white">
+                            <form class="form-inline" action="/ud_ru/transferir/" method="post">
+                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                <div class="buscar-input">
+                                    <label class="sr-only" for="cpf_destinatario">CPF</label>
+                                    <input type="text" class="form-control mb-2 mr-0 buscar-sombra " id="cpf_destinatario" name="cpf_destinatario"
+                                           placeholder="Digite o CPF do destinatário"/>
+                                </div>
+
+                                <div class="buscar-input">
+                                    <label class="sr-only" for="valor">Valor</label>
+                                    <input type="text" class="form-control mb-2 mr-0 buscar-sombra " id="valor" name="valor"
+                                           placeholder="Digite o valor"/>
+                                </div>
+
+
+                                <button type="submit" class="btn btn-primary btn-tema mb-2 buscar-sombra">Registar
+                                </button>
+                            </form>
+                        </div>
+
+                        <t t-if="success">
+                            <div class="container">
+                              <div class="alert alert-info mt16" role="alert">
+                                <strong><t t-esc="msg_ok"/></strong>
+                              </div>
+                            </div>
+                        </t>
+
+                        <t t-if="error">
+                            <div class="container">
+                              <div class="alert alert-danger mt16" role="alert">
+                                <strong><t t-esc="msg_alerta"/></strong>
+                              </div>
+                            </div>
+                        </t>
+
+                    </div>
+                </div>
+            </t>
+        </template>
 
 
     <template id="cadastro">
@@ -70,7 +113,7 @@
                     <div class=" text-center ">
                         <h3 class="section-title  font-weight-bold">Página de cadastro</h3>
                         <div class="d-flex justify-content-center text-white">
-                            <form class="form-inline" action="/cadastrar/">
+                            <form class="form-inline" action="/cadastrar/" method="post">
                                 <div >
 
                                     <label  for="name">Nome Completo</label>
@@ -92,15 +135,15 @@
 <!--                                    #########################-->
                                     <label for="campus">Campus</label>
                                     <input type="text" class="form-control" id="campus" name="campus"
-                                           placeholder="Digite sua matrícula" />
+                                           placeholder="Digite seu Campus" />
 
                                     <label for="polo">Polo</label>
                                     <input type="text" class="form-control" id="polo" name="polo"
-                                           placeholder="Digite sua matrícula" />
+                                           placeholder="Digite seu Polo" />
 
                                     <label for="curso">Curso</label>
                                     <input type="text" class="form-control" id="curso" name="curso"
-                                           placeholder="Digite sua matrícula" />
+                                           placeholder="Digite sua Curso" />
 <!--                                    ######################### -->
                                     <label for="matricula">Matrícula</label>
                                     <input type="text" class="form-control" id="matricula" name="matricula"
@@ -133,12 +176,4 @@
             </t>
         </template>
 
-
-<!--    <template id="almocar">-->
-<!--            <t t-call="website.layout">-->
-<!--                <t t-set="title">Almocar</t>-->
-
-<!--                <p><h3>Teste</h3></p>-->
-
-<!--    </template>-->
 </odoo>
