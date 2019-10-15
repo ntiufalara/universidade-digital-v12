@@ -15,16 +15,16 @@ class Refeicao_tipo(models.Model):
 
     name = fields.Char('Nome')
     # codigo = fields.Char('Código')
-    valor_aluno_isencao = fields.Float('Aluno com insenção(R$)')
+    valor_aluno_isencao = fields.Float('Aluno com isenção(R$)')
     valor_aluno = fields.Float('Aluno(R$)')
     valor_aluno_pos = fields.Float('Aluno Pós-Graduação(R$)')
     valor_servidor = fields.Float('Servidor(R$)')
     valor_visitante = fields.Float('Visitante(R$)')
     ativo = fields.Boolean(default=True)
 
-    _sql_constraints = [
-        ('refeicao_tipo_unica', 'unique (name, valor_aluno, valor_tecnico, valor_docente, valor_visitante)', u'Tipo de refeição já cadastrada!'),
-    ]
+    # _sql_constraints = [
+    #     ('refeicao_tipo_unica', 'unique (name, valor_aluno, valor_tecnico, valor_docente, valor_visitante)', u'Tipo de refeição já cadastrada!'),
+    # ]
 
     # def get_valor(self, perfil_usuario):
     #     # if

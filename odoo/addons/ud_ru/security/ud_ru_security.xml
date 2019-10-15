@@ -22,7 +22,7 @@
 		<record id="group_ud_ru_gerente" model="res.groups">
 			<field name="name">Gerente de restaurante</field>
 			<field name="category_id" ref="module_category_ud_restaurante"/>
-        	<field name="implied_ids" eval="[(4, ref('group_ud_ru_usuario'))]"/>
+        	<field name="implied_ids" eval="[(4, ref('group_ud_ru_funcionario'))]"/>
         	<field name="comment">Grupo de controle de políticas para Gerente</field>
 		</record>
 

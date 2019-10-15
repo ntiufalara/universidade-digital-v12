@@ -38,6 +38,15 @@ class UdRu(http.Controller):
 
             # Remover as permissões desnecessárias
             for x in obj_set.groups_id:
+                _logger.info("->")
+                _logger.info(x.id)
+                _logger.info( x.name)
+                _logger.info( x.category_id)
+                _logger.info( x.category_id.name)
+
+                _logger.info( x.comment)
+                _logger.info("-----------")
+
                 obj_set.groups_id -= x
 
             #Atribuir apenas as devidas permissões
@@ -65,7 +74,7 @@ class UdRu(http.Controller):
             _logger.info("---------------TRANSFERENCIA")
             Pessoa = http.request.env['res.users']
             transferidor = Pessoa.search([('id', '=', http.request.env.uid)])
-            valor_tranferencia = float(kwargs.get('valor')
+            valor_tranferencia = float(kwargs.get('valor'))
 
             # VALIDAR SALDO E PESQUISAR DESTINATÁRIO
             if (transferidor.saldo >= valor_tranferencia):

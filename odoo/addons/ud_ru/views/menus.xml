@@ -35,7 +35,7 @@
             <field name="target">new</field>
         </record>
         <menuitem id="menu_google_url" name="Almoçar" parent="restaurante_root" action="action_almocar_url"
-                  sequence="6" />
+                  groups="ud_ru.group_ud_ru_funcionario" sequence="6" />
 
 <!--        <menuitem id="restaurante_gerenciar" name="Gerenciar" parent="restaurante_root"/>-->
 <!--        <menuitem id="restaurante_responsavel" name="Responsável" parent="restaurante_gerenciar"-->

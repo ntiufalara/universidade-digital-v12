@@ -21,7 +21,7 @@
     # always loaded
     'data': [
         #Demo
-        'demo/demo.xml'
+        'demo/demo.xml',
         # Segurança
         'security/ud_ru_security.xml',
         'security/ir.model.access.csv',

@@ -2,7 +2,7 @@
     <data>
 
 
-           <record id="almoco" model="ud_ru.ud_ru">
+          <record id="almoco" model="ud.ru.refeicao_tipo">
              <field name="name">Almoço</field>
              <field name="valor_aluno_isencao">0.00</field>
              <field name="valor_aluno">3.00</field>
@@ -10,6 +10,30 @@
              <field name="valor_servidor">8.00</field>
              <field name="valor_visitante">8.00</field>
            </record>
+         <record id="regional" model="ud.ru.refeicao_tipo">
+             <field name="name">Regional</field>
+             <field name="valor_aluno_isencao">0.00</field>
+             <field name="valor_aluno">3.00</field>
+             <field name="valor_aluno_pos">3.00</field>
+             <field name="valor_servidor">3.00</field>
+             <field name="valor_visitante">3.00</field>
+           </record>
+         <record id="sopa" model="ud.ru.refeicao_tipo">
+             <field name="name">Sopa</field>
+             <field name="valor_aluno_isencao">0.00</field>
+             <field name="valor_aluno">1.00</field>
+             <field name="valor_aluno_pos">1.00</field>
+             <field name="valor_servidor">1.00</field>
+             <field name="valor_visitante">1.00</field>
+         </record>
+        <record id="salagado" model="ud.ru.refeicao_tipo">
+             <field name="name">Salgado</field>
+             <field name="valor_aluno_isencao">0.00</field>
+             <field name="valor_aluno">1.00</field>
+             <field name="valor_aluno_pos">1.00</field>
+             <field name="valor_servidor">1.00</field>
+             <field name="valor_visitante">1.00</field>
+         </record>
         <!--  -->
         <!--   <record id="object1" model="ud_ru.ud_ru"> -->
         <!--     <field name="name">Object 1</field> -->
