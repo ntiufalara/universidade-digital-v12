@@ -33,24 +33,24 @@ class UdRu(http.Controller):
 
 
 #AS PERMISSOES PODEM SER DEFINIDAS NO SISTEMA PARA USUÁRIOS NOVOS - professores e técnicos
-            usuario_ud_group = http.request.env.ref('ud.usuario_ud')
+            # usuario_ud_group = http.request.env.ref('ud.usuario_ud')
             # group_ud_biblioteca_visitante = http.request.env.ref('ud_biblioteca.group_biblioteca_visitante')
 
             # Remover as permissões desnecessárias
-            for x in obj_set.groups_id:
-                _logger.info("->")
-                _logger.info(x.id)
-                _logger.info( x.name)
-                _logger.info( x.category_id)
-                _logger.info( x.category_id.name)
-
-                _logger.info( x.comment)
-                _logger.info("-----------")
-
-                obj_set.groups_id -= x
+            # for x in obj_set.groups_id:
+            #     _logger.info("->")
+            #     _logger.info(x.id)
+            #     _logger.info( x.name)
+            #     _logger.info( x.category_id)
+            #     _logger.info( x.category_id.name)
+            #
+            #     _logger.info( x.comment)
+            #     _logger.info("-----------")
+            #
+            #     obj_set.groups_id -= x
 
             #Atribuir apenas as devidas permissões
-            obj_set.groups_id |= usuario_ud_group
+            # obj_set.groups_id |= usuario_ud_group
             # obj_set.groups_id |= group_ud_ru_administrador
 
         except ValidationError as e:
@@ -192,15 +192,15 @@ class UdRu(http.Controller):
                     'msg_alerta': "Saldo insuficiente para {}. Saldo atual é {}.".format(pessoa.name, pessoa.saldo),
                 })
 
-            refeicao_id = http.request.env['ud.ru.refeicao'].create({
-                # 'name': refeicao_id,
-                'valor': valor_refeicao,
-                'tipo_refeicao_id': refeicao_tipo.name,
-                'pessoa_id': pessoa.id,
-            })
+            # refeicao_id = http.request.env['ud.ru.refeicao'].create({
+            #     # 'name': refeicao_id,
+            #     'valor': valor_refeicao,
+            #     'tipo_refeicao_id': refeicao_tipo.name,
+            #     'pessoa_id': pessoa.id,
+            # })
 
             movimentacao_id = http.request.env['ud.ru.movimentacao'].create({
-                'codigo': "A_{}".format(refeicao_id.id),
+                # 'codigo': "A_{}".format(refeicao_id.id),
                 'valor': valor_refeicao,
                 'tipo': "almoco",
                 'pessoa_id': pessoa.id,
