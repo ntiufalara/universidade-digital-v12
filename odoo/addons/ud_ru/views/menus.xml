@@ -7,14 +7,18 @@
 
 
         <menuitem id="ru_gru" name="GRU" parent="restaurante_root"
-                  action="ud_ru_gru_action" sequence="0"/>
+                  action="ud_ru_gru_action" sequence="0"
+                    groups="ud_ru.group_ud_ru_gerente,ud_ru.group_ud_ru_administrador"/>
         <menuitem id="ru_refeicao" name="Refeições" parent="restaurante_root"
-                  action="ud_ru_refeicao_action" sequence="1"/>
+                  action="ud_ru_refeicao_action" sequence="1"
+                    groups="ud_ru.group_ud_ru_gerente,ud_ru.group_ud_ru_administrador"/>
 
         <menuitem id="ru_movimentacao" name="Movimentações" parent="restaurante_root"
-                  action="ud_ru_movimentacao_action" sequence="3"/>
+                  action="ud_ru_movimentacao_action" sequence="3"
+                    groups="ud_ru.group_ud_ru_gerente,ud_ru.group_ud_ru_administrador"/>
 
-        <menuitem id="ru_restaurante_top" name="Gerenciar" parent="restaurante_root" sequence="4"/>
+        <menuitem id="ru_restaurante_top" name="Gerenciar" parent="restaurante_root" sequence="4"
+                    groups="ud_ru.group_ud_ru_gerente,ud_ru.group_ud_ru_administrador"/>
 
         <menuitem id="ru_pessoa" name="Pessoa" parent="ru_restaurante_top"
                   action="ud_ru_pessoa_action" sequence="2"/>
@@ -27,12 +31,13 @@
 
 
         <menuitem id="ru_relatorio" name="Relatório" parent="restaurante_root"
-                  action="ud_ru_movimentacao_graph_action" sequence="5"/>
+                  action="ud_ru_movimentacao_graph_action"
+                  groups="ud_ru.group_ud_ru_gerente,ud_ru.group_ud_ru_administrador" sequence="5"/>
 
         <record model="ir.actions.act_url" id="action_almocar_url">
             <field name="name">Almoçar</field>
             <field name="url">/ud_ru/almocar/</field>
-            <field name="target">new</field>
+            <field name="target">self</field>
         </record>
         <menuitem id="menu_google_url" name="Almoçar" parent="restaurante_root" action="action_almocar_url"
                   groups="ud_ru.group_ud_ru_funcionario" sequence="6" />

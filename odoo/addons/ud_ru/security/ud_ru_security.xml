@@ -33,5 +33,7 @@
         	<field name="implied_ids" eval="[(4, ref('group_ud_ru_gerente'))]"/>
         	<field name="comment">Grupo de controle de políticas para Administrador</field>
 		</record>
+
+
 	</data>
 </openerp>
