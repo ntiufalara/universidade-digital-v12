@@ -4,6 +4,7 @@ from odoo import http
 import logging
 
 from odoo.exceptions import ValidationError
+import json
 
 _logger = logging.getLogger(__name__)
 
@@ -91,7 +92,7 @@ class UdRu(http.Controller):
                 })
 
                 Movimentacao = http.request.env['ud.ru.movimentacao']
-                movimentacao2_id = Movimentacao.create({
+                movimentacao1_id = Movimentacao.create({
                     'codigo': "T_{}".format(transferencia_id.id),
                     'valor': kwargs.get('valor'),
                     'tipo': "trans_env",
@@ -116,6 +117,43 @@ class UdRu(http.Controller):
             'msg_ok': "Transferência de {} realizada para {}.".format(kwargs.get('valor'), destinatario.name),
         })
 
+    @http.route('/ud_ru/get_saldo/', auth='public', methods=['get'])#, type="json"
+    def get_saldo(self, **kwargs):
+        Pessoa = http.request.env['res.users']
+        usuario = Pessoa.search([('id', '=', http.request.env.uid)])
+        return str({"saldo":usuario.saldo})
+
+    @http.route('/ud_ru/get_extrato/', auth='public', methods=['get'])#, type="json"
+    def get_extrato(self, **kwargs):
+        # https://www.odoo.com/documentation/12.0/reference/orm.html
+        Movimentacao = http.request.env['ud.ru.movimentacao']
+        movimentacoes = Movimentacao.search([('pessoa_id', '=', http.request.env.uid)])
+        dados = []
+
+        for movimentacao in movimentacoes:
+            mov = {
+                "tipo" : movimentacao.tipo,
+                "data_hora" : movimentacao.data_hora,
+                "valor" : movimentacao.valor,
+            }
+            dados.append(mov)
+
+        _logger.info("==============")
+        _logger.info(dados)
+        # _logger.info("==============")
+        _logger.info(json.dumps(dados))
+
+        # return str({
+        #     'success': True,
+        #     'movimentacoes': len(movimentacoes),
+        # })
+        return str({"saldo":"ok"}) #json.dumps(movimentacoes)
+
+    @http.route('/ud_ru/get_nome/', auth='public', methods=['get'])
+    def get_nome(self, **kwargs):
+        Pessoa = http.request.env['res.users']
+        pessoa = Pessoa.search([('cpf', '=', kwargs.get('cpf_destinatario'))])
+        return str({"nome":pessoa.name})
 
 
     # @http.route('/cadastrar/', auth='user', website=True)
