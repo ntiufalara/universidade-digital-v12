@@ -106,74 +106,74 @@
         </template>
 
 
-    <template id="cadastro">
-            <t t-call="ud_website.layout">
-                <t t-set="title">Cadastro</t>
-                <div class="container">
-                    <div class=" text-center ">
-                        <h3 class="section-title  font-weight-bold">Página de cadastro</h3>
-                        <div class="d-flex justify-content-center text-white">
-                            <form class="form-inline" action="/cadastrar/" method="post">
-                                <div >
+<!--    <template id="cadastro">-->
+<!--            <t t-call="ud_website.layout">-->
+<!--                <t t-set="title">Cadastro</t>-->
+<!--                <div class="container">-->
+<!--                    <div class=" text-center ">-->
+<!--                        <h3 class="section-title  font-weight-bold">Página de cadastro</h3>-->
+<!--                        <div class="d-flex justify-content-center text-white">-->
+<!--                            <form class="form-inline" action="/cadastrar/" method="post">-->
+<!--                                <div >-->
 
-                                    <label  for="name">Nome Completo</label>
-                                    <input type="text" class="form-control" id="name" name="name"
-                                           placeholder="Digite seu nome completo" />
+<!--                                    <label  for="name">Nome Completo</label>-->
+<!--                                    <input type="text" class="form-control" id="name" name="name"-->
+<!--                                           placeholder="Digite seu nome completo" />-->
 
-                                    <label  for="cpf">CPF</label>
-                                    <input type="text" class="form-control mb-2 mr-0 buscar-sombra " id="cpf" name="cpf"
-                                           placeholder="Digite seu CPF" />
+<!--                                    <label  for="cpf">CPF</label>-->
+<!--                                    <input type="text" class="form-control mb-2 mr-0 buscar-sombra " id="cpf" name="cpf"-->
+<!--                                           placeholder="Digite seu CPF" />-->
 
-                                    <label  for="cpf">RG</label>
-                                    <input type="text" class="form-control mb-2 mr-0 buscar-sombra " id="rg" name="rg"
-                                           placeholder="Digite seu RG" />
+<!--                                    <label  for="cpf">RG</label>-->
+<!--                                    <input type="text" class="form-control mb-2 mr-0 buscar-sombra " id="rg" name="rg"-->
+<!--                                           placeholder="Digite seu RG" />-->
 
-                                    <label for="email">E-mail</label>
-                                    <input type="text" class="form-control" id="email" name="email"
-                                           placeholder="Digite seu e-mail" />
+<!--                                    <label for="email">E-mail</label>-->
+<!--                                    <input type="text" class="form-control" id="email" name="email"-->
+<!--                                           placeholder="Digite seu e-mail" />-->
 
-<!--                                    #########################-->
-                                    <label for="campus">Campus</label>
-                                    <input type="text" class="form-control" id="campus" name="campus"
-                                           placeholder="Digite seu Campus" />
+<!--&lt;!&ndash;                                    #########################&ndash;&gt;-->
+<!--                                    <label for="campus">Campus</label>-->
+<!--                                    <input type="text" class="form-control" id="campus" name="campus"-->
+<!--                                           placeholder="Digite seu Campus" />-->
 
-                                    <label for="polo">Polo</label>
-                                    <input type="text" class="form-control" id="polo" name="polo"
-                                           placeholder="Digite seu Polo" />
+<!--                                    <label for="polo">Polo</label>-->
+<!--                                    <input type="text" class="form-control" id="polo" name="polo"-->
+<!--                                           placeholder="Digite seu Polo" />-->
 
-                                    <label for="curso">Curso</label>
-                                    <input type="text" class="form-control" id="curso" name="curso"
-                                           placeholder="Digite sua Curso" />
-<!--                                    ######################### -->
-                                    <label for="matricula">Matrícula</label>
-                                    <input type="text" class="form-control" id="matricula" name="matricula"
-                                           placeholder="Digite sua matrícula" />
-
-
-
-                                    <label for="senha">Senha</label>
-                                    <input type="password" class="form-control" id="senha" name="senha"
-                                           placeholder="Senha" />
-
-                                    <label for="senha">Confirmar senha</label>
-                                    <input type="password" class="form-control" id="confirmar_senha" name="confirmar_senha"
-                                           placeholder="Digite novamente a senha" />
-
-                                    <br></br><br></br>
-
-                                    <button type="submit" class="btn btn-primary btn-tema mb-2 buscar-sombra">REGISTRAR
-                                    </button>
-                                </div>
+<!--                                    <label for="curso">Curso</label>-->
+<!--                                    <input type="text" class="form-control" id="curso" name="curso"-->
+<!--                                           placeholder="Digite sua Curso" />-->
+<!--&lt;!&ndash;                                    ######################### &ndash;&gt;-->
+<!--                                    <label for="matricula">Matrícula</label>-->
+<!--                                    <input type="text" class="form-control" id="matricula" name="matricula"-->
+<!--                                           placeholder="Digite sua matrícula" />-->
 
 
 
+<!--                                    <label for="senha">Senha</label>-->
+<!--                                    <input type="password" class="form-control" id="senha" name="senha"-->
+<!--                                           placeholder="Senha" />-->
+
+<!--                                    <label for="senha">Confirmar senha</label>-->
+<!--                                    <input type="password" class="form-control" id="confirmar_senha" name="confirmar_senha"-->
+<!--                                           placeholder="Digite novamente a senha" />-->
+
+<!--                                    <br></br><br></br>-->
+
+<!--                                    <button type="submit" class="btn btn-primary btn-tema mb-2 buscar-sombra">REGISTRAR-->
+<!--                                    </button>-->
+<!--                                </div>-->
 
 
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </t>
-        </template>
+
+
+
+<!--                            </form>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </t>-->
+<!--        </template>-->
 
 </odoo>

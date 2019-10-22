@@ -7,31 +7,31 @@
 		</record>
 
 		<record id="group_ud_ru_usuario" model="res.groups">
-			<field name="name">Usuário</field>
+			<field name="name">Usuário RU</field>
 			<field name="category_id" ref="module_category_ud_restaurante"/>
-        	<field name="comment">Grupo de controle de políticas para usuários comuns</field>
+        	<field name="comment">Grupo de controle de políticas para usuários do RU</field>
 		</record>
 
 		<record id="group_ud_ru_funcionario" model="res.groups">
-			<field name="name">Funcionário de restaurante</field>
+			<field name="name">Funcionário RU</field>
 			<field name="category_id" ref="module_category_ud_restaurante"/>
         	<field name="implied_ids" eval="[(4, ref('group_ud_ru_usuario'))]"/>
-        	<field name="comment">Grupo de controle de políticas para Funcinário</field>
+        	<field name="comment">Grupo de controle de políticas para Funcinário do RU</field>
 		</record>
 
 		<record id="group_ud_ru_gerente" model="res.groups">
-			<field name="name">Gerente de restaurante</field>
+			<field name="name">Gerente RU</field>
 			<field name="category_id" ref="module_category_ud_restaurante"/>
         	<field name="implied_ids" eval="[(4, ref('group_ud_ru_funcionario'))]"/>
-        	<field name="comment">Grupo de controle de políticas para Gerente</field>
+        	<field name="comment">Grupo de controle de políticas para Gerente do RU</field>
 		</record>
 
 		<record id="group_ud_ru_administrador" model="res.groups">
-			<field name="name">Administrador de restaurante</field>
+			<field name="name">Administrador RU</field>
         	<field name="users" eval="[(4, ref('base.user_root'))]"/>
 			<field name="category_id" ref="module_category_ud_restaurante"/>
         	<field name="implied_ids" eval="[(4, ref('group_ud_ru_gerente'))]"/>
-        	<field name="comment">Grupo de controle de políticas para Administrador</field>
+        	<field name="comment">Grupo de controle de políticas para Administrador do RU</field>
 		</record>
 
 

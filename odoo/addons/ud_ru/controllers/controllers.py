@@ -30,12 +30,19 @@ class UdRu(http.Controller):
             # permissoes apenas as necessárias
             obj_set = Users.create(kwargs)
 
-            _logger.info("---------------PASSOU")
+            #ver as informações para criar perfil
+            # perfil_id = http.request.env['ud.perfil'].create(kwargs)
+            # obj_set.perfil_ids += perfil_id
 
 
-#AS PERMISSOES PODEM SER DEFINIDAS NO SISTEMA PARA USUÁRIOS NOVOS - professores e técnicos
-            # usuario_ud_group = http.request.env.ref('ud.usuario_ud')
-            # group_ud_biblioteca_visitante = http.request.env.ref('ud_biblioteca.group_biblioteca_visitante')
+           #Atribuir apenas das permissões necessárias - NAO FUNCIONOU
+            # obj_set.groups_id -= 64 # 64 Editor e Designer
+            # obj_set.groups_id -= 63 # 63 Restricted Editor
+            # obj_set.groups_id -= 50 # 50 Gerente
+            # obj_set.groups_id -= 14 # 14 Visitante
+            # obj_set.groups_id -= 49 # 49 Usuário
+
+            obj_set.groups_id |= http.request.env.ref('ud.usuario_ud')
 
             # Remover as permissões desnecessárias
             # for x in obj_set.groups_id:
@@ -50,7 +57,6 @@ class UdRu(http.Controller):
             #
             #     obj_set.groups_id -= x
 
-            #Atribuir apenas as devidas permissões
             # obj_set.groups_id |= usuario_ud_group
             # obj_set.groups_id |= group_ud_ru_administrador
 
@@ -117,43 +123,42 @@ class UdRu(http.Controller):
             'msg_ok': "Transferência de {} realizada para {}.".format(kwargs.get('valor'), destinatario.name),
         })
 
+
+
+
     @http.route('/ud_ru/get_saldo/', auth='public', methods=['get'])#, type="json"
     def get_saldo(self, **kwargs):
         Pessoa = http.request.env['res.users']
-        usuario = Pessoa.search([('id', '=', http.request.env.uid)])
-        return str({"saldo":usuario.saldo})
+        usuario = Pessoa.search([('id', '=', http.request.env.uid)]) #dessa forma não funciona com a apirest
+        # _logger.info(pessoa.name)
+        return json.dumps({"saldo":usuario.saldo})
 
     @http.route('/ud_ru/get_extrato/', auth='public', methods=['get'])#, type="json"
     def get_extrato(self, **kwargs):
         # https://www.odoo.com/documentation/12.0/reference/orm.html
         Movimentacao = http.request.env['ud.ru.movimentacao']
-        movimentacoes = Movimentacao.search([('pessoa_id', '=', http.request.env.uid)])
+        movimentacoes = Movimentacao.search([('pessoa_id', '=', http.request.env.uid)])#dessa forma não funciona com a apirest
         dados = []
 
         for movimentacao in movimentacoes:
+            _logger.info(movimentacao.data_hora.date)
             mov = {
-                "tipo" : movimentacao.tipo,
-                "data_hora" : movimentacao.data_hora,
-                "valor" : movimentacao.valor,
+                "tipo": movimentacao.tipo,
+                "data_hora": str(movimentacao.data_hora.strftime('%d/%m/%Y %H:%M')),
+                "valor": movimentacao.valor,
             }
             dados.append(mov)
 
-        _logger.info("==============")
-        _logger.info(dados)
-        # _logger.info("==============")
-        _logger.info(json.dumps(dados))
-
-        # return str({
-        #     'success': True,
-        #     'movimentacoes': len(movimentacoes),
-        # })
-        return str({"saldo":"ok"}) #json.dumps(movimentacoes)
+        return json.dumps(dados) #json.dumps(dados)#
 
     @http.route('/ud_ru/get_nome/', auth='public', methods=['get'])
     def get_nome(self, **kwargs):
         Pessoa = http.request.env['res.users']
-        pessoa = Pessoa.search([('cpf', '=', kwargs.get('cpf_destinatario'))])
-        return str({"nome":pessoa.name})
+        # _logger.info(kwargs.items())
+        # _logger.info(http.request)
+        pessoa = Pessoa.search([('id', '=', http.request.env.uid)])#dessa forma não funciona com a apirest
+
+        return json.dumps({"nome":pessoa.name})
 
 
     # @http.route('/cadastrar/', auth='user', website=True)
