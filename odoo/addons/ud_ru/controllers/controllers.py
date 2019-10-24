@@ -21,46 +21,33 @@ class UdRu(http.Controller):
     @http.route('/cadastrar/', auth='public', methods=['post'], csrf=False)
     def process_cadastro(self, **kwargs):
 
-        Users = http.request.env['res.users']
+        #verificar se usuário já existe - cpf unico?
         try:
-            # contato
-            # endereco
-            # perfil - criar a partir da matricula
+            Users = http.request.env['res.users']
+            # contato - ok
+            # endereco?
+            # perfil - criar a partir da matricula - ok
             # defenir a senha
             # permissoes apenas as necessárias
+
             obj_set = Users.create(kwargs)
 
-            #ver as informações para criar perfil
-            # perfil_id = http.request.env['ud.perfil'].create(kwargs)
-            # obj_set.perfil_ids += perfil_id
+            vinculo = http.request.env['ud.perfil.tipo'].search([('id', '=', kwargs.get('vinculo'))])
+            Perfil = http.request.env['ud.perfil']
+            perfil_id = Perfil.create({
+                'tipo_id': http.request.env['ud.perfil.tipo'].search([('id', '=', kwargs.get('vinculo'))]).id,
+                'curso_ou_setor': "curso",
+                'matricula': kwargs.get('matricula'),
+                'curso_id': kwargs.get('curso'),
+                'pessoa_id': obj_set.id,
+            })
 
-
-           #Atribuir apenas das permissões necessárias - NAO FUNCIONOU
-            # obj_set.groups_id -= 64 # 64 Editor e Designer
-            # obj_set.groups_id -= 63 # 63 Restricted Editor
-            # obj_set.groups_id -= 50 # 50 Gerente
-            # obj_set.groups_id -= 14 # 14 Visitante
-            # obj_set.groups_id -= 49 # 49 Usuário
-
-            obj_set.groups_id |= http.request.env.ref('ud.usuario_ud')
-
-            # Remover as permissões desnecessárias
-            # for x in obj_set.groups_id:
-            #     _logger.info("->")
-            #     _logger.info(x.id)
-            #     _logger.info( x.name)
-            #     _logger.info( x.category_id)
-            #     _logger.info( x.category_id.name)
-            #
-            #     _logger.info( x.comment)
-            #     _logger.info("-----------")
-            #
-            #     obj_set.groups_id -= x
-
-            # obj_set.groups_id |= usuario_ud_group
-            # obj_set.groups_id |= group_ud_ru_administrador
+            obj_set.perfil_ids |= perfil_id
+            obj_set.groups_id |= http.request.env.ref('ud_ru.group_ud_ru_usuario')
 
         except ValidationError as e:
+            _logger.info("---------------ERROR")
+            _logger.info(str(e.args[0]))
             return http.request.render('ud_ru.cadastro', {
                 'error': e.args[0]
             })
@@ -126,14 +113,17 @@ class UdRu(http.Controller):
 
 
 
-    @http.route('/ud_ru/get_saldo/', auth='public', methods=['get'])#, type="json"
+    @http.route('/ud_ru/get_saldo/', auth='user', methods=['get'])#, type="json"
     def get_saldo(self, **kwargs):
+        _logger.info('GET SALDO:')
+        _logger.info(kwargs)
+        _logger.info(http.request.env.uid)
         Pessoa = http.request.env['res.users']
-        usuario = Pessoa.search([('id', '=', http.request.env.uid)]) #dessa forma não funciona com a apirest
+        usuario = Pessoa.search([('id', '=', http.request.env.uid)]) #dessa forma não funciona com a apirest - passar ou o cpf ou o uid pela requisição
         # _logger.info(pessoa.name)
         return json.dumps({"saldo":usuario.saldo})
 
-    @http.route('/ud_ru/get_extrato/', auth='public', methods=['get'])#, type="json"
+    @http.route('/ud_ru/get_extrato/', auth='user', methods=['get'])#, type="json", auth='public',
     def get_extrato(self, **kwargs):
         # https://www.odoo.com/documentation/12.0/reference/orm.html
         Movimentacao = http.request.env['ud.ru.movimentacao']
@@ -151,7 +141,7 @@ class UdRu(http.Controller):
 
         return json.dumps(dados) #json.dumps(dados)#
 
-    @http.route('/ud_ru/get_nome/', auth='public', methods=['get'])
+    @http.route('/ud_ru/get_nome/', auth='user', methods=['get'])
     def get_nome(self, **kwargs):
         Pessoa = http.request.env['res.users']
         # _logger.info(kwargs.items())
@@ -160,6 +150,36 @@ class UdRu(http.Controller):
 
         return json.dumps({"nome":pessoa.name})
 
+# class Utils(object):
+#         @staticmethod
+#         def validate_password(senha):
+#             """
+#             Validate password algorithm
+#             """
+#             if len(senha) < 8:
+#                 raise ValueError(u"A senha precisa ter mais de %d digitos" % 8)
+#             elif not re.search(r'[^\d]', senha) and re.search(r'\d', senha):
+#                 raise ValueError(u'A senha precisa possuir números e letras')
+#
+#         @staticmethod
+#         def validar_cpf(cpf):
+#             """
+#             Valida CPFs
+#             """
+#
+#             def calcula_dv1(_cpf):
+#                 start = 10
+#                 cpf_list = [int(i) for i in _cpf]
+#                 soma = 0
+#                 for i in cpf_list[:-2]:
+#                     val = i * start
+#                     soma += val
+#                     start -= 1
+#                 resto = soma % 11
+#                 _dv1 = 11 - resto
+#                 if resto < 2:
+#                     _dv1 = 0
+#                 return _dv1
 
     # @http.route('/cadastrar/', auth='user', website=True)
     # def cadastrar(self, **kw):
