@@ -30,12 +30,12 @@ class UdRu(http.Controller):
             # defenir a senha
             # permissoes apenas as necessárias
 
-            obj_set = Users.create(kwargs)
+            obj_set = Users.sudo().create(kwargs)
 
-            vinculo = http.request.env['ud.perfil.tipo'].search([('id', '=', kwargs.get('vinculo'))])
+            vinculo = http.request.env['ud.perfil.tipo'].sudo().search([('id', '=', kwargs.get('vinculo'))])
             Perfil = http.request.env['ud.perfil']
-            perfil_id = Perfil.create({
-                'tipo_id': http.request.env['ud.perfil.tipo'].search([('id', '=', kwargs.get('vinculo'))]).id,
+            perfil_id = Perfil.sudo().create({
+                'tipo_id': vinculo.id,
                 'curso_ou_setor': "curso",
                 'matricula': kwargs.get('matricula'),
                 'curso_id': kwargs.get('curso'),
@@ -233,6 +233,9 @@ class UdRu(http.Controller):
 
             #ver o tipo de bolsa para fazer a comparação
             #validar se já almoçou no dia
+
+
+
 
             if len(pessoa.perfil_ids) > 1:
                 perfil = pessoa.perfil_principal
