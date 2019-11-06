@@ -56,6 +56,10 @@
                                 </group>
                             </page>
                             <page string="Perfil institucional">
+                                <group >
+                                    <field name="principal2" nolabel="0"/>
+                                </group>
+
                                 <group string="Perfil institucional">
                                     <field name="perfil_ids" nolabel="1"/>
                                 </group>
@@ -69,6 +73,9 @@
                 </form>
             </field>
         </record>
+
+
+
 
         <record id="view_pessoa_tree" model="ir.ui.view">
             <field name="name">res.users.tree</field>
@@ -119,6 +126,16 @@
                     <field name="cpf"/>
                 </search>
             </field>
+        </record>
+
+         <!-- Exibe somente solicitações do usuário -->
+        <record id="ud_meus_dados_action" model="ir.actions.act_window">
+            <field name="name">Meus dados</field>
+            <field name="res_model">res.users</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('id', '=', uid)]</field>
+            <field name="view_id" ref="view_pessoa_tree"></field>
         </record>
 
     </data>

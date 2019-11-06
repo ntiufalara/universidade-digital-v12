@@ -22,8 +22,9 @@ class Perfil(models.Model):
         ('papel_uniq', 'unique (matricula,tipo_id)', u'Matricula já cadastrada (Mesmo tipo e matrícula).'),
     ]
 
+    @api.one
     def get_name(self):
-        self.name = 'Tipo: {}; Matrícula: {}'.format(self.tipo_id, self.matricula)
+        self.name = 'Tipo: {}; Matrícula: {}'.format(self.tipo_id.name, self.matricula)
 
     @api.onchange('tipo_id')
     def onchange_tipo_id(self):

@@ -23,5 +23,17 @@
             <field name="users" eval="[(4, ref('base.user_root'))]"/>
             <field name="implied_ids" eval="[(4, ref('usuario_ud')), (4, ref('gerente_espaco_ud'))]"/>
         </record>
+
+        <!-- Regras de acesso utilizada para setar o perfil principal -->
+        <record id="rule_ud_ru_perfil" model="ir.rule">
+            <field name="name">Usuário: Criar e editar perfil</field>
+            <field name="model_id" ref="ud.model_ud_perfil"/>
+            <field name="domain_force">[('pessoa_id.id', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('ud.usuario_ud'))]"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
     </data>
 </odoo>
