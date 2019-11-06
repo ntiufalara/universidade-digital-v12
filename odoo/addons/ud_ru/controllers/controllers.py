@@ -125,25 +125,26 @@ class UdRu(http.Controller):
             # ver o tipo de bolsa para fazer a comparação
             # validar se já almoçou no dia
 
-            if len(pessoa.perfil_ids) > 1:
-                perfil = pessoa.perfil_principal
-                return "Almoçou - Tratar"
-            else:
-                perfil = pessoa.perfil_principal
+            # if len(pessoa.perfil_ids) > 1:
+            #     perfil = pessoa.perfil_principal
+            #     return "Almoçou - Tratar"
+            # else:
+            #     perfil = pessoa.perfil_principal
+            perfil = pessoa.perfil_principal
 
             if perfil == "Discente":
                 if (pessoa.perfil_ids.bolsista):  # TODO MUDAR A CONDIÇÃO PARA COMPARAR O TIPO DE BOLSA
                     valor_refeicao = refeicao_tipo.valor_bolsista
                 else:
                     valor_refeicao = refeicao_tipo.valor_aluno
-            elif perfil == "Técnico":
-                valor_refeicao = refeicao_tipo.valor_tecnico
-            elif perfil == "Docente":
-                valor_refeicao = refeicao_tipo.valor_docente
+            elif perfil == "Técnico" or perfil == "Docente":
+                valor_refeicao = refeicao_tipo.valor_servidor
+            # elif perfil == "Docente":
+            #     valor_refeicao = refeicao_tipo.valor_docente
 
             if pessoa.saldo < valor_refeicao:
                 return http.request.render('ud_ru.index', {
-                    'msg_alerta': "Saldo insuficiente para {}. Saldo atual é {}.".format(pessoa.name, pessoa.saldo),
+                    'msg_alerta': "Saldo insuficiente para {}. Saldo atual é R$ {}.".format(pessoa.name, str(pessoa.saldo).replace('.',',')),
                 })
 
             # refeicao_id = http.request.env['ud.ru.refeicao'].create({
@@ -175,9 +176,9 @@ class UdRu(http.Controller):
         _logger.info('GET UID:')
         _logger.info(kwargs)
         Pessoa = http.request.env['res.users']
-        usuario = Pessoa.search([('cpf', '=', kwargs.get('cpf'))])  #
-        # _logger.info(pessoa.name)
-        return json.dumps({"uid": usuario.id})
+        pessoa = Pessoa.search([('cpf', '=', kwargs.get('cpf'))])  #
+
+        return json.dumps({"uid": pessoa.id})
 
     @http.route('/ud_ru/get_saldo/', auth='user', methods=['get'])  # , type="json"
     def get_saldo(self, **kwargs):

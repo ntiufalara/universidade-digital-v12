@@ -19,7 +19,8 @@
                                     type="image/svg+xml"></object>
 
                         <div class="d-flex justify-content-center text-white">
-                            <form class="form-inline" action="/ud_ru/almocar/">
+                            <form class="form-inline" action="/ud_ru/almocar/" method="post">
+                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
                                 <div class="buscar-input">
                                     <label class="sr-only" for="cpf">CPF</label>
                                     <input type="text" class="form-control mb-2 mr-0 buscar-sombra " id="cpf" name="cpf"
