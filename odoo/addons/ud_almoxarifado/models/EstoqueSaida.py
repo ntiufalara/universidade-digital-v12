@@ -11,7 +11,7 @@ class EstoqueSaida(models.Model):
 
     name = fields.Char(u'Código', compute='get_name', readonly=True)
     data_saida = fields.Datetime(u'Data', default=fields.datetime.now(), readonly=True)
-    quantidade = fields.Integer(u'Quantidade', required=True)
+    quantidade = fields.Float(u'Quantidade', required=True)#TODO obs
     observacao = fields.Text(u'Observações')
     almoxarifado_id = fields.Many2one('ud.almoxarifado.almoxarifado', u'Almoxarifado',
                                       default=lambda self: self.get_almoxarifado())

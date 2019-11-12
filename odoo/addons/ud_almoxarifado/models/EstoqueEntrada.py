@@ -15,7 +15,7 @@ class EstoqueEntrada(models.Model):
 
     name = fields.Char('Código', compute='get_name', readonly=True)
     data_entrada = fields.Datetime('Data', default=fields.datetime.now(), readonly=True)
-    quantidade = fields.Integer('Quantidade', required=True)
+    quantidade = fields.Float('Quantidade', required=True)#TODO obs
     tipo = fields.Selection([
         ("fornecedor", u"Fornecedor"),
         ("estorno", u"Estorno"),

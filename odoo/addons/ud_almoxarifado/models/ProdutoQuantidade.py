@@ -9,7 +9,7 @@ class ProdutoQuantidade(models.Model):
     _name = 'ud.almoxarifado.produto.qtd'
 
     name = fields.Char('Nome', compute='get_name')
-    quantidade = fields.Integer('Quantidade', required=True)
+    quantidade = fields.Float('Quantidade', required=True)#TODO obs
     categoria_id = fields.Many2one('ud.almoxarifado.produto.categoria', 'Categoria', ondelete='restrict',
                                    required=True)
     campus_id = fields.Many2one('ud.campus', 'Campus', required=True)
@@ -19,7 +19,7 @@ class ProdutoQuantidade(models.Model):
     estoque_id = fields.Many2one('ud.almoxarifado.estoque', 'Produto', required=True,
                                  domain="[('almoxarifado_id', '=', almoxarifado_id), "
                                         "('categoria_id', '=', categoria_id)]")
-    qtd_estoque = fields.Integer('Qtd em estoque', related='estoque_id.quantidade', readonly=True)
+    qtd_estoque = fields.Float('Qtd em estoque', related='estoque_id.quantidade', readonly=True)#TODO obs
     solicitacao_id = fields.Many2one('ud.almoxarifado.solicitacao', 'Solicitação', invisible=True)
 
     _sql_constraints = [

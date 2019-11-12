@@ -14,8 +14,8 @@ class Estoque(models.Model):
     produto_id = fields.Many2one('ud.almoxarifado.produto', u'Produto', required=True)
     categoria_id = fields.Many2one('ud.almoxarifado.produto.categoria', u'Categoria', related='produto_id.categoria_id',
                                    readonly=True)
-    quantidade = fields.Integer(u'Quantidade', compute='get_quantidade')
-    estoque_min = fields.Integer(u'Estoque mínimo', required=True)
+    quantidade = fields.Float(u'Quantidade', compute='get_quantidade')
+    estoque_min = fields.Float(u'Estoque mínimo', required=True)
     entrada_ids = fields.One2many('ud.almoxarifado.entrada', 'estoque_id', u'Entrada')
     saida_ids = fields.One2many('ud.almoxarifado.saida', 'estoque_id', u'Saída')
     campus_id = fields.Many2one('ud.campus', u'Campus', required=True)
@@ -86,3 +86,4 @@ class Estoque(models.Model):
         entradas = sum([entrada.quantidade for entrada in self.entrada_ids])
         saidas = sum([saida.quantidade for saida in self.saida_ids])
         self.quantidade = entradas - saidas
+
