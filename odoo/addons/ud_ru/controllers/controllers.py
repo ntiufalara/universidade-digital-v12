@@ -84,19 +84,19 @@ class UdRu(http.Controller):
                     'destinatario_id': destinatario.id,
                 })
 
-                Movimentacao = http.request.env['ud.ru.movimentacao']
-                movimentacao1_id = Movimentacao.create({
-                    'codigo': "T_{}".format(transferencia_id.id),
-                    'valor': kwargs.get('valor'),
-                    'tipo': "trans_env",
-                    'pessoa_id': transferidor.id,
-                })
-                movimentacao2_id = Movimentacao.create({
-                    'codigo': "T_{}".format(transferencia_id.id),
-                    'valor': kwargs.get('valor'),
-                    'tipo': "trans_rec",
-                    'pessoa_id': destinatario.id,
-                })
+                # Movimentacao = http.request.env['ud.ru.movimentacao']
+                # movimentacao1_id = Movimentacao.create({
+                #     'codigo': "T_{}".format(transferencia_id.id),
+                #     'valor': kwargs.get('valor'),
+                #     'tipo': "trans_env",
+                #     'pessoa_id': transferidor.id,
+                # })
+                # movimentacao2_id = Movimentacao.create({
+                #     'codigo': "T_{}".format(transferencia_id.id),
+                #     'valor': kwargs.get('valor'),
+                #     'tipo': "trans_rec",
+                #     'pessoa_id': destinatario.id,
+                # })
             else:
                 return http.request.render('ud_ru.transferencia', {
                     'error': "Não foi possível realizar a tranferência pois o saldo é inferior ao valor informado."

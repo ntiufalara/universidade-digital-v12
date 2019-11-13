@@ -28,6 +28,10 @@
                   action="ud_ru_responsavel_action" />
         <menuitem id="ru_restaurante" name="Restaurantes" parent="ru_restaurante_top"
                   action="ud_ru_restaurante_action" />
+        <menuitem id="ru_transferencia" name="Transferências" parent="ru_restaurante_top"
+                  action="ud_ru_transferencia_action" />
+        <menuitem id="ru_realizar_transferencia" name="Realizar transferência" parent="ru_restaurante_top"
+                  action="ud_transferir_wizard_action" />
 
 
         <menuitem id="ru_relatorio" name="Relatório" parent="restaurante_root"

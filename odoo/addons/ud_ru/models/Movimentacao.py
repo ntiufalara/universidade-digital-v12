@@ -27,8 +27,8 @@ class Movimentacao(models.Model):
               ("estorno", "ESTORNO")]
     tipo = fields.Selection(_tipo, "Tipo")
 
-    pessoa_id = fields.Many2one('res.users', 'Usuário', required=True, default=lambda self: self.env.uid)
-    funcionario_id = fields.Many2one('res.users', 'Funcionário', default=lambda self: self.env.uid)
+    pessoa_id = fields.Many2one('res.users', 'Usuário', required=True)#, default=lambda self: self.env.uid
+    # funcionario_id = fields.Many2one('res.users', 'Funcionário', default=lambda self: self.env.uid) #quem cria já é pego automaticamente pelo banco
 
     # _sql_constraints = [
     #     ('name_unico', 'unique (name)', u'GRU já cadastrada!'),

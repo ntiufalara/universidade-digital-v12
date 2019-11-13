@@ -27,7 +27,7 @@ def validate_token(func):
             )
         access_token_data = (
             request.env["api.access_token"]
-            .sudo()
+
             .search([("token", "=", access_token)], order="id DESC", limit=1)
         )
 
@@ -48,6 +48,16 @@ def validate_token(func):
     return wrap
 
 
+def error_handle(func):
+    @functools.wraps(func)
+    def wrap(self, *args, **kwargs):
+        try:
+            return func(self, *args, **kwargs)
+        except Exception as e:
+            return invalid_response("exception", e, 400)
+    return wrap
+
+
 _routes = ["/api/<model>", "/api/<model>/<id>", "/api/<model>/<id>/<action>"]
 
 
@@ -58,15 +68,15 @@ class APIController(http.Controller):
         self._model = "ir.model"
 
     @validate_token
+    @error_handle
     @http.route(_routes, type="http", auth="none", methods=["GET"], csrf=False)
     def get(self, model=None, id=None, **payload):
         ioc_name = model
-        model = request.env[self._model].sudo().search([("model", "=", model)], limit=1)
+        model = request.env[self._model].search([("model", "=", model)], limit=1)
         if model:
             domain, fields, offset, limit, order = extract_arguments(payload)
             data = (
                 request.env[model.model]
-                .sudo()
                 .search_read(
                     domain=domain,
                     fields=fields,
@@ -79,7 +89,7 @@ class APIController(http.Controller):
                 domain = [("id", "=", int(id))]
                 data = (
                     request.env[model.model]
-                    .sudo()
+
                     .search_read(
                         domain=domain,
                         fields=fields,
@@ -98,6 +108,7 @@ class APIController(http.Controller):
         )
 
     @validate_token
+    @error_handle
     @http.route(_routes, type="http", auth="none", methods=["POST"], csrf=False)
     def post(self, model=None, id=None, **payload):
         """Create a new record.
@@ -129,10 +140,10 @@ class APIController(http.Controller):
 
         """
         ioc_name = model
-        model = request.env[self._model].sudo().search([("model", "=", model)], limit=1)
+        model = request.env[self._model].search([("model", "=", model)], limit=1)
         if model:
             try:
-                resource = request.env[model.model].sudo().create(payload)
+                resource = request.env[model.model].create(payload)
             except Exception as e:
                 return invalid_response("params", e)
             else:
@@ -147,6 +158,7 @@ class APIController(http.Controller):
         )
 
     @validate_token
+    @error_handle
     @http.route(_routes, type="http", auth="none", methods=["PUT"], csrf=False)
     def put(self, model=None, id=None, **payload):
         """."""
@@ -157,7 +169,7 @@ class APIController(http.Controller):
                 "invalid object id", "invalid literal %s for id with base " % id
             )
         _model = (
-            request.env[self._model].sudo().search([("model", "=", model)], limit=1)
+            request.env[self._model].search([("model", "=", model)], limit=1)
         )
         if not _model:
             return invalid_response(
@@ -166,7 +178,7 @@ class APIController(http.Controller):
                 404,
             )
         try:
-            request.env[_model.model].sudo().browse(_id).write(payload)
+            request.env[_model.model].browse(_id).write(payload)
         except Exception as e:
             return invalid_response("exception", e.name)
         else:
@@ -175,6 +187,7 @@ class APIController(http.Controller):
             )
 
     @validate_token
+    @error_handle
     @http.route(_routes, type="http", auth="none", methods=["DELETE"], csrf=False)
     def delete(self, model=None, id=None, **payload):
         """."""
@@ -185,7 +198,7 @@ class APIController(http.Controller):
                 "invalid object id", "invalid literal %s for id with base " % id
             )
         try:
-            record = request.env[model].sudo().search([("id", "=", _id)])
+            record = request.env[model].search([("id", "=", _id)])
             if record:
                 record.unlink()
             else:
@@ -200,6 +213,7 @@ class APIController(http.Controller):
             return valid_response("record %s has been successfully deleted" % record.id)
 
     @validate_token
+    @error_handle
     @http.route(_routes, type="http", auth="none", methods=["PATCH"], csrf=False)
     def patch(self, model=None, id=None, action=None, **payload):
         """."""
@@ -210,7 +224,7 @@ class APIController(http.Controller):
                 "invalid object id", "invalid literal %s for id with base " % id
             )
         try:
-            record = request.env[model].sudo().search([("id", "=", _id)])
+            record = request.env[model].search([("id", "=", _id)])
             _callable = action in [
                 method for method in dir(record) if callable(getattr(record, method))
             ]

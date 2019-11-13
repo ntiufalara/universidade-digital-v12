@@ -27,7 +27,6 @@
                     <field name="tipo"/>
                     <field name="valor"/>
                     <field name="pessoa_id"/>
-                    <field name="funcionario_id"/>
                     <field name="data_hora"/>
                     <field name="codigo"/>
                 </tree>

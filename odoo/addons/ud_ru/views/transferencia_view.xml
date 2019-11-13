@@ -38,16 +38,15 @@
             <field name="model">ud.ru.transferencia</field>
             <field name="arch" type="xml">
                 <form string="Transferência">
-                    
                     <sheet>
                         <group>
                             <group>
-                                <field name="name"/>
                                 <field name="valor"/>
+                                <field name="data_transferencia"/>
+                                <field name="pessoa_id"/>
+                                <field name="destinatario_id"/>
                             </group>
-                            
                         </group>
-
                     </sheet>
                 </form>
             </field>

@@ -36,7 +36,10 @@
         'views/refeicao_tipo_view.xml',
         'views/restaurante_view.xml',
         'views/responsavel_view.xml',
+        'views/transferencia_view.xml',
         'views/menus.xml',
+        # Wizards Views
+        "wizards/transferir_view.xml",
 
     ],
     "installable": True,
