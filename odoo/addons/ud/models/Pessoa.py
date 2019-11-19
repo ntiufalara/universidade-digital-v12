@@ -39,7 +39,6 @@ class Pessoa(models.Model):
     curriculo_lattes_link = fields.Char('Link do Currículo Lattes')
     perfil_ids = fields.One2many('ud.perfil', 'pessoa_id', 'Perfil')
     perfil_principal = fields.Char('Perfil', compute="get_perfil")
-    principal2 = fields.Many2one('ud.perfil', 'Perfil Principal', default=lambda self: self.get_perfil_principal())#domain="[('pessoa_id', '=', uid)]"
 
     endereco_ids = fields.One2many('ud.pessoa.endereco', 'pessoa_id', 'Endereços')
     contato_ids = fields.One2many('ud.pessoa.contato', 'pessoa_id', 'Contatos')
@@ -49,20 +48,6 @@ class Pessoa(models.Model):
         ("ud_rg_uniq", "unique(rg)", 'Já existe RG com esse número cadastrado.'),
     ]
 
-    @api.model
-    def get_perfil_principal(self):
-        """
-         Atribui seta o select para o usuário selecionar o perfil desejado
-         :return:
-        """
-        # perfis = self.env['ud.perfil'].search([('pessoa_id', '=', self.env.uid)])
-        # _logger.info(len(list(perfis)))
-        # _logger.info(len(list(self.perfil_ids)))
-        # for p in self.perfil_ids:
-        for p in self.perfil_ids:
-            _logger.info(p.id)
-        for p in self.perfil_ids:
-            return p.id
 
     @api.one
     def get_perfil(self):

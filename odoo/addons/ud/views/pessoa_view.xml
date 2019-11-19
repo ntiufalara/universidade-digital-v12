@@ -56,10 +56,6 @@
                                 </group>
                             </page>
                             <page string="Perfil institucional">
-                                <group >
-                                    <field name="principal2" nolabel="0"/>
-                                </group>
-
                                 <group string="Perfil institucional">
                                     <field name="perfil_ids" nolabel="1"/>
                                 </group>
