@@ -29,7 +29,7 @@
                 <div class="list-group list-group-flush">
                     <div class="list-group-item">
                         <div class="row">
-                            <strong class="col-sm-4 text-sm-right">Autor(es)</strong>
+                            <strong class="col-sm-4 text-sm-right">Autor(a)</strong>
                             <div class="col-sm-8">
                                 <t t-foreach="pub.autor_ids" t-as="autor">
                                     <span t-esc="autor.display_name"></span>.
@@ -69,7 +69,8 @@
                         <div class="row">
                             <strong class="col-sm-4 text-sm-right">Local</strong>
                             <div class="col-sm-8">
-                                <t t-esc="pub.campus_id.name"></t>,
+                                UFAL, <i>Campus</i> Arapiraca, Unidade Educacional
+<!--                                <t t-esc="pub.campus_id.name"></t>,-->
                                 <t t-esc="pub.polo_id.name"></t>
                             </div>
                         </div>
@@ -92,7 +93,7 @@
                     </div>
                     <div class="list-group-item">
                         <div class="row">
-                            <strong class="col-sm-4 text-sm-right">Orientadores</strong>
+                            <strong class="col-sm-4 text-sm-right">Orientador(a)</strong>
                             <div class="col-sm-8">
                                 <t t-foreach="pub.orientador_ids" t-as="orientador">
                                     <span t-esc="orientador.display_name"></span>.
@@ -103,7 +104,7 @@
                     </div>
                     <div t-if="pub.coorientador_ids" class="list-group-item">
                         <div class="row">
-                            <strong class="col-sm-4 text-sm-right">Coorientadores</strong>
+                            <strong class="col-sm-4 text-sm-right">Coorientador(a)</strong>
                             <div class="col-sm-8">
                                 <t t-foreach="pub.coorientador_ids" t-as="coorientador">
                                     <span t-esc="coorientador.display_name"></span>.
@@ -114,7 +115,7 @@
                     </div>
                     <div t-if="pub.membro_banca_ids" class="list-group-item">
                         <div class="row">
-                            <strong class="col-sm-4 text-sm-right">Membros da Banca</strong>
+                            <strong class="col-sm-4 text-sm-right">Banca Examinadora</strong>
                             <div class="col-sm-8">
                                 <t t-foreach="pub.membro_banca_ids" t-as="membro_banca">
                                     <span t-esc="membro_banca.display_name"></span>.

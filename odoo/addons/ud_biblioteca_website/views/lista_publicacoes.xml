@@ -199,14 +199,15 @@
                                             <t t-esc="pub.curso_id.name"></t>
                                         </div>
                                         <div class="publicacao-detalhes">
-                                            <strong>Autor(es):</strong>
+                                            <strong>Autor(a):</strong>
                                             <t t-foreach="pub.autor_ids" t-as="autor">
                                                 <span t-esc="autor.display_name"></span><t t-if="len(pub.autor_ids) > 1 and autor != pub.autor_ids[-1]">;<br/></t>
                                             </t>
                                         </div>
                                         <div class="publicacao-detalhes">
                                             <strong>Local:</strong>
-                                            <t t-esc="pub.campus_id.name"></t>,
+                                            UFAL, <i>Campus</i> Arapiraca, Unidade Educacional
+<!--                                            <t t-esc="pub.campus_id.name"></t>,-->
                                             <t t-esc="pub.polo_id.name"></t>
                                         </div>
                                         <div class="publicacao-detalhes">
@@ -218,7 +219,7 @@
                                             <span t-field="pub.data_defesa" t-options="{'format': 'dd/MM/yyyy'}"></span>
                                         </div>
                                         <div class="publicacao-detalhes">
-                                            <strong>Orientador(es):</strong>
+                                            <strong>Orientador(a):</strong>
                                             <t t-foreach="pub.orientador_ids" t-as="orientador">
                                                 <span t-esc="orientador.display_name"></span><t t-if="len(pub.orientador_ids) > 1 and orientador != pub.orientador_ids[-1]">;<br/></t>
                                             </t>
