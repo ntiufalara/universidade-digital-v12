@@ -103,7 +103,7 @@
                     </div>
                     <div t-if="pub.coorientador_ids" class="list-group-item">
                         <div class="row">
-                            <strong class="col-sm-4 text-sm-right">Corientadores</strong>
+                            <strong class="col-sm-4 text-sm-right">Coorientadores</strong>
                             <div class="col-sm-8">
                                 <t t-foreach="pub.coorientador_ids" t-as="coorientador">
                                     <span t-esc="coorientador.display_name"></span>.
