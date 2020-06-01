@@ -74,19 +74,25 @@
                 <!-- TODAS AS PUBLICAÇÕES -->
                 <div class="container py-4">
                     <div class="py-3 d-flex justify-content-center align-items-center flex-column flex-sm-row mx-auto">
-                        <div>
+                        <div class="mx-4">
                             <object class="acesse-vector mx-4"
                                     data="/ud_biblioteca_website/static/src/img/biblioteca-vector.svg"
                                     type="image/svg+xml"></object>
                         </div>
-                        <div class="text-center text-sm-left">
-                            <h3>Veja todas as publicações</h3>
-                            <p>Consulte e faça o download dos TCC's, artigos e outras publicações disponíveis na BCA -
-                                Biblioteca
-                                Campus de Arapiraca da Universidade Federal de Alagoas
+                        <div class="mx-4 text-center text-sm-left">
+                            <h3>Veja as publicações</h3>
+                            <p>Consulte e faça o download das publicações disponíveis 
                             </p>
                             <a href="/repositorio/publicacoes/">
                                 <button class="btn btn-primary btn-tema mb-2">Acessar publicações</button>
+                            </a>
+                        </div>
+                        <div class="mx-4 text-center text-sm-left">
+                            <h3>Pague suas multas</h3>
+                            <p>Gere sua GRU referente a dívidas com a bibliteoca
+                            </p>
+                            <a href="https://central.arapiraca.ufal.br/gru-sibi/">
+                                <button class="btn btn-primary btn-tema mb-2">Gerar GRU</button>
                             </a>
                         </div>
                     </div>
