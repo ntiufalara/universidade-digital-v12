@@ -89,7 +89,7 @@
                         </div>
                         <div class="mx-4 text-center text-sm-left">
                             <h3>Pague suas multas</h3>
-                            <p>Gere sua GRU referente a dívidas com a bibliteoca
+                            <p>Gere sua GRU referente a dívidas com a biblioteca
                             </p>
                             <a href="https://central.arapiraca.ufal.br/gru-sibi/">
                                 <button class="btn btn-primary btn-tema mb-2">Gerar GRU</button>
