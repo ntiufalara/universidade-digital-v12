@@ -356,13 +356,13 @@ class Publicacao(models.Model):
 # muda o tipo do nome 1 char para html
 # copia texto de nome2 para nome1 (chamar mudanca_tipo_campos2)
 # remove nome2
-def mudanca_tipo_campos1(publicacoes):
-    for pub in publicacoes:
-       pub.name2 = pub.name
-       pub.observacoes2 = pub.observacoes
+# def mudanca_tipo_campos1(publicacoes):
+#     for pub in publicacoes:
+#        pub.name2 = pub.name
+#        pub.observacoes2 = pub.observacoes
 
 
-def mudanca_tipo_campos2(publicacoes):
-    for pub in publicacoes:
-       pub.name = pub.name2
-       pub.observacoes = pub.observacoes2
+# def mudanca_tipo_campos2(publicacoes):
+#     for pub in publicacoes:
+#        pub.name = pub.name2
+#        pub.observacoes = pub.observacoes2
