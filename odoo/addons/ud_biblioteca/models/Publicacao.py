@@ -22,6 +22,10 @@ class Publicacao(models.Model):
     autor_ids = fields.Many2many('ud.biblioteca.publicacao.autor', 'ud_biblioteca_publicacao_autores', 'pub_id',
                                  'autor_id', u'Autores')
     ano_pub = fields.Char(u'Ano de publicação', required=True)
+    
+    numero_paginas = fields.Integer(u'Número de paginas')
+    
+
     data_defesa = fields.Date(u'Data da defesa')
     campus_id = fields.Many2one("ud.campus", u"Campus", required=True, ondelete='set null',
                                 default=lambda self: self.busca_campus())
