@@ -23,7 +23,7 @@ class Publicacao(models.Model):
                                  'autor_id', u'Autores')
     ano_pub = fields.Char(u'Ano de publicação', required=True)
     
-    numero_paginas = fields.Integer(u'Número de paginas')
+    numero_paginas = fields.Integer(u'Número de páginas')
     
 
     data_defesa = fields.Date(u'Data da defesa')
