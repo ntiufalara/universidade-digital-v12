@@ -57,7 +57,7 @@ class Publicacao(models.Model):
     autorizar_publicacao = fields.Boolean(u"Não embargado")
     visualizacoes = fields.Integer(u'Visualizações', required=True, default=0)
     area_ids = fields.Many2many('ud.biblioteca.publicacao.area', 'area_publicacao_real',
-                                string=u'Áreas do conhecimento/Localização')
+                                string=u'Coleção / Localização')
     bibliotecario_responsavel = fields.Many2one('ud.biblioteca.responsavel', u'Bibliotecário', required=False,
                                                 default=lambda self: self.get_bibliotecario())
     resumo = fields.Html(u'Resumo', required=False, sanitize=False)
