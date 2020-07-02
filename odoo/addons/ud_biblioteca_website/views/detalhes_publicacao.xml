@@ -1,197 +1,255 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <odoo>
-    <template id="ud_biblioteca_website.detalhes_publicacao">
-        <t t-call="ud_biblioteca_website.layout_repositorio">
-            <div id="publicacoes-topo"
-                 class="d-flex justify-content-center align-items-center flex-column flex-sm-row mx-auto">
-                <div class="container">
-                    <h3 id="pub-titulo"
-                        class="ml-3 text-white mt-3 mt-sm-0 text-center text-uppercase"
-                        t-raw="pub.name"></h3>
-                </div>
-            </div>
+  <template id="ud_biblioteca_website.detalhes_publicacao">
+    <t t-call="ud_biblioteca_website.layout_repositorio">
+      <t t-set="title" t-value="pub.name_text"></t>
+      <t t-set="description" t-value="pub.resumo_text"></t>
+      <h1 style="display: none;">
+        <t t-esc="pub.name_text"></t>
+      </h1>
 
-            <!-- DETALHES PUBLICAÇÃO -->
-            <div class="container">
-                <div class="row bg-light my-3">
-                    <div class="col-12">
-                        <ul id="site-nav" class="nav p-2 shadow-sm rounded">
-                            <li class="nav-item">
-                                <a class="btn btn-sm btn-outline-primary mr-1" onclick="window.history.back();"
-                                   href="#">Voltar
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+      <div id="publicacoes-topo"
+           class="d-flex justify-content-center align-items-center flex-column flex-sm-row mx-auto">
+        <div class="container">
+          <h3 id="pub-titulo"
+              class="ml-3 text-white mt-3 mt-sm-0 text-center text-uppercase"
+              t-raw="pub.name"></h3>
+        </div>
+      </div>
 
-                <div class="list-group list-group-flush">
-                    <div class="list-group-item">
-                        <div class="row">
-                            <strong class="col-sm-4 text-sm-right">Autor(a)</strong>
-                            <div class="col-sm-8">
-                                <t t-foreach="pub.autor_ids" t-as="autor">
-                                    <span t-esc="autor.display_name"></span>.
-                                    <br/>
-                                    <t t-if="autor.contato">
-                                        &lt;<span t-esc="autor.contato"></span>&gt;
-                                    </t>
-                                </t>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="list-group-item">
-                        <div class="row">
-                            <strong class="col-sm-4 text-sm-right">Ano de publicação</strong>
-                            <div class="col-sm-8" t-esc="pub.ano_pub"></div>
-                        </div>
-                    </div>
-                    <div class="list-group-item" t-if="pub.data_defesa">
-                        <div class="row">
-                            <strong class="col-sm-4 text-sm-right">Data da defesa</strong>
-                            <div class="col-sm-8" t-field="pub.data_defesa" t-options="{'format': 'dd/MM/yyyy'}"></div>
-                        </div>
-                    </div>
-                    <div class="list-group-item">
-                        <div class="row">
-                            <strong class="col-sm-4 text-sm-right">Curso/Outros</strong>
-                            <div class="col-sm-8" t-esc="pub.curso_id.name"></div>
-                        </div>
-                    </div>
-                    <div class="list-group-item">
-                        <div class="row">
-                            <strong class="col-sm-4 text-sm-right">Tipo</strong>
-                            <div class="col-sm-8" t-esc="pub.tipo_id.name"></div>
-                        </div>
-                    </div>
-                    <div class="list-group-item">
-                        <div class="row">
-                            <strong class="col-sm-4 text-sm-right">Local</strong>
-                            <div class="col-sm-8">
-                                UFAL, <i>Campus</i> Arapiraca, Unidade Educacional
-<!--                                <t t-esc="pub.campus_id.name"></t>,-->
-                                <t t-esc="pub.polo_id.name"></t>
-                            </div>
-                        </div>
-                    </div>
-                    <div t-if="pub.resumo" class="list-group-item">
-                        <div class="row">
-                            <strong class="col-sm-4 text-sm-right">Resumo</strong>
-                            <div class="col-sm-8">
-                                <t t-raw="pub.resumo"></t>
-                            </div>
-                        </div>
-                    </div>
-                    <div t-if="pub.abstract" class="list-group-item">
-                        <div class="row">
-                            <strong class="col-sm-4 text-sm-right" t-field="pub.titulo_abstract"></strong>
-                            <div class="col-sm-8">
-                                <t t-raw="pub.abstract"></t>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="list-group-item">
-                        <div class="row">
-                            <strong class="col-sm-4 text-sm-right">Orientador(a)</strong>
-                            <div class="col-sm-8">
-                                <t t-foreach="pub.orientador_ids" t-as="orientador">
-                                    <span t-esc="orientador.display_name"></span>.
-                                    <br/>
-                                </t>
-                            </div>
-                        </div>
-                    </div>
-                    <div t-if="pub.coorientador_ids" class="list-group-item">
-                        <div class="row">
-                            <strong class="col-sm-4 text-sm-right">Coorientador(a)</strong>
-                            <div class="col-sm-8">
-                                <t t-foreach="pub.coorientador_ids" t-as="coorientador">
-                                    <span t-esc="coorientador.display_name"></span>.
-                                    <br/>
-                                </t>
-                            </div>
-                        </div>
-                    </div>
-                    <div t-if="pub.membro_banca_ids" class="list-group-item">
-                        <div class="row">
-                            <strong class="col-sm-4 text-sm-right">Banca Examinadora</strong>
-                            <div class="col-sm-8">
-                                <t t-foreach="pub.membro_banca_ids" t-as="membro_banca">
-                                    <span t-esc="membro_banca.display_name"></span>.
-                                    <br/>
-                                </t>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="list-group-item">
-                        <div class="row">
-                            <strong class="col-sm-4 text-sm-right">Palavras-chave</strong>
-                            <div class="col-sm-8">
-                                <t t-foreach="pub.palavras_chave_ids" t-as="palavra">
-                                    <span t-esc="palavra.name"></span>.
-                                    <br/>
-                                </t>
-                            </div>
-                        </div>
-                    </div>
-                    <div t-if="pub.area_ids" class="list-group-item">
-                        <div class="row">
-                            <strong class="col-sm-4 text-sm-right">Áreas do Conhecimento/Localização</strong>
-                            <div class="col-sm-8">
-                                <t t-foreach="pub.area_ids" t-as="area">
-                                    <span t-esc="area.name"></span>.
-                                    <br/>
-                                </t>
-                            </div>
-                        </div>
-                    </div>
-                    <div t-if="pub.categoria_cnpq_id" class="list-group-item">
-                        <div class="row">
-                            <strong class="col-sm-4 text-sm-right">Categorias CNPQ</strong>
-                            <div class="col-sm-8">
-                                <t t-foreach="pub.categoria_cnpq_id" t-as="categoria">
-                                    <span t-esc="categoria.name"></span>.
-                                    <br/>
-                                </t>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="list-group-item" t-if="pub.autorizar_publicacao">
-                        <div class="row">
-                            <strong class="col-sm-4 text-sm-right">Anexos</strong>
-                            <div class="col-sm-8" style="overflow-x: scroll;">
-                                <t t-foreach="pub.anexo_ids" t-as="anexo">
-                                    <a style="padding: 0 5px;"
-                                       class="text-primary"
-                                       t-esc="anexo.name"
-                                       t-attf-href="/web/content?model=ud.biblioteca.anexo&amp;field=arquivo&amp;id={{ anexo.id }}&amp;download=true&amp;filename_field=name"></a>
-                                    <br/>
-                                </t>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="list-group-item">
-                        <div class="row">
-                            <strong class="col-sm-4 text-sm-right">Visualizações</strong>
-                            <div class="col-sm-8" t-esc="pub.visualizacoes"></div>
-                        </div>
-                    </div>
-                    <div class="list-group-item" t-if="pub.observacoes">
-                        <div class="row">
-                            <strong class="col-sm-4 text-sm-right">Observações</strong>
-                            <div class="col-sm-8" t-raw="pub.observacoes"></div>
-                        </div>
-                    </div>
-                </div>
+      <!-- DETALHES PUBLICAÇÃO -->
+      <div class="container">
+        <div class="row bg-light my-3">
+          <div class="col-12">
+            <ul id="site-nav" class="nav p-2 shadow-sm rounded">
+              <li class="nav-item">
+                <a class="btn btn-sm btn-outline-primary mr-1" onclick="window.history.back();"
+                   href="#">Voltar
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
 
-                <t t-foreach="pub.anexo_ids" t-as="anexo">
-                    <object t-if="anexo.exibir_pdf" style="width: 100%;" height="600px" type="application/pdf"
-                            t-attf-data="/web/content?model=ud.biblioteca.anexo&amp;field=arquivo&amp;id={{ anexo.id }}&amp;filename_field=name">
-                        <p style="margin-top: 15px; margin-left: 15px;">Não foi possível exibir o PDF</p>
-                    </object>
+        <div class="list-group list-group-flush">
+          <div class="list-group-item">
+            <div class="row">
+              <strong class="col-sm-4 text-sm-right">Autor(a)</strong>
+              <div class="col-sm-8">
+                <t t-foreach="pub.autor_ids" t-as="autor">
+                  <span t-esc="autor.display_name"></span>.
+                  <br/>
+                  <t t-if="autor.contato">
+                    &lt;<span t-esc="autor.contato"></span>&gt;
+                  </t>
                 </t>
+              </div>
             </div>
+          </div>
+          <div class="list-group-item">
+            <div class="row">
+              <strong class="col-sm-4 text-sm-right">Ano de publicação</strong>
+              <div class="col-sm-8" t-esc="pub.ano_pub"></div>
+            </div>
+          </div>
+          <div class="list-group-item" t-if="pub.data_defesa">
+            <div class="row">
+              <strong class="col-sm-4 text-sm-right">Data da defesa</strong>
+              <div class="col-sm-8" t-field="pub.data_defesa" t-options="{'format': 'dd/MM/yyyy'}"></div>
+            </div>
+          </div>
+          <div class="list-group-item">
+            <div class="row">
+              <strong class="col-sm-4 text-sm-right">Curso/Outros</strong>
+              <div class="col-sm-8" t-esc="pub.curso_id.name"></div>
+            </div>
+          </div>
+          <div class="list-group-item">
+            <div class="row">
+              <strong class="col-sm-4 text-sm-right">Tipo</strong>
+              <div class="col-sm-8" t-esc="pub.tipo_id.name"></div>
+            </div>
+          </div>
+          <div class="list-group-item">
+            <div class="row">
+              <strong class="col-sm-4 text-sm-right">Local</strong>
+              <div class="col-sm-8">
+                UFAL, <i>Campus</i> Arapiraca, Unidade Educacional
+                <!--                                <t t-esc="pub.campus_id.name"></t>,-->
+                <t t-esc="pub.polo_id.name"></t>
+              </div>
+            </div>
+          </div>
+          <div t-if="pub.resumo" class="list-group-item">
+            <div class="row">
+              <strong class="col-sm-4 text-sm-right">Resumo</strong>
+              <div class="col-sm-8">
+                <t t-raw="pub.resumo"></t>
+              </div>
+            </div>
+          </div>
+          <div t-if="pub.abstract" class="list-group-item">
+            <div class="row">
+              <strong class="col-sm-4 text-sm-right" t-field="pub.titulo_abstract"></strong>
+              <div class="col-sm-8">
+                <t t-raw="pub.abstract"></t>
+              </div>
+            </div>
+          </div>
+          <div class="list-group-item">
+            <div class="row">
+              <strong class="col-sm-4 text-sm-right">Orientador(a)</strong>
+              <div class="col-sm-8">
+                <t t-foreach="pub.orientador_ids" t-as="orientador">
+                  <span t-esc="orientador.display_name"></span>.
+                  <br/>
+                </t>
+              </div>
+            </div>
+          </div>
+          <div t-if="pub.coorientador_ids" class="list-group-item">
+            <div class="row">
+              <strong class="col-sm-4 text-sm-right">Coorientador(a)</strong>
+              <div class="col-sm-8">
+                <t t-foreach="pub.coorientador_ids" t-as="coorientador">
+                  <span t-esc="coorientador.display_name"></span>.
+                  <br/>
+                </t>
+              </div>
+            </div>
+          </div>
+          <div t-if="pub.membro_banca_ids" class="list-group-item">
+            <div class="row">
+              <strong class="col-sm-4 text-sm-right">Banca Examinadora</strong>
+              <div class="col-sm-8">
+                <t t-foreach="pub.membro_banca_ids" t-as="membro_banca">
+                  <span t-esc="membro_banca.display_name"></span>.
+                  <br/>
+                </t>
+              </div>
+            </div>
+          </div>
+          <div class="list-group-item">
+            <div class="row">
+              <strong class="col-sm-4 text-sm-right">Palavras-chave</strong>
+              <div class="col-sm-8">
+                <t t-foreach="pub.palavras_chave_ids" t-as="palavra">
+                  <span t-esc="palavra.name"></span>.
+                  <br/>
+                </t>
+              </div>
+            </div>
+          </div>
+          <div t-if="pub.area_ids" class="list-group-item">
+            <div class="row">
+              <strong class="col-sm-4 text-sm-right">Áreas do Conhecimento/Localização</strong>
+              <div class="col-sm-8">
+                <t t-foreach="pub.area_ids" t-as="area">
+                  <span t-esc="area.name"></span>.
+                  <br/>
+                </t>
+              </div>
+            </div>
+          </div>
+          <div t-if="pub.categoria_cnpq_id" class="list-group-item">
+            <div class="row">
+              <strong class="col-sm-4 text-sm-right">Categorias CNPQ</strong>
+              <div class="col-sm-8">
+                <t t-foreach="pub.categoria_cnpq_id" t-as="categoria">
+                  <span t-esc="categoria.name"></span>.
+                  <br/>
+                </t>
+              </div>
+            </div>
+          </div>
+          <div class="list-group-item" t-if="pub.autorizar_publicacao">
+            <div class="row">
+              <strong class="col-sm-4 text-sm-right">Anexos</strong>
+              <div class="col-sm-8" style="overflow-x: scroll;">
+                <t t-foreach="pub.anexo_ids" t-as="anexo">
+                  <a style="padding: 0 5px;"
+                     class="text-primary"
+                     t-esc="anexo.name"
+                     t-attf-href="/web/content?model=ud.biblioteca.anexo&amp;field=arquivo&amp;id={{ anexo.id }}&amp;download=true&amp;filename_field=name"></a>
+                  <br/>
+                </t>
+              </div>
+            </div>
+          </div>
+          <div class="list-group-item">
+            <div class="row">
+              <strong class="col-sm-4 text-sm-right">Visualizações</strong>
+              <div class="col-sm-8" t-esc="pub.visualizacoes"></div>
+            </div>
+          </div>
+          <div class="list-group-item" t-if="pub.observacoes">
+            <div class="row">
+              <strong class="col-sm-4 text-sm-right">Observações</strong>
+              <div class="col-sm-8" t-raw="pub.observacoes"></div>
+            </div>
+          </div>
+        </div>
+
+        <t t-foreach="pub.anexo_ids" t-as="anexo">
+          <object t-if="anexo.exibir_pdf" style="width: 100%;" height="600px" type="application/pdf"
+                  t-attf-data="/web/content?model=ud.biblioteca.anexo&amp;field=arquivo&amp;id={{ anexo.id }}&amp;filename_field=name">
+            <p style="margin-top: 15px; margin-left: 15px;">Não foi possível exibir o PDF</p>
+          </object>
         </t>
-    </template>
+      </div>
+    </t>
+  </template>
+
+  <template id="ud_biblioteca_website.layout_detalhes" inherit_id="ud_biblioteca_website.layout">
+    <xpath expr="//head" position="inside">
+      <t t-if="pub">
+        <meta name="keywords" t-att-content="pub.keywords_text"/>
+        <!-- Tags Dublin Core -->
+        <link rel="schema.DCTERMS" href="http://purl.org/dc/terms/"/>
+        <link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"/>
+        <!-- Autores -->
+        <t t-foreach="pub.autor_ids" t-as="autor">
+          <meta name="DC.creator" t-att-content="autor.display_name"/>
+        </t>
+        <!-- Orientadores e Coorientadores -->
+        <t t-foreach="pub.orientador_ids" t-as="o">
+          <meta name="DC.contributor" t-att-content="'{}, {}.'.format(o.ultimo_nome, o.name)"/>
+        </t>
+        <t t-foreach="pub.coorientador_ids" t-as="co">
+          <meta name="DC.contributor" t-att-content="'{}, {}.'.format(co.ultimo_nome, co.name)"/>
+        </t>
+        <!-- Data -->
+        <meta name="DCTERMS.dateAccepted" t-att-content="pub.data_defesa_iso" scheme="DCTERMS.W3CDTF"/>
+        <meta name="DCTERMS.available" t-att-content="pub.data_defesa_iso" scheme="DCTERMS.W3CDTF"/>
+        <meta name="DCTERMS.issued" t-att-content="pub.data_defesa_iso" scheme="DCTERMS.W3CDTF"/>
+        <meta name="DC.issued" t-att-content="pub.data_defesa_iso" scheme="DCTERMS.W3CDTF"/>
+        <!-- Tags com marcação de linguagem -->
+        <t t-raw="pub.tags_xmllang"></t>
+        <![CDATA[
+        <meta name="DC.language" content="por" xml:lang="pt_BR"/>
+        <meta name="DC.publisher" content="Brasil" xml:lang="pt_BR">
+        <meta name="DC.relation" content="Acesso Aberto" xml:lang="pt_BR">
+        ]]>
+        <meta name="citation_title" t-att-content="pub.name_text"/>
+        <meta name="citation_date" t-att-content="pub.data_defesa_iso[:10]"/>
+        <t t-foreach="pub.palavras_chave_ids" t-as="keyword">
+          <meta name="citation_keywords" t-att-content="keyword.name"/>
+        </t>
+        <t t-foreach="pub.autor_ids" t-as="autor">
+          <meta name="citation_author" t-att-content="autor.display_name"/>
+        </t>
+        <meta name="citation_abstract_html_url"
+              t-attf-content="{{ request.httprequest.host_url }}publicacoes/{{ pub.id }}"/>
+        <t t-foreach="pub.anexo_ids" t-as="anexo">
+          <meta name="citation_pdf_url"
+                t-attf-content="{{ request.httprequest.host_url }}web/content?model=ud.biblioteca.anexo&amp;field=arquivo&amp;id={{ anexo.id }}&amp;download=true&amp;filename_field=name"/>
+        </t>
+        <meta name="DC.identifier" t-attf-content="{{ request.httprequest.host_url }}publicacoes/{{ pub.id }}"
+              scheme="DCTERMS.URI"/>
+        <meta name="citation_publication_date" t-att-content="pub.data_defesa_iso"/>
+        <meta name="citation_online_date" t-att-content="pub.data_defesa_iso"/>
+      </t>
+    </xpath>
+  </template>
 </odoo>
