@@ -8,7 +8,7 @@
             xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
       <url>
         <loc>
-          <t t-esc="request.httprequest.host_url"></t>
+          <t t-esc="request.httprequest.host_url + 'repositorio'"></t>
         </loc>
         <lastmod>
           <t t-esc="date"></t>
@@ -18,7 +18,7 @@
       </url>
       <url>
         <loc>
-          <t t-esc="request.httprequest.host_url + 'publicacoes'"></t>
+          <t t-esc="request.httprequest.host_url + 'repositorio/publicacoes'"></t>
         </loc>
         <lastmod>
           <t t-esc="date"></t>
@@ -28,7 +28,7 @@
       </url>
       <url t-foreach="pubs" t-as="p">
         <loc>
-          <t t-esc="request.httprequest.host_url + 'publicacoes/' + str(p['id'])"></t>
+          <t t-esc="request.httprequest.host_url + 'repositorio/publicacoes/' + str(p['id'])"></t>
         </loc>
         <lastmod>
           <t t-esc="p['write_date'].date()"></t>
