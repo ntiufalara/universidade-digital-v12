@@ -29,10 +29,6 @@ class Publicacao(models.Model):
     @api.one
     def get_tags(self):
         tags = ''
-        # Citação
-        citacao = html2text.html2text(self.citacao).strip().replace('\n', ' ') if self.citacao else ''
-        if citacao:
-            tags += '<meta name="DCTERMS.bibliographicCitation" content="{}" xml:lang="pt_BR" />'.format(citacao)
         # Abstract
         tags += '<meta name="DCTERMS.abstract" content="{}" xml:lang="pt_BR" />'.format(self.resumo_text)
         # Publisher
