@@ -201,7 +201,7 @@
     </t>
   </template>
 
-  <template id="ud_biblioteca_website.layout_detalhes" inherit_id="ud_biblioteca_website.layout">
+  <template id="ud_biblioteca_website.layout_detalhes" inherit_id="ud_biblioteca_website.layout_repositorio">
     <xpath expr="//head" position="inside">
       <t t-if="pub">
         <meta name="keywords" t-att-content="pub.keywords_text"/>

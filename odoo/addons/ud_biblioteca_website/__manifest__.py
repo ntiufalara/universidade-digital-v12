@@ -20,5 +20,6 @@
         'views/home_repositorio.xml',
         'views/lista_publicacoes.xml',
         'views/detalhes_publicacao.xml',
+        'views/sitemap_template.xml',
     ],
 }
