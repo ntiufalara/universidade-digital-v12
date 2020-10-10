@@ -2,7 +2,7 @@ version: "3"
 
 services:
   db:
-    image: postgres:11
+    image: postgres:13
     restart: always
     network_mode: "host"
     environment:
@@ -10,7 +10,7 @@ services:
       - POSTGRES_USER=odoo
       - POSTGRES_DB=odoo
     volumes:
-      - "../db_data_odoo12/:/var/lib/postgresql/data"
+      - "../db_data_odoo12_pg13/:/var/lib/postgresql/data"
       - "../db_backup_odoo12/:/db_backup/"
   web:
     build: .
