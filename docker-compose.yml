@@ -36,7 +36,7 @@ services:
       - "./storage:/root/.local/share/Odoo"
     network_mode: "host"
     depends_on:
-      - db
+      - db13
   nginx:
     image: nginx:1.17.0
     restart: always
