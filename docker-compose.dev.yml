@@ -12,11 +12,11 @@ services:
     volumes:
       - "./db_data_odoo12_pg13/:/var/lib/postgresql/data"
       - "./db_backup_odoo12/:/db_backup/"
-    # expose:
-    #   - "5433" # Publishes 5433 to other containers but NOT to host machine
-    # ports:
-    #   - "5433:5432"
-    # command: -p 5433
+    expose:
+      - "5433" # Publishes 5433 to other containers but NOT to host machine
+    ports:
+      - "5433:5432"
+    command: -p 5433
   # db:
   #   image: postgres:11
   #   restart: always
