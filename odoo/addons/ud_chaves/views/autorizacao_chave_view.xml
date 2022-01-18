@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+  <data>
+
+    <record model="ir.actions.act_window" id="ud_chaves_autorizacao_chave_action">
+      <field name="name">Autorização de chave</field>
+      <field name="res_model">ud.chaves.autorizacao</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+        <p class="oe_view_nocontent_create">
+          Clique para adicionar uma nova Autorização de chave
+        </p>
+        <p>
+
+        </p>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="ud_chaves_todas_autorizacoes_chave_tree">
+      <field name="name">Autorizações de chave</field>
+      <field name="model">ud.chaves.autorizacao</field>
+      <field name="arch" type="xml">
+        <tree string="Autorização de chave" decoration-danger="state=='cancelada'"
+                decoration-it="state=='aguardando'" decoration-bf="state=='entregue'">
+          <field name="solicitante_id"/>
+          <field name="chave_ids" widget="many2many_tags" />
+          <field name="state"/>
+          <field name="data_hora"/>
+          <field name="polo_id"/>     
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="ud_chaves_minhas_autorizacoes_chave_tree">
+      <field name="name">Autorizações de chave</field>
+      <field name="model">ud.chaves.autorizacao</field>
+      <field name="arch" type="xml">
+        <tree string="Autorização de chave" decoration-danger="state=='cancelada'"
+                      decoration-it="state=='aguardando'" decoration-bf="state=='entregue'">
+          <field name="chave_ids" widget="many2many_tags" />
+          <field name="state"/>
+          <field name="data_hora"/>
+          <field name="polo_id"/>     
+        </tree>
+      </field>
+    </record>
+
+    <!-- COPIADO -->
+    <record model="ir.actions.act_window" id="ud_chaves_autorizacao_action">
+            <field name="name">Autorizações de chave</field>
+            <field name="res_model">ud.chaves.autorizacao</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="ud_chaves_todas_autorizacoes_chave_tree"/>
+    </record>
+
+    
+
+        <!-- Exibe somente AUTORIZAÇÕES do usuário -->
+        <record id="ud_chaves_minha_autorizacao_action" model="ir.actions.act_window">
+            <field name="name">Minhas Autorizações de chave</field>
+            <field name="res_model">ud.chaves.autorizacao</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>    
+            <field name="domain">[('solicitante_id.pessoa_id', '=', uid)]</field>   
+            <field name="view_id" ref="ud_chaves_minhas_autorizacoes_chave_tree"/>       
+            <!-- Parâmetros passados ao método read() de solicitações -->
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Clique para criar uma Autorização de chave
+                </p>
+                <p>
+
+                </p>
+            </field>
+        </record>
+
+        <!-- Exibe AUTORIZAÇÕES das chaves gerenciadas -->
+        <record id="ud_chaves_autorizacao_gerente_de_chaves_action" model="ir.actions.act_window">
+            <field name="name">Autorizações de chave</field>
+            <field name="res_model">ud.chaves.autorizacao</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>          
+            <!-- Parâmetros passados ao método read() de AUTORIZAÇÕES -->
+            <field name="context">{'filtrar_por_chaves':1}</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Clique para criar uma Autorização de chave
+                </p>
+                <p> </p>
+            </field>
+        </record>
+
+        <!-- Exibe AUTORIZAÇÕES das chaves de um polo -->
+        <record id="ud_chaves_autorizacao_seguranca_action" model="ir.actions.act_window">
+            <field name="name">Autorização de chave</field>
+            <field name="res_model">ud.chaves.autorizacao</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>  
+            <field name="view_id" ref="ud_chaves_todas_autorizacoes_chave_tree"/>
+            <!-- Parâmetros passados ao método read() de AUTORIZAÇÕES -->
+            <field name="context">{'filtrar_por_polo':1}</field>
+            <!-- <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Clique para criar uma Autorização de chave
+                </p>
+                <p> </p>
+            </field> -->
+        </record>
+    <!-- END COPIADO -->
+
+
+    <record model="ir.ui.view" id="ud_chaves_autorizacao_chave_search">
+      <field name="name">Busca</field>
+      <field name="model">ud.chaves.autorizacao</field>
+      <field name="arch" type="xml">
+        <search string="Buscar">
+          <field name="solicitante_id" filter_domain="" string="Solicitante"/>
+          <field name="name" string="Nome"/>
+          <field name="chave_ids" filter_domain="" string="Chave"/>
+          <field name="state" string="Status"/>
+          <field name="data_hora" string="Data"/>
+          <field name="seguranca_entregou_id" string="Quem entregou"/>
+          <field name="seguranca_recebeu_id" string="Quem recebeu"/>
+          <group expand="0" string="Agrupar por:">
+            <filter string="Status" name="status" domain="[]" 
+                    context="{'group_by':'state'}"/>
+            <filter string="Polo" name="polo" domain="[]" 
+                    context="{'group_by':'polo_id'}"/>
+            <filter string="Solicitante" name="solicitante" domain="[]"
+                    context="{'group_by':'solicitante_id'}"/>
+
+            <filter string="Quem recebeu" name="seguranca_recebeu" domain="[]"
+                    context="{'group_by':'seguranca_recebeu_id'}"/>
+            <filter string="Quem entregou" name="seguranca_entregou" domain="[]"
+                    context="{'group_by':'seguranca_entregou_id'}"/>
+            <filter string="Data" name="data_hora" domain="[]"
+                    context="{'group_by':'data_hora'}"/>
+          </group>
+        </search>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="ud_chaves_autorizacao_chave_form">
+      <field name="name">Autorização de chave</field>
+      <field name="model">ud.chaves.autorizacao</field>
+      <field name="arch" type="xml">
+        <form string="Autorização de chave">
+          <field name="name" invisible="1"/>
+          <header>
+            <button name="botao_entregar" states="aguardando" string="Entregue" type="object" class="oe_highlight" 
+                    groups="ud_chaves.group_ud_chaves_gerente_de_seguranca,ud_chaves.group_ud_chaves_seguranca"/>
+            <button name="botao_cancelar" states="aguardando" string="Cancelar" type="object"
+                    groups="ud_chaves.group_ud_chaves_responsavel,ud_chaves.group_ud_chaves_gerente_de_seguranca,ud_chaves.group_ud_chaves_seguranca"/>
+            <button name="botao_devolver" states="entregue" string="Devolvida" type="object" class="oe_highlight" 
+                    groups="ud_chaves.group_ud_chaves_gerente_de_seguranca,ud_chaves.group_ud_chaves_seguranca"/>
+          
+          </header>
+          <sheet>
+            <group>
+              <group>
+                <field name="name" readonly="1"/>
+                <field name="solicitante_id" readonly="1" options="{'no_quick_create':False,'no_create_edit':True,'no_open': True,}"/>
+                <field name="email" readonly="1"/>
+                <field name="celular" readonly="1"/>
+                <field name="data_hora" readonly="1"/>
+              </group>
+              <group>                         
+                <field name="state" readonly="1"/>
+                <field name="seguranca_entregou_id" readonly="1" attrs="{'invisible': [('seguranca_entregou_id', '=', False)]}"/>
+                <field name="data_hora_entrega" readonly="1" attrs="{'invisible': [('data_hora_entrega', '=', False)]}"/>
+                <field name="seguranca_recebeu_id" readonly="1" attrs="{'invisible': [('seguranca_recebeu_id', '=', False)]}"/>
+                <field name="data_hora_devolucao" readonly="1" attrs="{'invisible': [('data_hora_devolucao', '=', False)]}"/>
+              </group>
+            </group>
+            <group string="Chaves" >
+              <field name="chave_ids" nolabel="1"  options="{'no_quick_create':True,'no_create_edit':False}"/>
+            </group>
+            <group>
+              <field name="detalhes" attrs="{'invisible': [('seguranca_entregou_id', '=', False)]}"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+  </data>
+</odoo>

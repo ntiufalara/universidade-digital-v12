@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data>
+
+        <record model="ir.actions.act_window" id="ud_chaves_adicionar_chave_responsavel_action">
+            <field name="name">Adicionar chaves</field>
+            <field name="res_model">ud.chaves.adicionar_chave</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <record model="ir.ui.view" id="adicionar_chave_responsavel_form">
+            <field name="name">Adicionar chaves</field>
+            <field name="model">ud.chaves.adicionar_chave</field>
+            <field name="arch" type="xml">
+                <form string="Adicionar chaves">
+                    <div class="form-horizontal sheet col-sm-12 col-xs-12">
+                        <div class="col-md-12 col-lg-12 form-group">
+                            <label class="col-md-4 col-sm-4 control-label" for="chave_ids"></label>
+                            <div class="col-md-12 col-sm-12">
+                                <field name="chave_ids" />
+                            </div>
+                        </div>
+                    </div>
+                    <footer>
+                        <button string="Adicionar" name="adicionar" type="object" class="oe_highlight"/>
+                        ou
+                        <button string="Cancelar" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data>
+
+        <record model="ir.actions.act_window" id="ud_chaves_registro_action">
+            <field name="name">Registros</field>
+            <field name="res_model">ud.chaves.registro_chave</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record model="ir.ui.view" id="ud_chaves_registro_tree">
+            <field name="name">Registros</field>
+            <field name="model">ud.chaves.registro_chave</field>
+            <field name="arch" type="xml">
+                <tree string="Registros" create="false">
+                    <field name="responsavel_id"/>
+                    <field name="tipo"/>
+                    <field name="chave_ids" widget="many2many_tags"/>
+                    <field name="atribuidor_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ud_chaves_registro_search">
+            <field name="name">Busca</field>
+            <field name="model">ud.chaves.registro_chave</field>
+            <field name="arch" type="xml">
+                <search string="Buscar">
+                    
+                    <field name="responsavel_id"/>
+                    <field name="atribuidor_id"/>
+                    <field name="chave_ids"/>
+                    <group expand="0" string="Agrupar por:">
+                        <filter string="Atribuidor" name="atribuidor" domain="[]" context="{'group_by':'atribuidor_id'}"/>
+                        <filter string="Responsável" name="responsavel" domain="[]" context="{'group_by':'responsavel_id'}"/>
+                        <filter string="Chaves" name="chaves" domain="[]" context="{'group_by':'chave_ids'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ud_chaves_registro_form">
+            <field name="name">Registros</field>
+            <field name="model">ud.chaves.registro_chave</field>
+            <field name="arch" type="xml"> 
+                <form string="Registros" create="false" edit="false">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="atribuidor_id" readonly="1"/>
+                                <field name="responsavel_id" readonly="1"/>
+                                <field name="tipo"/>                              
+                            </group>
+                            <!-- <group>
+                                <field name="campus_id" options="{'no_open':True,}"/>
+                                <field name="polo_id" domain="[('campus_id', '=', campus_id)]" options="{'no_open':True,}"/>
+                            </group> -->
+                        </group>
+                        <group string="Chaves">
+                            <field name="chave_ids" nolabel="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

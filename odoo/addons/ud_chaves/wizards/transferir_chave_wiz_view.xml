@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data>
+
+        <record model="ir.actions.act_window" id="ud_chaves_transferir_chave_responsavel_action">
+            <field name="name">Transferir chaves</field>
+            <field name="res_model">ud.chaves.transferir_chave</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <record model="ir.ui.view" id="transferir_chave_responsavel_form">
+            <field name="name">Transferir chaves</field>
+            <field name="model">ud.chaves.transferir_chave</field>
+            <field name="arch" type="xml">
+                <form string="Transferir chaves">
+                    <div class="form-horizontal sheet col-sm-12 col-xs-12">
+                        <div class="col-md-12 col-lg-12 form-group">
+                            <label class="col-md-4 col-sm-4 control-label" for="responsavel_id"></label>
+                            <div class="col-md-12 col-sm-12">
+                                
+                                <field name="responsavel_id" options="{'no_open': True,}"/>
+                            </div>
+                        </div>
+                    </div>
+                    <footer>
+                        <button string="Transferir" name="transferir" type="object" class="oe_highlight"/>
+                        ou
+                        <button string="Cancelar" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

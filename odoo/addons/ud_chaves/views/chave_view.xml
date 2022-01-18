@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data>
+    
+        <record model="ir.actions.act_window" id="ud_chaves_chave_action">
+            <field name="name">Chaves</field>
+            <field name="res_model">ud.chaves.chave</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Clique para adicionar uma nova Chave
+                </p>
+                <p>
+
+                </p>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ud_chaves_chave_tree">
+            <field name="name">Chaves</field>
+            <field name="model">ud.chaves.chave</field>
+            <field name="arch" type="xml">
+                <tree string="Chaves">
+                    <field name="name"/>
+                    <field name="numero"/>
+                    <field name="bloco_id"/>
+                    <field name="polo_id"/>
+                    <field name="campus_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ud_chaves_chave_state_tree">
+            <field name="name">Chaves</field>
+            <field name="model">ud.chaves.chave</field>
+            <field name="arch" type="xml">
+                <tree string="Chaves" create="false">
+                    <field name="name"/>
+                    <field name="numero"/>
+                    <field name="state"/>
+                    <field name="bloco_id"/>
+                    <field name="polo_id"/>
+                    <field name="campus_id"/>
+                </tree>
+            </field>
+        </record>
+
+           
+        <record model="ir.actions.act_window" id="ud_chaves_chave_state_action">
+            <field name="name">Chaves</field>
+            <field name="res_model">ud.chaves.chave</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+           <field name="view_id" ref="ud_chaves_chave_state_tree"/>
+        </record>
+
+        <record model="ir.ui.view" id="ud_chaves_chave_search">
+            <field name="name">Busca</field>
+            <field name="model">ud.chaves.chave</field>
+            <field name="arch" type="xml">
+                <search string="Buscar">
+                    <field name="name" string="Nome"/>
+                    <field name="campus_id" string="Campus"/>
+                    <field name="polo_id" string="Polo"/>
+                    <field name="bloco_id" string="Bloco"/>
+                    <!-- <field name="setor_id" string="Setor"/> -->
+                    <group expand="0" string="Agrupar por:">
+                        <filter name="campus_id" string="Campus" domain="[]" context="{'group_by':'campus_id'}"/>
+                        <filter name="polo_id" string="Polo" domain="[]" context="{'group_by':'polo_id'}"/>
+                        <!-- <filter name="setor_id" string="Setor" domain="[]" context="{'group_by':'setor_id'}"/> -->
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ud_chaves_chave_form">
+            <field name="name">Chave</field>
+            <field name="model">ud.chaves.chave</field>
+            <field name="arch" type="xml">
+                <form string="Chave">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="numero"/>
+                            </group>
+                            <group>
+                                <field name="campus_id"/>
+                                <field name="polo_id"/>
+                                <field name="bloco_id"/>
+                            </group>
+                        </group>
+                        <group string="Observações">
+                            <field name="observacoes"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data>
+
+        <record model="ir.actions.act_window" id="ud_chaves_responsavel_action">
+            <field name="name">Responsáveis</field>
+            <field name="res_model">ud.chaves.responsavel</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record model="ir.ui.view" id="ud_chaves_responsavel_tree">
+            <field name="name">Responsáveis por chave</field>
+            <field name="model">ud.chaves.responsavel</field>
+            <field name="arch" type="xml">
+                <tree string="Responsáveis por chave">
+                    <field name="name"/>
+                    <field name="campus_id"/>
+                    <field name="polo_id"/>
+                    <field name="chave_ids" widget="many2many_tags"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ud_chaves_responsavel_search">
+            <field name="name">Busca</field>
+            <field name="model">ud.chaves.responsavel</field>
+            <field name="arch" type="xml">
+                <search string="Buscar">
+                    <field name="name" string="Nome"/>
+                    <field name="pessoa_id"/>
+                    <field name="campus_id"/>
+                    <field name="polo_id"/>
+                    <!-- <field name="chave_ids"/> -->
+                    <group expand="0" string="Agrupar por:">
+                        <filter string="Campus" name="campus" domain="[]" context="{'group_by':'campus_id'}"/>
+                        <filter string="Polo" name="polo" domain="[]" context="{'group_by':'polo_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ud_chaves_responsavel_form">
+            <field name="name">Responsável</field>
+            <field name="model">ud.chaves.responsavel</field>
+            <field name="arch" type="xml">
+                <form string="Responsável">
+                    <header attrs="{ 'invisible':[('id', '==', False)]}">
+                        <button name="ud_chaves.ud_chaves_adicionar_chave_responsavel_action" type="action"
+                                string="Adicionar chaves" class="btn btn-secondary"
+                                groups="ud_chaves.group_ud_chaves_gerente_de_chave"/>
+                        <button name="ud_chaves.ud_chaves_remover_chave_responsavel_action" type="action"
+                                string="Remover chaves" class="btn btn-secondary"
+                                groups="ud_chaves.group_ud_chaves_gerente_de_chave"/>
+                        
+                    </header>
+                    
+                    <sheet>
+                        <!-- <b attrs="{ 'invisible':[('id', '==', False)]}"> Utilize os botões "Remover chaves" e "Adicionar chaves" para alterar as chaves do responsável.  </b> -->
+                        <group>
+                            <group>
+                                <field name="pessoa_id" attrs="{ 'readonly':[('pessoa_id', '!=', False)]}" options="{'no_quick_create':True,'no_create_edit':True,'no_open':True,}"/>
+                                <field name="email"/>
+                                <field name="celular"/>
+                                <!-- Campo adicionado para ser enviado ao escolher pessoa durante criar responsável -->
+                                <field name="pessoa_id" invisible="1" options="{'no_open': True,}"/>
+                                <field name="id" invisible="1"/>
+                                
+                        
+                            </group>
+                            <group>
+                                <field name="campus_id" options="{'no_open':True,}"/>
+                                <field name="polo_id" domain="[('campus_id', '=', campus_id)]" options="{'no_open':True,}"/>
+                            </group>
+                        </group>
+                                
+                        <group string="Chaves" >  
+                            <field name="chave_ids" nolabel="1" attrs="{ 'readonly':[('id', '!=', False)]}"/>
+                        </group>
+                       
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>
