@@ -2,7 +2,7 @@
 
 <odoo>
   <template id="ud_biblioteca_website.home_repositorio">
-    <t t-set="title" t-value="'Início - Lettivo Repo'"></t>
+    <t t-set="title" t-value="'Início - Repositório Biblioteca Campus Arapiraca'"></t>
     <h1 style="display: none;">
       <t t-esc="title"></t>
     </h1>
