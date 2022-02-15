@@ -12,6 +12,7 @@ services:
     volumes:
       - "./db_data_odoo12_pg13/:/var/lib/postgresql/data"
       - "./db_backup_odoo12/:/db_backup/"
+      - "./scripts_backup/:/scripts_backup/"
     expose:
       - "5433" # Publishes 5433 to other containers but NOT to host machine
     ports:

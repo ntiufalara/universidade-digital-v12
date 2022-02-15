@@ -1,0 +1,6 @@
+#!/bin/sh
+echo $(date +"%Y.%m.%d_%H:%M")
+#1-nome_container, 2-usuario, 3-db
+echo '=== Remoção dos Dumps Antigos Iniciada. ==='
+docker exec $1 scripts_backup/delete_backups_antigos
+echo '=== Remoção dos Dumps Antigos Finalizada. ==='

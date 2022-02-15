@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# deixa apenas os 2 mais recentes com os arquivos e os 15 mais recentes com os dados
+find ./db_backup -maxdepth 1 -name "*arquivos.dump" -type f | xargs ls -t | awk 'NR>2' | xargs -L1 rm
+find ./db_backup -maxdepth 1 -name "*dados.dump" -type f | xargs ls -t | awk 'NR>10' | xargs -L1 rm -fr {}
+

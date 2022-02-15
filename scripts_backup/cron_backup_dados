@@ -1,0 +1,6 @@
+#!/bin/sh
+echo $(date +"%Y.%m.%d_%H:%M")
+#1-nome_container, 2-usuario, 3-db
+echo '=== DADOS - Backup Iniciado.==='
+docker exec $1 scripts_backup/backup_dados $2 $3
+echo '=== DADOS - Backup Realizado. ==='

@@ -1,0 +1,4 @@
+#!/bin/sh
+
+#pg_dump -p5433 -T ud_biblioteca_anexo -U[user] -d[db] >> ./db_backup/$(date +"%Y%m%d%H%M%S").sql
+pg_dump -p5433 -T ud_biblioteca_anexo -Fc -Z9 -U$1 -d$2 >> ./db_backup/$(date +"%Y%m%d_%H%M")_dados.dump
