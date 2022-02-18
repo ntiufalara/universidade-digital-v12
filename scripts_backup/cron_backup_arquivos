@@ -2,5 +2,5 @@
 echo $(date +"%Y.%m.%d_%H:%M")
 echo '=== ARQUIVOS - Backup Iniciado. ==='
 #1-nome_container, 2-usuario, 3-db
-docker exec $1 db_backup/backup_arquivos $2 $3
+docker exec $1 scripts_backup/backup_arquivos $2 $3
 echo '=== ARQUIVOS - Backup Realizado. ==='
