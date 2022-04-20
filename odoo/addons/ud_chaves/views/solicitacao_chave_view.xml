@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+  <data>
+
+   
+
+    
+          
+    <record model="ir.ui.view" id="ud_chaves_todas_solicitacoes_chave_tree">
+      <field name="name">Solicitações de chave</field>
+      <field name="model">ud.chaves.solicitacao</field>
+      <field name="arch" type="xml">
+        <tree string="Solicitações de chave" decoration-danger="state=='cancelada'"
+                    decoration-it="state=='aguardando'"
+                    decoration-bf="state=='entregue'">
+          <field name="name"/>
+          <field name="solicitante_id"/>
+          <field name="chave_ids" widget="many2many_tags" />
+          <field name="state"/>
+          <field name="data_hora"/>
+          <field name="polo_id"/>     
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="ud_chaves_minhas_solicitacoes_chave_tree">
+      <field name="name">Solicitações de chave</field>
+      <field name="model">ud.chaves.solicitacao</field>
+      <field name="arch" type="xml">
+        <tree string="Solicitações de chave" decoration-danger="state=='cancelada'"
+                    decoration-it="state=='aguardando'"
+                    decoration-bf="state=='entregue'">
+          <field name="name"/>
+          <field name="solicitante_id" invisible="1"/>
+          <field name="chave_ids" widget="many2many_tags" />
+          <field name="state"/>
+          <field name="data_hora"/>
+          <field name="polo_id"/>     
+        </tree>
+      </field>
+    </record>
+
+    
+    <!-- COPIAS -->
+    <record model="ir.actions.act_window" id="ud_chaves_solicitacao_action">
+            <field name="name">Solicitação de chave</field>
+            <field name="res_model">ud.chaves.solicitacao</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="ud_chaves_todas_solicitacoes_chave_tree"/>
+    </record>
+
+    
+
+        <!-- Exibe somente solicitações do usuário -->
+        <record id="ud_chaves_minha_solicitacao_action" model="ir.actions.act_window">
+            <field name="name">Minhas solicitações de chave</field>
+            <field name="res_model">ud.chaves.solicitacao</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>  
+            <!-- Parâmetros passados ao método read() de solicitações -->
+            <field name="context">{'filtrar_solicitante_responsavel':1}</field>  
+            <field name="view_id" ref="ud_chaves_minhas_solicitacoes_chave_tree"/>       
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Clique para criar uma Solicitação de chave
+                </p>
+                <p>
+
+                </p>
+            </field>
+        </record>
+
+        <!-- Exibe solicitações das chaves gerenciadas -->
+        <record id="ud_chaves_solicitacao_gerente_de_chaves_action" model="ir.actions.act_window">
+            <field name="name">Solicitações de chave</field>
+            <field name="res_model">ud.chaves.solicitacao</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>          
+            <!-- Parâmetros passados ao método read() de solicitações -->
+            <field name="context">{'filtrar_por_chaves':1}</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Clique para criar uma Solicitação de chave
+                </p>
+                <p> </p>
+            </field>
+        </record>
+
+        <!-- Exibe solicitações das chaves de um polo -->
+        <record id="ud_chaves_solicitacao_seguranca_action" model="ir.actions.act_window">
+            <field name="name">Solicitações de chave</field>
+            <field name="res_model">ud.chaves.solicitacao</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>  
+            <field name="view_id" ref="ud_chaves_todas_solicitacoes_chave_tree"/>
+            <!-- Parâmetros passados ao método read() de solicitações -->
+            <field name="context">{'filtrar_por_polo':1}</field>
+        </record>
+    <!-- END COPIAS -->
+
+
+       <!-- <field name="data_hora" string="Data"/>
+          <field name="polo_id" string="Polo"/> -->
+    <!-- <record model="ir.ui.view" id="ud_chaves_solicitacao_chave_search">
+      <field name="name">Busca</field>
+      <field name="model">ud.chaves.solicitacao</field>
+      <field name="arch" type="xml">
+        <search string="Buscar">
+          <field name="solicitante_id" string="Solicitante"/>
+          <field name="state" string="Estado"/> -->
+
+          <!-- <group expand="0" string="Agrupar por:"> -->
+            <!-- <filter string="Estado" name="state" context="{'group_by':'state'}"/> -->
+            <!-- <filter string="Polo" name="polo_id" context="{'group_by':'polo_id'}"/> -->
+            <!-- <filter string="Solicitante" name="solicitante_id" domain="[]" context="{'group_by':'solicitante_id'}"/> -->
+          <!-- </group> -->
+          
+        <!-- </search>
+      </field>
+    </record> -->
+
+    <record model="ir.ui.view" id="ud_chaves_solicitacao_chave_form">
+      <field name="name">Solicitação de chave</field>
+      <field name="model">ud.chaves.solicitacao</field>
+      <field name="arch" type="xml">
+        <form string="Solicitação de chave" duplicate="0" edit="0">
+          <field name="name" invisible="1"/>
+          <header>
+            <button name="botao_entregar" states="aguardando" string="Entregar" type="object" class="oe_highlight" 
+                    groups="ud_chaves.group_ud_chaves_gerente_de_seguranca,ud_chaves.group_ud_chaves_seguranca"/>
+            <button name="botao_cancelar" states="aguardando" string="Cancelar" type="object"
+               
+                    groups="ud_chaves.group_ud_chaves_responsavel,ud_chaves.group_ud_chaves_gerente_de_seguranca,ud_chaves.group_ud_chaves_seguranca"/>
+            <button name="botao_devolver" states="entregue" string="Devolvolver" type="object" class="oe_highlight" 
+                    groups="ud_chaves.group_ud_chaves_gerente_de_seguranca,ud_chaves.group_ud_chaves_seguranca"/>
+
+            <button name="ud_chaves.ud_chaves_transferir_chave_responsavel_action" 
+                  type="action" string="Transferir chaves" class="btn btn-secondary"
+                  states="entregue"
+                  groups="ud_chaves.group_ud_chaves_responsavel"/>
+          </header>
+          <sheet>
+            <group>
+              <group>
+                <field name="name" readonly="1"/>
+                <field name="data_hora" readonly="1" attrs="{'invisible': [('data_hora', '=', False)]}"/>
+                <field name="solicitante_id" readonly="1" options="{'no_quick_create':True,'no_create_edit':True,'no_open': True,}"/>
+                <field name="email" readonly="1" attrs="{'invisible': [('email', '=', False)]}"/> 
+                <field name="celular" readonly="1" attrs="{'invisible': [('celular', '=', False)]}"/> 
+              </group>
+              <group>                         
+                <field name="state" readonly="1"/>
+                <field name="quem_entregou_id" readonly="1" attrs="{'invisible': [('quem_entregou_id', '=', False)]}" options="{'no_open': True,}"/>
+                <field name="data_hora_entrega" readonly="1" attrs="{'invisible': [('data_hora_entrega', '=', False)]}"/>
+                <field name="quem_recebeu_id" readonly="1" attrs="{'invisible': [('quem_recebeu_id', '=', False)]}" options="{'no_open': True,}"/>
+                <field name="data_hora_devolucao" readonly="1" attrs="{'invisible': [('data_hora_devolucao', '=', False)]}"/>
+              </group>
+            </group>
+            <group string="Chaves" >
+              <field name="chave_ids" nolabel="1"  options="{'no_quick_create':True,'no_create_edit':True}"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+     <record model="ir.actions.act_window" id="ud_chaves_solicitacao_chave_action">
+      <field name="name">Solicitações de chave</field>
+      <field name="res_model">ud.chaves.solicitacao</field>
+      <field name="view_type">form</field>
+      <!-- <field name="context">{'search_default_state':'1'}</field> -->
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+        <p class="oe_view_nocontent_create">
+          Clique para adicionar uma nova Solicitação de chave
+        </p>
+        <p>
+
+        </p>
+      </field>
+    </record>
+
+  </data>
+</odoo>

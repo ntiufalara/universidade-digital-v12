@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data>
+    
+        <record model="ir.actions.act_window" id="ud_chaves_transferencia_action">
+            <field name="name">Trasferências</field>
+            <field name="res_model">ud.chaves.transferencia</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Clique para adicionar uma nova Transferência
+                </p>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ud_chaves_transferencia_tree">
+            <field name="name">Trasferências</field>
+            <field name="model">ud.chaves.transferencia</field>
+            <field name="arch" type="xml">
+                <tree string="Trasferências" create="false" 
+                  decoration-danger="state=='cancelada'" 
+                  decoration-bf="state=='aguardando'">
+                    <field name="name"/>
+                    <field name="solicitacao_id"/>
+                    <field name="transferidor_id" />
+                    <field name="solicitante_id" />
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Exibe somente transferencias relacionadas ao usuário -->
+        <record id="ud_chaves_minha_transferencias_action" model="ir.actions.act_window">
+            <field name="name">Minhas transferências</field>
+            <field name="res_model">ud.chaves.transferencia</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>    
+            <field name="domain">['|',('solicitante_id.pessoa_id', '=', uid), ('transferidor_id.pessoa_id', '=', uid)]</field>   
+            <field name="view_id" ref="ud_chaves_transferencia_tree"/>       
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Clique para criar uma Transferência de chave
+                </p>
+                <p>
+
+                </p>
+            </field>
+        </record>
+
+     
+
+        <record model="ir.ui.view" id="ud_chaves_transferencia_search">
+            <field name="name">Busca</field>
+            <field name="model">ud.chaves.transferencia</field>
+            <field name="arch" type="xml">
+                <search string="Buscar">
+                    <field name="solicitacao_id" string="Solicitação"/>
+                    <field name="solicitante_id" string="Solicitante"/>
+                    <field name="transferidor_id" string="Transferidor"/>
+                    
+                    <group expand="0" string="Agrupar por:">
+                        <filter name="state" string="Estado" domain="[]" context="{'group_by':'state'}"/>
+                        <filter name="solicitante_id" string="Solicitante" domain="[]" context="{'group_by':'solicitante_id'}"/>
+                        <filter name="transferidor_id" string="Transferidor" domain="[]" context="{'group_by':'transferidor_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+    <record model="ir.ui.view" id="ud_chaves_transferencia_chave_form">
+      <field name="name">Transferência de chave</field>
+      <field name="model">ud.chaves.transferencia</field>
+      <field name="arch" type="xml">
+        <form string="Transferência de chave">
+          <header>                
+            <button        
+                name="bt_cancelar_transf" states="aguardando" string="Cancelar" type="object" class="oe_highlight" 
+                groups="ud_chaves.group_ud_chaves_responsavel"/>
+            <button 
+                name="bt_aceitar_transf" states="aguardando" string="Aceitar" type="object" class="oe_highlight" 
+                groups="ud_chaves.group_ud_chaves_responsavel"/>               
+          </header>
+
+
+          <sheet>
+            <group>
+              <group>
+                <!-- <field name="name" readonly="1"/> -->
+                <field name="solicitante_id"  />
+                <field name="transferidor_id"  />
+                <field name="solicitacao_id" string="Solicitação" readonly="1"/>
+                <!-- <field name="is_transferidor"  invisible="1"/> -->
+              </group>
+
+              <!-- <group attrs="{'invisible':[('is_transferidor', '=', True)]}">      -->
+              <group >                         
+                <field name="state" readonly="1"/>            
+              </group>
+            </group>
+
+                       
+            
+          </sheet>
+
+        </form>
+      </field>
+    </record>
+
+  
+
+    </data>
+</odoo>

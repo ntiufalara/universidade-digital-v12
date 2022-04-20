@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data>
+
+        <record model="ir.actions.act_window" id="ud_chaves_seguranca_action">
+            <field name="name">Seguranças</field>
+            <field name="res_model">ud.chaves.seguranca</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record model="ir.ui.view" id="ud_chaves_seguranca_tree">
+            <field name="name">Seguranças</field>
+            <field name="model">ud.chaves.seguranca</field>
+            <field name="arch" type="xml">
+                <tree string="Seguranças">
+                    <field name="name"/>
+                    <field name="campus_id"/>
+                    <field name="polo_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ud_chaves_seguranca_search">
+            <field name="name">Busca</field>
+            <field name="model">ud.chaves.seguranca</field>
+            <field name="arch" type="xml">
+                <search string="Buscar">
+                    <field name="name" string="Nome"/>
+                    <field name="pessoa_id"/>
+                    <field name="campus_id"/>
+                    <field name="polo_id"/>
+                    <group expand="0" string="Agrupar por:">
+                        <filter string="Campus" name="campus" domain="[]" context="{'group_by':'campus_id'}"/>
+                        <filter string="Polo" name="polo" domain="[]" context="{'group_by':'polo_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ud_chaves_seguranca_form">
+            <field name="name">Segurança</field>
+            <field name="model">ud.chaves.seguranca</field>
+            <field name="arch" type="xml">
+                <form string="Segurança">
+                    <sheet>
+                        <group>
+                            <group>
+                            
+                                <field name="pessoa_id" options="{'no_open': True,}" attrs="{ 'readonly':[('pessoa_id', '!=', False)]}"/>
+                                <!-- este campo foi adicionado para permitir criar segurança. Sem ele pessoa_id não é enviado -->
+                                <field name="pessoa_id" invisible="1" options="{'no_open': True,}"/>
+                                <field name="campus_id" options="{'no_open':True,}"/>
+                            </group>
+                            <group>
+                                <field name="polo_id" domain="[('campus_id', '=', campus_id)]" options="{'no_open':True,}"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

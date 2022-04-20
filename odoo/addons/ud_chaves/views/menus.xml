@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data>
+
+        <menuitem id="chaves_root" sequence="0" name="Chaves" web_icon="ud_chaves,static/description/icon.png"/>
+
+        <menuitem id="chaves_chaves_top" name="Gerenciar" parent="chaves_root" sequence="0"
+            groups="group_ud_chaves_administrador,group_ud_chaves_gerente_de_seguranca,group_ud_chaves_gerente_de_chave,group_ud_chaves_seguranca"/>
+
+        <menuitem id="chaves_gerentes" name="Gerentes" parent="chaves_chaves_top"
+                  action="ud_chaves_gerente_action" sequence="1" 
+                  groups="group_ud_chaves_administrador,group_ud_chaves_seguranca"/> 
+        <menuitem id="chaves_responsavel" name="Responsáveis" parent="chaves_chaves_top"
+                  action="ud_chaves_responsavel_action" sequence="2" 
+                  groups="group_ud_chaves_administrador,group_ud_chaves_seguranca,group_ud_chaves_gerente_de_chave"/>
+        <menuitem id="chaves_segurancas" name="Seguranças" parent="chaves_chaves_top"
+                  action="ud_chaves_seguranca_action" sequence="3" 
+                  groups="group_ud_chaves_administrador,group_ud_chaves_gerente_de_seguranca"/> 
+        <menuitem id="registros_chaves" name="Registros" parent="chaves_chaves_top"
+                  action="ud_chaves_registro_action" sequence="4" 
+                  groups="group_ud_chaves_administrador,group_ud_chaves_gerente_de_seguranca"/> 
+        <menuitem id="relatorio_chaves" name="Relatário" parent="chaves_chaves_top"
+                  action="ud_solicitacao_chave_graph_action" sequence="5" 
+                  groups="group_ud_chaves_administrador,group_ud_chaves_gerente_de_seguranca"/> 
+
+        <!-- <menuitem id="chaves_solicitacao2" name="Solicitações" parent="chaves_chaves_top"
+                  action="ud_chaves_solicitacao_chave_action" sequence="5" 
+                  groups="group_ud_chaves_administrador"/> -->
+        
+        
+        <menuitem id="chaves_minhas_solicitacoes" name="Minhas solicitações" parent="chaves_root"
+                  action="ud_chaves_minha_solicitacao_action" sequence="1"
+                  groups="group_ud_chaves_responsavel,group_ud_chaves_gerente_de_chave"/>
+        <menuitem id="chaves_minhas_transferencia" name="Transferências" parent="chaves_root"
+                  action="ud_chaves_minha_transferencias_action" sequence="5" 
+                  groups="group_ud_chaves_responsavel,group_ud_chaves_gerente_de_chave"/>
+
+       
+        <menuitem id="chaves_solicitacao_chave_gerente" name="Chaves gerenciadas" parent="chaves_root"
+                  action="ud_chaves_solicitacao_gerente_de_chaves_action" sequence="2" 
+                  groups="group_ud_chaves_gerente_de_chave"/>
+        <menuitem id="chaves_solicitacao_chave_seguranca" name="Solicitações - Polo" parent="chaves_root"
+                  action="ud_chaves_solicitacao_seguranca_action" sequence="4" 
+                  groups="group_ud_chaves_seguranca"/>   
+        <menuitem id="chaves_solicitacao" name="Solicitações" parent="chaves_chaves_top"
+                  action="ud_chaves_solicitacao_chave_action" sequence="3" 
+                  groups="group_ud_chaves_administrador,group_ud_chaves_seguranca"/>
+
+       
+        
+
+        <menuitem id="chaves_autorizacao" name="Autorizações" parent="chaves_chaves_top"
+                  action="ud_chaves_autorizacao_chave_action" sequence="5" 
+                  groups="group_ud_chaves_administrador,group_ud_chaves_seguranca"/>
+        <menuitem id="chaves_transferencia" name="Transferencias" parent="chaves_chaves_top"
+                  action="ud_chaves_transferencia_action" sequence="6" 
+                  groups="group_ud_chaves_administrador,group_ud_chaves_seguranca"/>
+        <menuitem id="chaves_chave_ver" name="Chaves" parent="chaves_root"
+                  action="ud_chaves_chave_state_action" sequence="7"/>  
+
+       
+
+
+
+    </data>
+</odoo>

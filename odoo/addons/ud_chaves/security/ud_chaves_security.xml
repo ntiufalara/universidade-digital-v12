@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<openerp>
+	<data noupdate="0">
+		<record model="ir.module.category" id="module_category_ud_chaves">
+			<field name="name">Chaves (UD)</field>
+		</record>
+
+		<record id="group_ud_chaves_responsavel" model="res.groups">
+			<field name="name">Responsáveis por chaves</field>
+			<field name="category_id" ref="module_category_ud_chaves"/>
+        	<field name="comment">Grupo de controle de politicas para responsáveis por chaves</field>
+		</record>
+
+		<record id="group_ud_chaves_gerente_de_chave" model="res.groups">
+			<field name="name">Gerente de chave</field>
+			<field name="category_id" ref="module_category_ud_chaves"/>
+        	<field name="implied_ids" eval="[(4, ref('group_ud_chaves_responsavel'))]"/>
+        	<field name="comment">Grupo de controle de politicas para Gerente de Chave</field>
+		</record>
+
+		<record id="group_ud_chaves_seguranca" model="res.groups">
+			<field name="name">Segurança</field>
+			<field name="category_id" ref="module_category_ud_chaves"/>
+        	<field name="comment">Grupo de controle de politicas para os Seguranças</field>
+		</record>
+		<record id="group_ud_chaves_gerente_de_seguranca" model="res.groups">
+			<field name="name">Gerente de Segurança</field>
+			<field name="category_id" ref="module_category_ud_chaves"/>
+        	<field name="implied_ids" eval="[(4, ref('group_ud_chaves_seguranca'))]"/>
+        	<field name="comment">Grupo de controle de politicas para o Gerente de Segurança</field>
+		</record>
+
+		<record id="group_ud_chaves_administrador" model="res.groups">
+			<field name="name">Administrador das chaves</field>
+        	<field name="users" eval="[(4, ref('base.user_root'))]"/>
+			<field name="category_id" ref="module_category_ud_chaves"/>
+        	<field name="implied_ids" eval="[(4, ref('group_ud_chaves_gerente_de_chave'))]"/>
+        	<field name="comment">Grupo de controle de politicas para Administrador</field>
+		</record>
+
+ 
+	</data>
+</openerp>
