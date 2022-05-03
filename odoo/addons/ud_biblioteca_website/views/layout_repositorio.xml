@@ -150,15 +150,16 @@
           <div class="row">
             <div class="col-sm-6 my-auto">
               <div class="d-flex flex-row align-items-center mx-auto ml-sm-0">
-                <img class="logo-nti" src="/ud_biblioteca_website/static/src/img/logo-nti.svg"/>
-                <span class="my-auto ml-3 nti-label">
+                <!-- <img class="logo-nti" src="/ud_biblioteca_website/static/src/img/logo-nti.svg"/> -->
+                <!-- <span class="my-auto ml-3 nti-label">
                   Núcleo de tecnologia da informação - NTI
                   <br/>
                   Campus Arapiraca
-                </span>
+                </span> -->
               </div>
             </div>
             <div class="col-sm-6 text-center text-sm-right">
+            <img class="logo-nti" src="/ud_biblioteca_website/static/src/img/logo-nti.svg"/>
               <img class="logo-biblioteca"
                    src="/ud_biblioteca_website/static/src/img/logo-biblioteca-ufal.svg"/>
             </div>
