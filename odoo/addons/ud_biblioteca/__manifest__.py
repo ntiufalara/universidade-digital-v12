@@ -1,10 +1,10 @@
 # encoding: UTF-8
 
 {
-    "name": u"Biblioteca UD (Repositório Institucuonal)",
+    "name": u"Biblioteca UD (Repositório Digital)",
     "version": "2.0",
     "category": u"Universidade Digital",
-    "description": u"""Repositório institucional controlado pela biblioteca do campus.""",
+    "description": u"""Repositório Digital controlado pela biblioteca do campus.""",
     "author": "NTI UFAL Arapiraca",
     "depends": ["ud", 'mail'],
     "data": [

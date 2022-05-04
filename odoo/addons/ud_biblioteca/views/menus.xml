@@ -3,7 +3,7 @@
 <odoo>
     <data>
 
-        <menuitem name="Repositório Institucional" id="biblioteca_top"
+        <menuitem name="Repositório Digital" id="biblioteca_top"
                   sequence="0"
                   groups="ud_biblioteca.group_biblioteca_bibliotecario_admin,ud_biblioteca.group_biblioteca_bibliotecario,ud_biblioteca.group_biblioteca_visitante"
                   web_icon="ud_biblioteca,static/description/icon.png"/>
