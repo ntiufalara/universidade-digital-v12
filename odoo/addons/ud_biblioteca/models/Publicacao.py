@@ -1,7 +1,10 @@
 # encoding: UTF-8
 import logging
+from datetime import timedelta, date, datetime
 
 from odoo import models, fields, api
+from odoo.exceptions import ValidationError
+import pytz
 
 _logger = logging.getLogger(__name__)
 
@@ -55,6 +58,7 @@ class Publicacao(models.Model):
                                          string=u'Categoria CNPQ')
     tipo_id = fields.Many2one('ud.biblioteca.publicacao.tipo', u"Tipo", required=True)
     autorizar_publicacao = fields.Boolean(u"Não embargado")
+    data_limite_embargo = fields.Datetime(u'Data limite do embargo')
     visualizacoes = fields.Integer(u'Visualizações', required=True, default=0)
     area_ids = fields.Many2many('ud.biblioteca.publicacao.area', 'area_publicacao_real',
                                 string=u'Coleção / Localização')
@@ -65,6 +69,20 @@ class Publicacao(models.Model):
     abstract = fields.Html(u'Abstract', required=False, sanitize=False)
     create_date = fields.Datetime(u'Data de inclusão')
     pessoas_notificadas = fields.Boolean(u'Notificações enviadas?')
+
+    @api.one
+    @api.constrains('data_limite_embargo')
+    def valida_data_limite_embargo(self):
+        """
+        Verifica se a data limite do embargo é superior à 180 dias da data atual.
+        :return:
+        """
+        data_limite_embargo = self.data_limite_embargo.date()
+        data_com_180_dias = date.today() + timedelta(days=180)
+        if data_limite_embargo < data_com_180_dias:
+            raise ValidationError('A data do limite do embargo deve no mínimo superior à data %s.'%str(data_com_180_dias.strftime("%d/%m/%Y")))
+
+
 
     def name_get(self):
         """
@@ -195,6 +213,21 @@ class Publicacao(models.Model):
             if obj.admin_campus:
                 return None
             return obj.polo_id.id
+
+    def autoriza_publicacao_cron(self):
+        '''
+        Verifica a data limite do embargo e publica o trabalho, caso já tenha passado.
+        '''
+        #pega a data com hora zerada
+        hoje = fields.datetime.fromordinal(fields.date.today().toordinal())
+        publicacoes_embargadas = self.env['ud.biblioteca.publicacao'].sudo().search([('autorizar_publicacao', '=', False), ('data_limite_embargo', '<=', hoje)])#
+        for obj in publicacoes_embargadas:
+            obj.autorizar_publicacao = True
+        #_logger.info("Autorização de publicação")
+
+         
+            
+
 
     def load_from_openerp7_cron(self):
         """
@@ -370,3 +403,6 @@ class Publicacao(models.Model):
 #     for pub in publicacoes:
 #        pub.name = pub.name2
 #        pub.observacoes = pub.observacoes2
+
+
+

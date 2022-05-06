@@ -3,6 +3,15 @@
 <odoo>
     <data>
 
+        <record id="first_cron" model="ir.cron">
+            <field name="name">Autoriza publicação após fim de embargo</field>
+            <field name="model_id" ref="model_ud_biblioteca_publicacao"></field>
+            <field name="state">code</field>
+            <field name="code">model.autoriza_publicacao_cron()</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+        </record>
+
         <record id="ud_biblioteca_publicacao_action" model="ir.actions.act_window">
             <field name="name">Publicações</field>
             <field name="res_model">ud.biblioteca.publicacao</field>
@@ -49,6 +58,7 @@
                                     <field name="curso_id" domain="[('polo_id','=',polo_id)]"/>
                                     <field name="numero_paginas"/>
                                     <field name="autorizar_publicacao"/>
+                                    <field name="data_limite_embargo" attrs="{'required': [('autorizar_publicacao', '=', False)]}"/>
                                     <field name="visualizacoes" readonly="1"/>
                                 </group>
                                 <group>
@@ -81,7 +91,7 @@
                                 <field name="anexo_ids" nolabel="1"/>
                             </group>
                             <group string="Observações">
-                                <field name="observacoes" nolabel="1"/>
+                                <field name="observacoes" nolabel="1" />
 <!--                                 <field name="observacoes2" nolabel="1"/>-->
                             </group>
                         </div>
