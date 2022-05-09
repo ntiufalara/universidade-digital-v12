@@ -11,7 +11,7 @@
       <section id="content">
         <!-- CABEÇALHO -->
         <div id="topo" class="d-flex justify-content-center align-items-center flex-column flex-sm-row mx-auto">
-          <img class="ribca-logo" src="/ud_biblioteca_website/static/src/img/logo-bca.svg"/>
+          <img class="ribca-logo" src="/ud_biblioteca_website/static/src/img/logo-bsca.svg"/>
           <h3 class="ml-3 text-white text-sm-left mt-3 mt-sm-0 text-center text-sm-left">
             Repositório Digital
             <br/>
