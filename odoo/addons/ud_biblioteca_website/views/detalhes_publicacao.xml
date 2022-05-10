@@ -65,6 +65,12 @@
               <div class="col-sm-8" t-esc="pub.curso_id.name"></div>
             </div>
           </div>
+           <div class="list-group-item">
+            <div class="row">
+              <strong class="col-sm-4 text-sm-right">Número de folhas</strong>
+              <div class="col-sm-8" t-esc="pub.numero_paginas"></div>
+            </div>
+          </div>
           <div class="list-group-item">
             <div class="row">
               <strong class="col-sm-4 text-sm-right">Tipo</strong>

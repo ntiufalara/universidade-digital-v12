@@ -26,7 +26,7 @@ class Publicacao(models.Model):
                                  'autor_id', u'Autores')
     ano_pub = fields.Char(u'Ano de publicação', required=True)
     
-    numero_paginas = fields.Integer(u'Número de páginas')
+    numero_paginas = fields.Integer(u'Número de folhas')
     
 
     data_defesa = fields.Date(u'Data da defesa')
@@ -220,7 +220,7 @@ class Publicacao(models.Model):
         '''
         #pega a data com hora zerada
         hoje = fields.datetime.fromordinal(fields.date.today().toordinal())
-        publicacoes_embargadas = self.env['ud.biblioteca.publicacao'].sudo().search([('autorizar_publicacao', '=', False), ('data_limite_embargo', '<=', hoje)])#
+        publicacoes_embargadas = self.env['ud.biblioteca.publicacao'].sudo().search([('autorizar_publicacao', '=', False), ('data_limite_embargo', '<', hoje)])#
         for obj in publicacoes_embargadas:
             obj.autorizar_publicacao = True
         #_logger.info("Autorização de publicação")
