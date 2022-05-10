@@ -50,7 +50,7 @@
       <!-- Devem ser redefinidas em cada página com <t t-set="title" t-value="'titulo da página'"></t>... -->
       <t t-if="not title" t-set="title" t-value="'Início'"></t>
       <t t-if="not description" t-set="description"
-         t-value="'Publicações e material institucional da UFAL Arapiraca. Preservação da propriedade intelectual e disponibilização de acervo.'"></t>
+         t-value="'Publicações e material digital da UFAL Arapiraca. Preservação da propriedade intelectual e disponibilização de acervo.'"></t>
 
       <title>
         <t t-esc="title"></t>
