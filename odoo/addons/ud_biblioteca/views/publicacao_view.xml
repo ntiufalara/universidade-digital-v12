@@ -8,7 +8,7 @@
             <field name="model_id" ref="model_ud_biblioteca_publicacao"></field>
             <field name="state">code</field>
             <field name="code">model.autoriza_publicacao_cron()</field>
-            <field name="interval_type">days</field>
+            <field name="interval_type">minutes</field>
             <field name="numbercall">-1</field>
         </record>
 
@@ -51,6 +51,7 @@
 <!--                                    utilizado para modificar o tipo de char para html-->
 <!--                                    <field name="name2"/>-->
 <!--                                    <field name="name" autofocus="true"/>-->
+<!-- attrs="{'required': [('autorizar_publicacao', '=', False)]}" -->
                                     <field name="ano_pub" class="campo_ano"/>
                                     <field name="data_defesa"/>
                                     <field name="autor_ids" widget="many2many_tags"/>
@@ -58,7 +59,7 @@
                                     <field name="curso_id" domain="[('polo_id','=',polo_id)]"/>
                                     <field name="numero_paginas"/>
                                     <field name="autorizar_publicacao"/>
-                                    <field name="data_limite_embargo" attrs="{'required': [('autorizar_publicacao', '=', False)]}"/>
+                                    <field name="data_limite_embargo" attrs="{'invisible': [('autorizar_publicacao', '=', True)]}"/>
                                     <field name="visualizacoes" readonly="1"/>
                                 </group>
                                 <group>

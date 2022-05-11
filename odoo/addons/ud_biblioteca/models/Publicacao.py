@@ -77,10 +77,11 @@ class Publicacao(models.Model):
         Verifica se a data limite do embargo é superior à 180 dias da data atual.
         :return:
         """
-        data_limite_embargo = self.data_limite_embargo.date()
-        data_com_180_dias = date.today() + timedelta(days=180)
-        if data_limite_embargo < data_com_180_dias:
-            raise ValidationError('A data do limite do embargo deve no mínimo superior à data %s.'%str(data_com_180_dias.strftime("%d/%m/%Y")))
+        if (self.data_limite_embargo):
+            data_limite_embargo = self.data_limite_embargo.date()
+            data_com_180_dias = date.today() + timedelta(days=180)
+            if data_limite_embargo < data_com_180_dias:
+                raise ValidationError('A data do limite do embargo deve no mínimo superior à data %s.'%str(data_com_180_dias.strftime("%d/%m/%Y")))
 
 
 
