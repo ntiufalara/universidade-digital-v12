@@ -15,6 +15,7 @@
         "views/publicacao_view.xml",
         "views/responsavel_view.xml",
         "views/anexo_view.xml",
+        "views/aquisicao_view.xml",
         "views/orientador_view.xml",
         "views/orientador_titulacao_view.xml",
         "views/p_chave_view.xml",

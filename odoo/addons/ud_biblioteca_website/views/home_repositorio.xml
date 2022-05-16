@@ -175,6 +175,36 @@
 
           </div>
         </div>
+
+
+
+         <!-- ÚLTIMAS AQUISIÇÕES-->
+        
+        <div class="container py-4" t-if="ultimas_aquisicoes">
+          <h3 class="section-title py-3 font-weight-bold text-center">Últimas aquisições</h3>
+
+          <div class="row">
+
+            <div class="col-md-4 card-wrapper" t-foreach="ultimas_aquisicoes" t-as="pub">
+              <div class="card">
+                <div class="card-header" t-field="pub.name"></div>
+                <div class="card-body">
+                  
+                  <div class="publicacao-detalhes">
+                    <strong>Autor(es):</strong>                
+                    <span t-esc="pub.autores"></span>
+                  </div>
+                  
+                  <div class="publicacao-detalhes">
+                    <strong>Data de inclusão:</strong>
+                    <span t-field="pub.create_date" t-options="{'format': 'dd/MM/yyyy'}"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
       </section>
     </t>
 

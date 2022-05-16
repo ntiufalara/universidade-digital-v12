@@ -1,4 +1,5 @@
 from . import Anexo
+from . import Aquisicao
 from . import AreaTrabalho
 from . import Autor
 from . import CategoriaCnpq

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data>
+
+        <record model="ir.actions.act_window" id="ud_biblioteca_aquisicao_action">
+            <field name="name">Aquisição</field>
+            <field name="res_model">ud.biblioteca.aquisicao</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Clique para adicionar uma nova Aquisição
+                </p>
+                <p>
+
+                </p>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ud_biblioteca_aquisicao_tree">
+            <field name="name">Aquisições</field>
+            <field name="model">ud.biblioteca.aquisicao</field>
+            <field name="arch" type="xml">
+                <tree string="Aquisições">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ud_biblioteca_aquisicao_search">
+            <field name="name">Busca</field>
+            <field name="model">ud.biblioteca.aquisicao</field>
+            <field name="arch" type="xml">
+                <search string="Buscar">
+                    <field name="name" filter_domain="" string="Nome"/>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ud_biblioteca_aquisicao_form">
+            <field name="name">Aquisição</field>
+            <field name="model">ud.biblioteca.aquisicao</field>
+            <field name="arch" type="xml">
+                <form string="Aquisição">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="autores" widget="many2many_tags"/>
+                                <field name="ano_pub" class="campo_ano"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>
