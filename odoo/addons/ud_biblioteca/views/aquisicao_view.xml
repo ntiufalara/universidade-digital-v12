@@ -47,7 +47,7 @@
                         <group>
                             <group>
                                 <field name="name"/>
-                                <field name="autores" widget="many2many_tags"/>
+                                <field name="autores"/>
                                 <field name="ano_pub" class="campo_ano"/>
                             </group>
                         </group>
