@@ -4,7 +4,7 @@
     <data>
 
         <record model="ir.actions.act_window" id="ud_biblioteca_aquisicao_action">
-            <field name="name">Aquisição</field>
+            <field name="name">Aquisições</field>
             <field name="res_model">ud.biblioteca.aquisicao</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>

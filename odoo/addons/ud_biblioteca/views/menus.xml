@@ -38,7 +38,7 @@
                   action="ud_biblioteca_publicacao_tipo_action"
                   groups="ud.admin_ud,ud_biblioteca.group_biblioteca_bibliotecario_admin,ud_biblioteca.group_biblioteca_bibliotecario"/>
        
-        <menuitem name="Aquisição" id="ud_biblioteca_aquisicao" parent="biblioteca_gerenciar"
+        <menuitem name="Aquisições" id="ud_biblioteca_aquisicao" parent="biblioteca_gerenciar"
                   action="ud_biblioteca_aquisicao_action"
                   groups="ud.admin_ud,ud_biblioteca.group_biblioteca_bibliotecario_admin,ud_biblioteca.group_biblioteca_bibliotecario"/>
 
