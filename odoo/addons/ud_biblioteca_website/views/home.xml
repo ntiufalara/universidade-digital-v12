@@ -36,10 +36,14 @@
   </template>
 
  
-  <!-- Redirecionamento da página -->
-  <template id="ud_biblioteca_website.redirect" inherit_id="ud_website.layout">
-    <xpath expr="//head/meta" position="after">
-      <meta http-equiv="refresh" content="0; URL='https://ud10.arapiraca.ufal.br/repositorio/'"/>
+  <!-- Redirecionamento da página  -->
+  <!-- http://localhost:8069/repositorio/ para desenvolvimento -->
+  <!-- https://ud10.arapiraca.ufal.br para produção -->
+  <template id="ud_biblioteca_website.redirect" inherit_id="ud_website.home">
+    <xpath expr="//div[@id='icones_inicio']" position="after">
+      <script>
+          window.location = "https://ud10.arapiraca.ufal.br/repositorio/"
+      </script>
     </xpath>
   </template>
 </odoo>
