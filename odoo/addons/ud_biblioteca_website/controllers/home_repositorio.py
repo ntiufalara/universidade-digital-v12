@@ -8,6 +8,7 @@ class HomeRepositorio(http.Controller):
         Cursos = http.request.env['ud.curso']
         Pc = http.request.env['ud.biblioteca.p_chave']
         Publicacao = http.request.env['ud.biblioteca.publicacao']
+        Aquisicao = http.request.env['ud.biblioteca.aquisicao']
         Polo = http.request.env['ud.polo']
 
         cursos_arapiraca = Cursos.search(
@@ -16,6 +17,7 @@ class HomeRepositorio(http.Controller):
             order='name asc'
         )
         ultimas_publicacoes = Publicacao.search([], order='create_date desc', limit=6)
+        ultimas_aquisicoes = Aquisicao.search([], order='create_date desc', limit=6)
 
         locale.setlocale(locale.LC_ALL, '')
 
@@ -26,4 +28,5 @@ class HomeRepositorio(http.Controller):
             'unidades_count': Polo.search_count([]),
             'visualizacoes_count': locale.format_string('%d', Publicacao.visualizacoes_totais(), grouping=True),
             'ultimas_publicacoes': ultimas_publicacoes,
+            'ultimas_aquisicoes': ultimas_aquisicoes,
         })
