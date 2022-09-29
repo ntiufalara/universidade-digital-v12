@@ -194,15 +194,15 @@
                 <div class="card">
                   <div class="card-header" t-field="pub.name"></div>
                   <div class="card-body">
-                    <div class="publicacao-detalhes">
+                    <div class="publicacao-detalhes"  t-if="pub.tipo_id">
                       <strong>Tipo:</strong>
                       <t t-esc="pub.tipo_id.name"></t>
                     </div>
-                    <div class="publicacao-detalhes">
+                    <div class="publicacao-detalhes" t-if="pub.curso_id">
                       <strong>Curso/Outros:</strong>
                       <t t-esc="pub.curso_id.name"></t>
                     </div>
-                    <div class="publicacao-detalhes">
+                    <div class="publicacao-detalhes" t-if="pub.autor_ids">
                       <strong>Autor(a):</strong>
                       <t t-foreach="pub.autor_ids" t-as="autor">
                         <span t-esc="autor.display_name"></span>
@@ -211,7 +211,7 @@
                         </t>
                       </t>
                     </div>
-                    <div class="publicacao-detalhes">
+                    <div class="publicacao-detalhes" t-if="pub.polo_id">
                       <strong>Local:</strong>
                       UFAL, <i>Campus</i> Arapiraca, Unidade Educacional
                       <!--                                            <t t-esc="pub.campus_id.name"></t>,-->
@@ -221,11 +221,11 @@
                       <strong>Data de inclusão:</strong>
                       <span t-field="pub.create_date" t-options="{'format': 'dd/MM/yyyy'}"></span>
                     </div>
-                    <div class="publicacao-detalhes">
+                    <div class="publicacao-detalhes" t-if="pub.data_defesa">
                       <strong>Data da defesa:</strong>
                       <span t-field="pub.data_defesa" t-options="{'format': 'dd/MM/yyyy'}"></span>
                     </div>
-                    <div class="publicacao-detalhes">
+                    <div class="publicacao-detalhes" t-if="pub.orientador_ids">
                       <strong>Orientador(a):</strong>
                       <t t-foreach="pub.orientador_ids" t-as="orientador">
                         <span t-esc="orientador.display_name"></span>
@@ -245,7 +245,7 @@
                       </t>
                       <br/>
                     </div>
-                    <div class="publicacao-detalhes">
+                    <div class="publicacao-detalhes" t-if="pub.palavras_chave_ids">
                       <strong>Palavras-chave:</strong>
                       <t t-foreach="pub.palavras_chave_ids" t-as="palavra">
                         <span t-esc="palavra.name">

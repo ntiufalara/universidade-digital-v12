@@ -33,7 +33,7 @@
         </div>
 
         <div class="list-group list-group-flush">
-          <div class="list-group-item">
+          <div t-if="pub.autor_ids" class="list-group-item">
             <div class="row">
               <strong class="col-sm-4 text-sm-right">Autor(a)</strong>
               <div class="col-sm-8">
@@ -47,37 +47,37 @@
               </div>
             </div>
           </div>
-          <div class="list-group-item">
+          <div t-if="pub.ano_pub" class="list-group-item">
             <div class="row">
               <strong class="col-sm-4 text-sm-right">Ano de publicação</strong>
               <div class="col-sm-8" t-esc="pub.ano_pub"></div>
             </div>
           </div>
-          <div class="list-group-item" t-if="pub.data_defesa">
+          <div t-if="pub.data_defesa" class="list-group-item" >
             <div class="row">
               <strong class="col-sm-4 text-sm-right">Data da defesa</strong>
               <div class="col-sm-8" t-field="pub.data_defesa" t-options="{'format': 'dd/MM/yyyy'}"></div>
             </div>
           </div>
-          <div class="list-group-item">
+          <div t-if="pub.curso_id" class="list-group-item">
             <div class="row">
               <strong class="col-sm-4 text-sm-right">Curso/Outros</strong>
               <div class="col-sm-8" t-esc="pub.curso_id.name"></div>
             </div>
           </div>
-           <div class="list-group-item">
+           <div t-if="pub.numero_paginas" class="list-group-item">
             <div class="row">
               <strong class="col-sm-4 text-sm-right">Número de folhas</strong>
               <div class="col-sm-8" t-esc="pub.numero_paginas"></div>
             </div>
           </div>
-          <div class="list-group-item">
+          <div t-if="pub.tipo_id" class="list-group-item">
             <div class="row">
               <strong class="col-sm-4 text-sm-right">Tipo</strong>
               <div class="col-sm-8" t-esc="pub.tipo_id.name"></div>
             </div>
           </div>
-          <div class="list-group-item">
+          <div t-if="pub.polo_id" class="list-group-item" >
             <div class="row">
               <strong class="col-sm-4 text-sm-right">Local</strong>
               <div class="col-sm-8">
@@ -103,7 +103,7 @@
               </div>
             </div>
           </div>
-          <div class="list-group-item">
+          <div t-if="pub.orientador_ids" class="list-group-item">
             <div class="row">
               <strong class="col-sm-4 text-sm-right">Orientador(a)</strong>
               <div class="col-sm-8">
@@ -136,7 +136,7 @@
               </div>
             </div>
           </div>
-          <div class="list-group-item">
+          <div t-if="pub.palavras_chave_ids" class="list-group-item" >
             <div class="row">
               <strong class="col-sm-4 text-sm-right">Palavras-chave</strong>
               <div class="col-sm-8">
@@ -169,7 +169,7 @@
               </div>
             </div>
           </div>
-          <div class="list-group-item" t-if="pub.autorizar_publicacao">
+          <div t-if="pub.autorizar_publicacao" class="list-group-item" >
             <div class="row">
               <strong class="col-sm-4 text-sm-right">Anexos</strong>
               <div class="col-sm-8" style="overflow-x: scroll;">
@@ -190,7 +190,7 @@
               <div class="col-sm-8" t-esc="pub.visualizacoes"></div>
             </div>
           </div>
-          <div class="list-group-item" t-if="pub.observacoes">
+          <div t-if="pub.observacoes" class="list-group-item" >
             <div class="row">
               <strong class="col-sm-4 text-sm-right">Observações</strong>
               <div class="col-sm-8" t-raw="pub.observacoes"></div>
