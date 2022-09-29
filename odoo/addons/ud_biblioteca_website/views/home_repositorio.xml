@@ -23,7 +23,7 @@
         <div id="contadores" class="row my-5 mx-auto">
           <div class="col-md-3 text-center">
             <h1 class="contador">
-              <strong t-esc="unidades_count"></strong>
+              <strong>3</strong>
             </h1>
             <p class="contador-label">Unidades</p>
           </div>
